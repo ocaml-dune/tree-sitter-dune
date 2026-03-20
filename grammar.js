@@ -134,33 +134,59 @@ module.exports = grammar({
       dune_stanza($, 'test', choice($._field_buildable, $._field_test, $.sexp)),
     _stanza_tests: ($) =>
       dune_stanza($, 'tests', choice($._field_buildable_multi, $._field_test, $.sexp)),
+    _sf_build_if: ($) =>
+      wrap(alias('build_if', $.field_name), field('value', $.blang)),
+    _sf_action: ($) =>
+      wrap(alias('action', $.field_name), field('value', $.action)),
     _field_test: ($) =>
       choice(
-        dune_field($, 'build_if', $.blang),
-        dune_field($, 'action', $.action),
+        alias($._sf_build_if, $.stanza_field),
+        alias($._sf_action, $.stanza_field),
       ),
+    _sf_names: ($) =>
+      wrap(alias('names', $.field_name), field('value', repeat1($.module_name))),
+    _sf_public_names: ($) =>
+      wrap(alias('public_names', $.field_name), field('value', repeat1($.public_name))),
     _field_buildable_multi: ($) =>
       choice(
-        dune_field($, 'names', repeat1($.module_name)),
-        dune_field($, 'public_names', repeat1($.public_name)),
-        dune_field($, 'libraries', repeat($._lib_dep)),
-        dune_field($, 'modules', optional($._modules_osl)),
-        dune_field($, 'enabled_if', $.blang),
+        alias($._sf_names, $.stanza_field),
+        alias($._sf_public_names, $.stanza_field),
+        alias($._sf_libraries, $.stanza_field),
+        alias($._sf_modules, $.stanza_field),
+        alias($._sf_enabled_if, $.stanza_field),
       ),
+    // stanza_field is the named wrapper node type for field-value
+    // pairs.  Concrete fields are hidden rules aliased to this type.
+    stanza_field: ($) =>
+      wrap(field('name', $.field_name), field('value', repeat($.sexp))),
+    _sf_name: ($) =>
+      wrap(alias('name', $.field_name), field('value', $.module_name)),
+    _sf_public_name: ($) =>
+      wrap(alias('public_name', $.field_name), field('value', $.public_name)),
+    _sf_libraries: ($) =>
+      wrap(alias('libraries', $.field_name), field('value', repeat($._lib_dep))),
+    _sf_modules: ($) =>
+      wrap(alias('modules', $.field_name), field('value', optional($._modules_osl))),
+    _sf_enabled_if: ($) =>
+      wrap(alias('enabled_if', $.field_name), field('value', $.blang)),
     _field_buildable: ($) =>
       choice(
-        dune_field($, 'name', $.module_name),
-        dune_field($, 'public_name', $.public_name),
-        dune_field($, 'libraries', repeat($._lib_dep)),
-        dune_field($, 'modules', optional($._modules_osl)),
-        dune_field($, 'enabled_if', $.blang),
+        alias($._sf_name, $.stanza_field),
+        alias($._sf_public_name, $.stanza_field),
+        alias($._sf_libraries, $.stanza_field),
+        alias($._sf_modules, $.stanza_field),
+        alias($._sf_enabled_if, $.stanza_field),
       ),
     _modules_osl: ($) => dune_osl($.module_name, $._modules_osl),
+    _sf_re_export: ($) =>
+      wrap(alias('re_export', $.field_name), field('value', $.library_name)),
+    _sf_select: ($) =>
+      wrap(alias('select', $.field_name), field('value', $.sexps1)),
     _lib_dep: ($) =>
       choice(
         $.library_name,
-        dune_field($, 're_export', $.library_name),
-        dune_field($, 'select', $.sexps1),
+        alias($._sf_re_export, $.stanza_field),
+        alias($._sf_select, $.stanza_field),
       ),
     library_name: ($) => $._atom_or_qs,
     public_name: ($) => $._atom_or_qs,
