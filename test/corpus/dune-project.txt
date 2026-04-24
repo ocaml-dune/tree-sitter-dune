@@ -73,13 +73,15 @@ package
 (source_file
   (stanza
     (stanza_name)
-    (field_name)
-    (package_name)
-    (field_name)
-    (package_dep
+    (stanza_field
+      (field_name)
       (package_name))
-    (package_dep
-      (package_name))))
+    (stanza_field
+      (field_name)
+      (package_dep
+        (package_name))
+      (package_dep
+        (package_name)))))
 
 ============
 source github
@@ -233,17 +235,20 @@ Bug #6: package with allow_empty and dependencies
     (stanza_name))
   (stanza
     (stanza_name)
-    (field_name)
-    value: (package_name)
-    (field_name)
-    value: (bool)
-    (field_name)
-    value: (package_dep
-      (package_name)
-      (version_constraint))
-    value: (package_dep
-      (package_name)
-      (version_constraint))))
+    (stanza_field
+      (field_name)
+      value: (package_name))
+    (stanza_field
+      (field_name)
+      value: (bool))
+    (stanza_field
+      (field_name)
+      value: (package_dep
+        (package_name)
+        (version_constraint))
+      value: (package_dep
+        (package_name)
+        (version_constraint)))))
 
 ====================================
 package with nested version constraints
@@ -261,26 +266,28 @@ package with nested version constraints
 (source_file
   (stanza
     (stanza_name)
-    (field_name)
-    value: (package_name)
-    (field_name)
-    value: (package_dep
-      (package_name)
-      (version_constraint
-        (version_constraint)
-        (version_constraint)))
-    value: (package_dep
-      (package_name)
-      (version_constraint
-        (version_constraint)
-        (version_constraint)))
-    value: (package_dep
-      (package_name)
-      (version_constraint
-        (version_constraint)
+    (stanza_field
+      (field_name)
+      value: (package_name))
+    (stanza_field
+      (field_name)
+      value: (package_dep
+        (package_name)
         (version_constraint
           (version_constraint)
-          (version_constraint))))))
+          (version_constraint)))
+      value: (package_dep
+        (package_name)
+        (version_constraint
+          (version_constraint)
+          (version_constraint)))
+      value: (package_dep
+        (package_name)
+        (version_constraint
+          (version_constraint)
+          (version_constraint
+            (version_constraint)
+            (version_constraint)))))))
 
 ====================================
 package with conflicts
@@ -297,14 +304,16 @@ package with conflicts
 (source_file
   (stanza
     (stanza_name)
-    (field_name)
-    value: (package_name)
-    (field_name)
-    value: (package_dep
-      (package_name)
-      (version_constraint))
-    value: (package_dep
-      (package_name))))
+    (stanza_field
+      (field_name)
+      value: (package_name))
+    (stanza_field
+      (field_name)
+      value: (package_dep
+        (package_name)
+        (version_constraint))
+      value: (package_dep
+        (package_name)))))
 
 ====================================
 package with depopts
@@ -322,19 +331,21 @@ package with depopts
 (source_file
   (stanza
     (stanza_name)
-    (field_name)
-    value: (package_name)
-    (field_name)
-    value: (package_dep
-      (package_name)
-      (version_constraint))
-    value: (package_dep
-      (package_name))
-    value: (package_dep
-      (package_name)
-      (version_constraint
-        (version_constraint)
-        (version_constraint)))))
+    (stanza_field
+      (field_name)
+      value: (package_name))
+    (stanza_field
+      (field_name)
+      value: (package_dep
+        (package_name)
+        (version_constraint))
+      value: (package_dep
+        (package_name))
+      value: (package_dep
+        (package_name)
+        (version_constraint
+          (version_constraint)
+          (version_constraint))))))
 
 ====================================
 package with multiple version constraints
@@ -350,11 +361,13 @@ package with multiple version constraints
 (source_file
   (stanza
     (stanza_name)
-    (field_name)
-    value: (package_name)
-    (field_name)
-    value: (package_dep
-      (package_name)
-      (version_constraint)
-      (version_constraint)
-      (version_constraint))))
+    (stanza_field
+      (field_name)
+      value: (package_name))
+    (stanza_field
+      (field_name)
+      value: (package_dep
+        (package_name)
+        (version_constraint)
+        (version_constraint)
+        (version_constraint)))))

@@ -13,17 +13,20 @@ copy#
 (source_file
   (stanza
     (stanza_name)
-    (field_name)
-    (file_name_target
-      (file_name))
-    (field_name)
-    (field_name)
-    (action
-      (action_name)
-      (file_name_dep
-        (file_name))
+    (stanza_field
+      (field_name)
       (file_name_target
-        (file_name)))))
+        (file_name)))
+    (stanza_field
+      (field_name))
+    (stanza_field
+      (field_name)
+      (action
+        (action_name)
+        (file_name_dep
+          (file_name))
+        (file_name_target
+          (file_name))))))
 
 ======
 system
@@ -48,24 +51,29 @@ system
 (source_file
   (stanza
     (stanza_name)
-    (field_name)
-    (alias_name)
-    (field_name)
-    (action
-      (action_name)
-      (shell_command
-        (quoted_string))))
+    (stanza_field
+      (field_name)
+      (alias_name))
+    (stanza_field
+      (field_name)
+      (action
+        (action_name)
+        (shell_command
+          (quoted_string)))))
   (stanza
     (stanza_name)
-    (field_name)
-    (alias_name)
-    (field_name)
-    (file_name)
-    (field_name)
-    (action
-      (action_name)
-      (shell_command
-        (multiline_string)))))
+    (stanza_field
+      (field_name)
+      (alias_name))
+    (stanza_field
+      (field_name)
+      (file_name))
+    (stanza_field
+      (field_name)
+      (action
+        (action_name)
+        (shell_command
+          (multiline_string))))))
 
 ====
 bash
@@ -84,14 +92,17 @@ bash
 (source_file
   (stanza
     (stanza_name)
-    (field_name)
-    (alias_name)
-    (field_name)
-    (field_name)
-    (action
-      (action_name)
-      (shell_command
-        (quoted_string)))))
+    (stanza_field
+      (field_name)
+      (alias_name))
+    (stanza_field
+      (field_name))
+    (stanza_field
+      (field_name)
+      (action
+        (action_name)
+        (shell_command
+          (quoted_string))))))
 
 ==============
 with-stdout-to
@@ -134,30 +145,32 @@ progn
 (source_file
   (stanza
     (stanza_name)
-    (field_name)
-    (file_name_target
-      (file_name))
-    (file_name_target
-      (file_name))
-    (field_name)
-    (action
-      (action_name)
+    (stanza_field
+      (field_name)
       (file_name_target
         (file_name))
+      (file_name_target
+        (file_name)))
+    (stanza_field
+      (field_name)
       (action
         (action_name)
         (file_name_target
           (file_name))
         (action
           (action_name)
+          (file_name_target
+            (file_name))
           (action
             (action_name)
-            (shell_command
-              (quoted_string)))
-          (action
-            (action_name)
-            (shell_command
-              (quoted_string))))))))
+            (action
+              (action_name)
+              (shell_command
+                (quoted_string)))
+            (action
+              (action_name)
+              (shell_command
+                (quoted_string)))))))))
 
 ==========
 write-file
@@ -171,12 +184,13 @@ write-file
 (source_file
   (stanza
     (stanza_name)
-    (field_name)
-    (action
-      (action_name)
-      (file_name_target
-        (file_name))
-      (quoted_string))))
+    (stanza_field
+      (field_name)
+      (action
+        (action_name)
+        (file_name_target
+          (file_name))
+        (quoted_string)))))
 
 ====
 copy
@@ -191,15 +205,17 @@ copy
 (source_file
   (stanza
     (stanza_name)
-    (field_name)
-    (action
-      (action_name)
-      (file_name_dep
-        (file_name))
-      (file_name_target
-        (file_name)))
-    (field_name)
-    (package_name)))
+    (stanza_field
+      (field_name)
+      (action
+        (action_name)
+        (file_name_dep
+          (file_name))
+        (file_name_target
+          (file_name))))
+    (stanza_field
+      (field_name)
+      (package_name))))
 
 ====
 diff
@@ -214,15 +230,17 @@ diff
 (source_file
   (stanza
     (stanza_name)
-    (field_name)
-    (alias_name)
-    (field_name)
-    (action
-      (action_name)
-      (file_name_dep
-        (file_name))
-      (file_name_dep
-        (file_name)))))
+    (stanza_field
+      (field_name)
+      (alias_name))
+    (stanza_field
+      (field_name)
+      (action
+        (action_name)
+        (file_name_dep
+          (file_name))
+        (file_name_dep
+          (file_name))))))
 
 ========
 no-infer
@@ -242,30 +260,33 @@ no-infer
 (source_file
   (stanza
     (stanza_name)
-    (field_name)
-    (file_name_target
+    (stanza_field
+      (field_name)
+      (file_name_target
+        (file_name))
+      (file_name_target
+        (file_name)))
+    (stanza_field
+      (field_name)
       (file_name))
-    (file_name_target
-      (file_name))
-    (field_name)
-    (file_name)
-    (field_name)
-    (action
-      (action_name)
+    (stanza_field
+      (field_name)
       (action
         (action_name)
         (action
           (action_name)
-          (file_name_dep
-            (file_name))
-          (file_name_target
-            (file_name)))
-        (action
-          (action_name)
-          (file_name_dep
-            (file_name))
-          (file_name_target
-            (file_name)))))))
+          (action
+            (action_name)
+            (file_name_dep
+              (file_name))
+            (file_name_target
+              (file_name)))
+          (action
+            (action_name)
+            (file_name_dep
+              (file_name))
+            (file_name_target
+              (file_name))))))))
 
 ============
 pipe-outputs
@@ -294,16 +315,56 @@ pipe-outputs
 (source_file
   (stanza
     (stanza_name)
-    (field_name)
-    (action
-      (action_name)
-      (file_name_target
-        (file_name))
+    (stanza_field
+      (field_name)
       (action
         (action_name)
+        (file_name_target
+          (file_name))
         (action
           (action_name)
-          (comment)
+          (action
+            (action_name)
+            (comment)
+            (action
+              (action_name)
+              (file_name_dep
+                (file_name)))
+            (action
+              (action_name)
+              (file_name_dep
+                (file_name))
+              (quoted_string))
+            (action
+              (action_name)
+              (file_name_dep
+                (file_name))
+              (quoted_string))
+            (action
+              (action_name)
+              (file_name_dep
+                (file_name))
+              (quoted_string))
+            (action
+              (action_name)
+              (file_name_dep
+                (file_name))
+              (quoted_string))
+            (action
+              (action_name)
+              (file_name_dep
+                (file_name))
+              (quoted_string))
+            (action
+              (action_name)
+              (file_name_dep
+                (file_name))
+              (quoted_string))
+            (action
+              (action_name)
+              (file_name_dep
+                (file_name))
+              (quoted_string)))
           (action
             (action_name)
             (file_name_dep
@@ -311,46 +372,7 @@ pipe-outputs
           (action
             (action_name)
             (file_name_dep
-              (file_name))
-            (quoted_string))
-          (action
-            (action_name)
-            (file_name_dep
-              (file_name))
-            (quoted_string))
-          (action
-            (action_name)
-            (file_name_dep
-              (file_name))
-            (quoted_string))
-          (action
-            (action_name)
-            (file_name_dep
-              (file_name))
-            (quoted_string))
-          (action
-            (action_name)
-            (file_name_dep
-              (file_name))
-            (quoted_string))
-          (action
-            (action_name)
-            (file_name_dep
-              (file_name))
-            (quoted_string))
-          (action
-            (action_name)
-            (file_name_dep
-              (file_name))
-            (quoted_string)))
-        (action
-          (action_name)
-          (file_name_dep
-            (file_name)))
-        (action
-          (action_name)
-          (file_name_dep
-            (file_name)))))))
+              (file_name))))))))
 
 =====
 diff?
@@ -369,32 +391,34 @@ diff?
 (source_file
   (stanza
     (stanza_name)
-    (field_name)
-    (alias_name)
-    (field_name)
-    (action
-      (action_name)
+    (stanza_field
+      (field_name)
+      (alias_name))
+    (stanza_field
+      (field_name)
       (action
         (action_name)
-        (file_name_target
-          (file_name))
         (action
           (action_name)
-          (quoted_string)))
-      (action
-        (action_name)
-        (file_name_target
-          (file_name))
+          (file_name_target
+            (file_name))
+          (action
+            (action_name)
+            (quoted_string)))
+        (action
+          (action_name)
+          (file_name_target
+            (file_name))
+          (action
+            (action_name)
+            (file_name_dep
+              (file_name))))
         (action
           (action_name)
           (file_name_dep
-            (file_name))))
-      (action
-        (action_name)
-        (file_name_dep
-          (file_name))
-        (file_name_dep
-          (file_name))))))
+            (file_name))
+          (file_name_dep
+            (file_name)))))))
 
 ===
 cmp
@@ -409,15 +433,17 @@ cmp
 (source_file
   (stanza
     (stanza_name)
-    (field_name)
-    (alias_name)
-    (field_name)
-    (action
-      (action_name)
-      (file_name_dep
-        (file_name))
-      (file_name_dep
-        (file_name)))))
+    (stanza_field
+      (field_name)
+      (alias_name))
+    (stanza_field
+      (field_name)
+      (action
+        (action_name)
+        (file_name_dep
+          (file_name))
+        (file_name_dep
+          (file_name))))))
 
 ========================
 with-accepted-exit-codes
@@ -439,25 +465,29 @@ with-accepted-exit-codes
 (source_file
   (stanza
     (stanza_name)
-    (field_name)
-    (file_name_target
+    (stanza_field
+      (field_name)
+      (file_name_target
+        (file_name)))
+    (stanza_field
+      (field_name)
       (file_name))
-    (field_name)
-    (file_name)
-    (field_name)
-    (blang
-      (blang_op)
-      (blang)
+    (stanza_field
+      (field_name)
       (blang
-        (quoted_string)))
-    (field_name)
-    (action
-      (action_name)
+        (blang_op)
+        (blang)
+        (blang
+          (quoted_string))))
+    (stanza_field
+      (field_name)
       (action
         (action_name)
-        (file_name_target
-          (file_name))
         (action
           (action_name)
-          (file_name_dep
-            (file_name)))))))
+          (file_name_target
+            (file_name))
+          (action
+            (action_name)
+            (file_name_dep
+              (file_name))))))))

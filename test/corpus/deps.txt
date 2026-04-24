@@ -12,22 +12,25 @@ named deps
 (source_file
   (stanza
     (stanza_name)
-    (field_name)
-    (alias_name)
-    (field_name)
-    (named_variable)
-    (file_name)
-    (file_name)
-    (named_variable)
-    (file_name)
-    (alias_name)
-    (file_name)
-    (file_name)
-    (file_name)
-    (field_name)
-    (action
-      (action_name)
-      (quoted_string))))
+    (stanza_field
+      (field_name)
+      (alias_name))
+    (stanza_field
+      (field_name)
+      (named_variable)
+      (file_name)
+      (file_name)
+      (named_variable)
+      (file_name)
+      (alias_name)
+      (file_name)
+      (file_name)
+      (file_name))
+    (stanza_field
+      (field_name)
+      (action
+        (action_name)
+        (quoted_string)))))
 
 =======
 sandbox
@@ -45,14 +48,17 @@ sandbox
 (source_file
   (stanza
     (stanza_name)
-    (field_name)
-    (alias_name)
-    (field_name)
-    (field_name)
-    (action
-      (action_name)
-      (file_name_dep
-        (file_name)))))
+    (stanza_field
+      (field_name)
+      (alias_name))
+    (stanza_field
+      (field_name))
+    (stanza_field
+      (field_name)
+      (action
+        (action_name)
+        (file_name_dep
+          (file_name))))))
 
 =========
 alias_rec
@@ -67,10 +73,12 @@ alias_rec
 (source_file
   (stanza
     (stanza_name)
-    (field_name)
-    (alias_name)
-    (field_name)
-    (alias_name)))
+    (stanza_field
+      (field_name)
+      (alias_name))
+    (stanza_field
+      (field_name)
+      (alias_name))))
 
 =======
 package
@@ -85,11 +93,13 @@ package
 (source_file
   (stanza
     (stanza_name)
-    (field_name)
-    (alias_name)
-    (field_name)
-    (package_name)
-    (package_name)))
+    (stanza_field
+      (field_name)
+      (alias_name))
+    (stanza_field
+      (field_name)
+      (package_name)
+      (package_name))))
 
 =======
 env_var
@@ -106,11 +116,14 @@ env_var
 (source_file
   (stanza
     (stanza_name)
-    (field_name)
-    (alias_name)
-    (field_name)
-    (field_name)
-    (action
-      (action_name)
-      (file_name_dep
-        (file_name)))))
+    (stanza_field
+      (field_name)
+      (alias_name))
+    (stanza_field
+      (field_name))
+    (stanza_field
+      (field_name)
+      (action
+        (action_name)
+        (file_name_dep
+          (file_name))))))

@@ -120,144 +120,138 @@ Rule
 (source_file
   (stanza
     (stanza_name)
-    (field_name)
-    (field_name)
-    (alias_name)
-    (field_name)
-    (file_name_target
-      (file_name))
-    (field_name)
-    (named_variable)
-    (file_name)
-    (field_name)
-    (action
-      (action_name)
-      (file_name)
-      (action
-        (action_name)
-        (quoted_string)
-        (action
-          (action_name)
-          (file_name_dep
-            (file_name))))))
-  (stanza
-    (stanza_name)
-    (field_name)
-    (field_name)
-    (field_name)
-    (action
-      (action_name)
+    (stanza_field
+      (field_name))
+    (stanza_field
+      (field_name)
+      (alias_name))
+    (stanza_field
+      (field_name)
       (file_name_target
-        (file_name))
-      (action
-        (action_name)
-        (action
-          (action_name)
-          (quoted_string))
-        (action
-          (action_name)
-          (file_name_dep
-            (file_name)))
-        (action
-          (action_name)
-          (quoted_string))
-        (action
-          (action_name)
-          (quoted_string))
-        (action
-          (action_name)
-          (file_name_dep
-            (file_name)))
-        (action
-          (action_name)
-          (quoted_string)))))
-  (stanza
-    (stanza_name)
-    (field_name)
-    (file_name_target
-      (file_name))
-    (field_name)
-    (file_name)
-    (file_name)
-    (field_name)
-    (action
-      (action_name)
-      (file_name_dep
-        (file_name))))
-  (stanza
-    (stanza_name)
-    (field_name)
-    (bool)
-    (field_name)
-    (field_name)
-    (action
-      (action_name)
-      (file_name_target
-        (file_name))
-      (action
-        (action_name)
-        (quoted_string))))
-  (stanza
-    (stanza_name)
-    (field_name)
-    (file_name_target
-      (file_name))
-    (field_name)
-    (action
-      (action_name)
-      (action
-        (action_name)
-        (file_name_dep
-          (file_name)))
-      (action
-        (action_name)
-        (file_name_dep
-          (file_name)))))
-  (stanza
-    (stanza_name)
-    (field_name)
-    (file_name_target
-      (file_name))
-    (field_name)
-    (action
-      (action_name)
-      (file_name_dep
         (file_name)))
-    (field_name)
-    (lock_name))
-  (stanza
-    (stanza_name)
-    (field_name)
-    (file_name_target
+    (stanza_field
+      (field_name)
+      (named_variable)
       (file_name))
-    (field_name)
-    (action
-      (action_name)
-      (file_name_target
-        (file_name))
+    (stanza_field
+      (field_name)
       (action
         (action_name)
-        (quoted_string)))
-    (field_name)
-    (field_name)
-    (file_name))
+        (file_name)
+        (action
+          (action_name)
+          (quoted_string)
+          (action
+            (action_name)
+            (file_name_dep
+              (file_name)))))))
   (stanza
     (stanza_name)
-    (field_name)
-    (file_name_target
-      (file_name))
-    (file_name_target
-      (file_name))
-    (field_name)
-    (action
-      (action_name)
+    (stanza_field
+      (field_name))
+    (stanza_field
+      (field_name))
+    (stanza_field
+      (field_name)
       (action
         (action_name)
         (file_name_target
           (file_name))
         (action
           (action_name)
-          (quoted_string)))
+          (action
+            (action_name)
+            (quoted_string))
+          (action
+            (action_name)
+            (file_name_dep
+              (file_name)))
+          (action
+            (action_name)
+            (quoted_string))
+          (action
+            (action_name)
+            (quoted_string))
+          (action
+            (action_name)
+            (file_name_dep
+              (file_name)))
+          (action
+            (action_name)
+            (quoted_string))))))
+  (stanza
+    (stanza_name)
+    (stanza_field
+      (field_name)
+      (file_name_target
+        (file_name)))
+    (stanza_field
+      (field_name)
+      (file_name)
+      (file_name))
+    (stanza_field
+      (field_name)
+      (action
+        (action_name)
+        (file_name_dep
+          (file_name)))))
+  (stanza
+    (stanza_name)
+    (stanza_field
+      (field_name)
+      (bool))
+    (stanza_field
+      (field_name))
+    (stanza_field
+      (field_name)
+      (action
+        (action_name)
+        (file_name_target
+          (file_name))
+        (action
+          (action_name)
+          (quoted_string)))))
+  (stanza
+    (stanza_name)
+    (stanza_field
+      (field_name)
+      (file_name_target
+        (file_name)))
+    (stanza_field
+      (field_name)
+      (action
+        (action_name)
+        (action
+          (action_name)
+          (file_name_dep
+            (file_name)))
+        (action
+          (action_name)
+          (file_name_dep
+            (file_name))))))
+  (stanza
+    (stanza_name)
+    (stanza_field
+      (field_name)
+      (file_name_target
+        (file_name)))
+    (stanza_field
+      (field_name)
+      (action
+        (action_name)
+        (file_name_dep
+          (file_name))))
+    (stanza_field
+      (field_name)
+      (lock_name)))
+  (stanza
+    (stanza_name)
+    (stanza_field
+      (field_name)
+      (file_name_target
+        (file_name)))
+    (stanza_field
+      (field_name)
       (action
         (action_name)
         (file_name_target
@@ -265,24 +259,63 @@ Rule
         (action
           (action_name)
           (quoted_string))))
-    (field_name)
-    (field_name)
-    (field_name))
+    (stanza_field
+      (field_name)
+      (stanza_field
+        (field_name)
+        (file_name))))
   (stanza
     (stanza_name)
-    (field_name)
-    (field_name)
-    (field_name)
-    (field_name)
-    (file_name)
-    (field_name)
-    (action
-      (action_name)
+    (stanza_field
+      (field_name)
       (file_name_target
         (file_name))
+      (file_name_target
+        (file_name)))
+    (stanza_field
+      (field_name)
       (action
         (action_name)
-        (quoted_string)))))
+        (action
+          (action_name)
+          (file_name_target
+            (file_name))
+          (action
+            (action_name)
+            (quoted_string)))
+        (action
+          (action_name)
+          (file_name_target
+            (file_name))
+          (action
+            (action_name)
+            (quoted_string)))))
+    (stanza_field
+      (field_name)
+      (stanza_field
+        (field_name)
+        (stanza_field
+          (field_name)))))
+  (stanza
+    (stanza_name)
+    (stanza_field
+      (field_name))
+    (stanza_field
+      (field_name)
+      (stanza_field
+        (field_name)
+        (stanza_field
+          (field_name)
+          (file_name))))
+    (stanza_field
+      (field_name)
+      (action
+        (action_name)
+        (file_name_target
+          (file_name))
+        (action
+          (action_name)
+          (quoted_string))))))
 
 =======
 library
@@ -317,12 +350,14 @@ library
     (stanza_field
       (field_name)
       (module_name))
-    (field_name)
-    (quoted_string)
-    (field_name)
-    (sexp
-      (sexp)
-      (sexp)))
+    (stanza_field
+      (field_name)
+      (quoted_string))
+    (stanza_field
+      (field_name)
+      (sexp
+        (sexp)
+        (sexp))))
   (stanza
     (stanza_name)
     (stanza_field
@@ -388,76 +423,86 @@ enabled_if
 (source_file
   (stanza
     (stanza_name)
-    (field_name)
-    (field_name)
-    (blang
-      (blang_op)
-      (blang)
+    (stanza_field
+      (field_name))
+    (stanza_field
+      (field_name)
       (blang
-        (quoted_string)))
-    (field_name)
-    (action
-      (action_name)
-      (file_name_target
-        (file_name))
+        (blang_op)
+        (blang)
+        (blang
+          (quoted_string))))
+    (stanza_field
+      (field_name)
       (action
         (action_name)
+        (file_name_target
+          (file_name))
+        (action
+          (action_name)
+          (quoted_string)))))
+  (stanza
+    (stanza_name)
+    (stanza_field
+      (field_name))
+    (stanza_field
+      (field_name)
+      (blang
+        (blang_op)
+        (blang)
+        (blang
+          (quoted_string))))
+    (stanza_field
+      (field_name)
+      (action
+        (action_name)
+        (file_name_target
+          (file_name))
+        (action
+          (action_name)
+          (quoted_string)))))
+  (stanza
+    (stanza_name)
+    (stanza_field
+      (field_name)
+      (blang
+        (blang_op)
+        (blang
+          (blang_op)
+          (blang)
+          (blang))
+        (blang
+          (blang_op)
+          (blang)
+          (blang))))
+    (stanza_field
+      (field_name)
+      (action
+        (action_name)
+        (file_name_target
+          (file_name))
         (quoted_string))))
   (stanza
     (stanza_name)
-    (field_name)
-    (field_name)
-    (blang
-      (blang_op)
-      (blang)
+    (stanza_field
+      (field_name)
       (blang
-        (quoted_string)))
-    (field_name)
-    (action
-      (action_name)
-      (file_name_target
-        (file_name))
+        (blang_op)
+        (blang
+          (blang_op)
+          (blang)
+          (blang))
+        (blang
+          (blang_op)
+          (blang)
+          (blang))))
+    (stanza_field
+      (field_name)
       (action
         (action_name)
+        (file_name_target
+          (file_name))
         (quoted_string))))
-  (stanza
-    (stanza_name)
-    (field_name)
-    (blang
-      (blang_op)
-      (blang
-        (blang_op)
-        (blang)
-        (blang))
-      (blang
-        (blang_op)
-        (blang)
-        (blang)))
-    (field_name)
-    (action
-      (action_name)
-      (file_name_target
-        (file_name))
-      (quoted_string)))
-  (stanza
-    (stanza_name)
-    (field_name)
-    (blang
-      (blang_op)
-      (blang
-        (blang_op)
-        (blang)
-        (blang))
-      (blang
-        (blang_op)
-        (blang)
-        (blang)))
-    (field_name)
-    (action
-      (action_name)
-      (file_name_target
-        (file_name))
-      (quoted_string)))
   (stanza
     (stanza_name)
     (stanza_field
@@ -510,8 +555,9 @@ re_export
       (stanza_field
         (field_name)
         (library_name)))
-    (field_name)
-    (bool)))
+    (stanza_field
+      (field_name)
+      (bool))))
 
 =============
 vendored_dirs
@@ -592,9 +638,10 @@ ocamllex modules
 (source_file
   (stanza
     (stanza_name)
-    (field_name)
-    (module_name)
-    (module_name)))
+    (stanza_field
+      (field_name)
+      (module_name)
+      (module_name))))
 
 =========
 ocamlyacc
@@ -620,8 +667,9 @@ ocamlyacc modules
 (source_file
   (stanza
     (stanza_name)
-    (field_name)
-    (module_name)))
+    (stanza_field
+      (field_name)
+      (module_name))))
 
 ===============
 include_subdirs
@@ -691,9 +739,11 @@ cram
 (source_file
   (stanza
     (stanza_name)
-    (field_name)
-    (field_name)
-    (file_name)))
+    (stanza_field
+      (field_name))
+    (stanza_field
+      (field_name)
+      (file_name))))
 
 ====
 dirs
@@ -723,10 +773,12 @@ toplevel
 (source_file
   (stanza
     (stanza_name)
-    (field_name)
-    (module_name)
-    (field_name)
-    (library_name)))
+    (stanza_field
+      (field_name)
+      (module_name))
+    (stanza_field
+      (field_name)
+      (library_name))))
 
 =======
 install
@@ -741,9 +793,11 @@ install
 (source_file
   (stanza
     (stanza_name)
-    (field_name)
-    (field_name)
-    (sexp)))
+    (stanza_field
+      (field_name))
+    (stanza_field
+      (field_name)
+      (sexp))))
 
 =============
 documentation
@@ -828,9 +882,11 @@ wrapped transition
     (sexp
       (sexp)
       (sexp))
-    (field_name)
-    (field_name)
-    (quoted_string)))
+    (stanza_field
+      (field_name)
+      (stanza_field
+        (field_name)
+        (quoted_string)))))
 
 ==========
 ppx.driver
@@ -857,15 +913,16 @@ ppx.driver
       (library_name))
     (stanza_field
       (field_name))
-    (field_name)
-    (sexps1
-      (sexp
-        (sexp)
+    (stanza_field
+      (field_name)
+      (sexps1
         (sexp
-          (quoted_string)))
-      (sexp
-        (sexp)
-        (sexp)))))
+          (sexp)
+          (sexp
+            (quoted_string)))
+        (sexp
+          (sexp)
+          (sexp))))))
 
 ==============
 enabled_if and
@@ -892,41 +949,45 @@ enabled_if and
 (source_file
   (stanza
     (stanza_name)
-    (field_name)
-    (alias_name)
-    (field_name)
-    (blang
-      (blang_op)
+    (stanza_field
+      (field_name)
+      (alias_name))
+    (stanza_field
+      (field_name)
       (blang
         (blang_op)
-        (blang)
         (blang
-          (quoted_string)))
-      (blang
-        (blang_op)
-        (blang)
+          (blang_op)
+          (blang)
+          (blang
+            (quoted_string)))
         (blang
-          (quoted_string))))
-    (field_name)
-    (named_variable)
-    (file_name)
-    (package_name)
-    (field_name)
-    (action
-      (action_name)
+          (blang_op)
+          (blang)
+          (blang
+            (quoted_string)))))
+    (stanza_field
+      (field_name)
+      (named_variable)
       (file_name)
+      (package_name))
+    (stanza_field
+      (field_name)
       (action
         (action_name)
+        (file_name)
         (action
           (action_name)
-          (file_name_dep
-            (file_name)))
-        (action
-          (action_name)
-          (file_name_dep
-            (file_name))
-          (file_name_dep
-            (file_name)))))))
+          (action
+            (action_name)
+            (file_name_dep
+              (file_name)))
+          (action
+            (action_name)
+            (file_name_dep
+              (file_name))
+            (file_name_dep
+              (file_name))))))))
 
 ==========
 copy_files
@@ -939,8 +1000,9 @@ copy_files
 (source_file
   (stanza
     (stanza_name)
-    (field_name)
-    (file_name)))
+    (stanza_field
+      (field_name)
+      (file_name))))
 
 ======
 menhir
@@ -954,8 +1016,9 @@ menhir
 (source_file
   (stanza
     (stanza_name)
-    (field_name)
-    (module_name)))
+    (stanza_field
+      (field_name)
+      (module_name))))
 
 ====================
 menhir with merge_into
@@ -970,11 +1033,13 @@ menhir with merge_into
 (source_file
   (stanza
     (stanza_name)
-    (field_name)
-    (module_name)
-    (module_name)
-    (field_name)
-    (module_name)))
+    (stanza_field
+      (field_name)
+      (module_name)
+      (module_name))
+    (stanza_field
+      (field_name)
+      (module_name))))
 
 =======
 include
@@ -1016,8 +1081,10 @@ foreign_library
 (source_file
   (stanza
     (stanza_name)
-    (field_name)
-    (field_name)))
+    (stanza_field
+      (field_name))
+    (stanza_field
+      (field_name))))
 
 ======
 plugin
@@ -1032,10 +1099,12 @@ plugin
 (source_file
   (stanza
     (stanza_name)
-    (field_name)
-    (module_name)
-    (field_name)
-    (library_name)))
+    (stanza_field
+      (field_name)
+      (module_name))
+    (stanza_field
+      (field_name)
+      (library_name))))
 
 ===
 mdx
@@ -1049,8 +1118,9 @@ mdx
 (source_file
   (stanza
     (stanza_name)
-    (field_name)
-    (file_name)))
+    (stanza_field
+      (field_name)
+      (file_name))))
 
 ==========
 coq.theory
@@ -1064,7 +1134,8 @@ coq.theory
 (source_file
   (stanza
     (stanza_name)
-    (field_name)))
+    (stanza_field
+      (field_name))))
 
 ========================
 deprecated_library_name

@@ -44,14 +44,16 @@ something is wrong
 (source_file
   (stanza
     (stanza_name)
-    (field_name)
-    (alias_name)
-    (field_name)
-    (action
-      (action_name)
+    (stanza_field
+      (field_name)
+      (alias_name))
+    (stanza_field
+      (field_name)
       (action
         (action_name)
-        (quoted_string)))))
+        (action
+          (action_name)
+          (quoted_string))))))
 
 =================
 multiline strings
@@ -102,28 +104,32 @@ multiline strings
     (stanza_field
       (field_name)
       (public_name))
-    (field_name)
-    (sexp)
+    (stanza_field
+      (field_name)
+      (sexp))
     (stanza_field
       (field_name))
     (stanza_field
       (field_name)
       (library_name))
-    (field_name)
-    (sexps1
-      (sexp
-        (sexp)
+    (stanza_field
+      (field_name)
+      (sexps1
         (sexp
-          (multiline_string)))))
+          (sexp)
+          (sexp
+            (multiline_string))))))
   (comment)
   (stanza
     (stanza_name)
-    (field_name)
-    (alias_name)
-    (field_name)
-    (action
-      (action_name)
-      (multiline_string))))
+    (stanza_field
+      (field_name)
+      (alias_name))
+    (stanza_field
+      (field_name)
+      (action
+        (action_name)
+        (multiline_string)))))
 
 ============
 ocaml syntax

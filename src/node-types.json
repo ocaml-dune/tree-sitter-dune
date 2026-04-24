@@ -675,136 +675,6 @@
           }
         ]
       },
-      "value": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "(",
-            "named": false
-          },
-          {
-            "type": ")",
-            "named": false
-          },
-          {
-            "type": "action",
-            "named": true
-          },
-          {
-            "type": "alias",
-            "named": false
-          },
-          {
-            "type": "alias_name",
-            "named": true
-          },
-          {
-            "type": "alias_rec",
-            "named": false
-          },
-          {
-            "type": "blang",
-            "named": true
-          },
-          {
-            "type": "bool",
-            "named": true
-          },
-          {
-            "type": "dir",
-            "named": false
-          },
-          {
-            "type": "env_var",
-            "named": false
-          },
-          {
-            "type": "fallback",
-            "named": false
-          },
-          {
-            "type": "field_name",
-            "named": true
-          },
-          {
-            "type": "file_name",
-            "named": true
-          },
-          {
-            "type": "file_name_target",
-            "named": true
-          },
-          {
-            "type": "glob_files",
-            "named": false
-          },
-          {
-            "type": "library_name",
-            "named": true
-          },
-          {
-            "type": "lock_name",
-            "named": true
-          },
-          {
-            "type": "module_name",
-            "named": true
-          },
-          {
-            "type": "multiline_string",
-            "named": true
-          },
-          {
-            "type": "named_variable",
-            "named": true
-          },
-          {
-            "type": "package",
-            "named": false
-          },
-          {
-            "type": "package_dep",
-            "named": true
-          },
-          {
-            "type": "package_name",
-            "named": true
-          },
-          {
-            "type": "promote",
-            "named": false
-          },
-          {
-            "type": "quoted_string",
-            "named": true
-          },
-          {
-            "type": "sandbox",
-            "named": false
-          },
-          {
-            "type": "sexp",
-            "named": true
-          },
-          {
-            "type": "sexps1",
-            "named": true
-          },
-          {
-            "type": "source_tree",
-            "named": false
-          },
-          {
-            "type": "stanza_field",
-            "named": true
-          },
-          {
-            "type": "universe",
-            "named": false
-          }
-        ]
-      },
       "version": {
         "multiple": false,
         "required": false,
@@ -830,10 +700,6 @@
         },
         {
           "type": "bool",
-          "named": true
-        },
-        {
-          "type": "field_name",
           "named": true
         },
         {
@@ -892,11 +758,55 @@
             "named": true
           },
           {
+            "type": "alias",
+            "named": false
+          },
+          {
+            "type": "alias_name",
+            "named": true
+          },
+          {
+            "type": "alias_rec",
+            "named": false
+          },
+          {
             "type": "blang",
             "named": true
           },
           {
+            "type": "bool",
+            "named": true
+          },
+          {
+            "type": "dir",
+            "named": false
+          },
+          {
+            "type": "env_var",
+            "named": false
+          },
+          {
+            "type": "fallback",
+            "named": false
+          },
+          {
+            "type": "file_name",
+            "named": true
+          },
+          {
+            "type": "file_name_target",
+            "named": true
+          },
+          {
+            "type": "glob_files",
+            "named": false
+          },
+          {
             "type": "library_name",
+            "named": true
+          },
+          {
+            "type": "lock_name",
             "named": true
           },
           {
@@ -904,7 +814,43 @@
             "named": true
           },
           {
+            "type": "multiline_string",
+            "named": true
+          },
+          {
+            "type": "named_variable",
+            "named": true
+          },
+          {
+            "type": "package",
+            "named": false
+          },
+          {
+            "type": "package_dep",
+            "named": true
+          },
+          {
+            "type": "package_name",
+            "named": true
+          },
+          {
+            "type": "promote",
+            "named": false
+          },
+          {
             "type": "public_name",
+            "named": true
+          },
+          {
+            "type": "quoted_string",
+            "named": true
+          },
+          {
+            "type": "sandbox",
+            "named": false
+          },
+          {
+            "type": "sexp",
             "named": true
           },
           {
@@ -912,8 +858,16 @@
             "named": true
           },
           {
+            "type": "source_tree",
+            "named": false
+          },
+          {
             "type": "stanza_field",
             "named": true
+          },
+          {
+            "type": "universe",
+            "named": false
           }
         ]
       }
