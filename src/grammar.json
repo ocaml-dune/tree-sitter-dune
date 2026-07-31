@@ -149,9 +149,22 @@
         }
       }
     },
-    "_atom": {
+    "interpolation": {
       "type": "PATTERN",
-      "value": "[^;()\"\\s]+"
+      "value": "%\\{[^}]+\\}"
+    },
+    "_atom": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "interpolation"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[^;()\"\\s]+"
+        }
+      ]
     },
     "named_variable": {
       "type": "PATTERN",

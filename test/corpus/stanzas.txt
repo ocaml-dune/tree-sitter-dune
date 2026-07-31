@@ -137,14 +137,17 @@ Rule
       (field_name)
       (action
         (action_name)
-        (file_name)
+        (file_name
+          (interpolation))
         (action
           (action_name)
           (quoted_string)
           (action
             (action_name)
             (file_name_dep
-              (file_name)))))))
+              (file_name
+                (interpolation)))
+            (interpolation))))))
   (stanza
     (stanza_name)
     (stanza_field
@@ -156,7 +159,8 @@ Rule
       (action
         (action_name)
         (file_name_target
-          (file_name))
+          (file_name
+            (interpolation)))
         (action
           (action_name)
           (action
@@ -194,7 +198,11 @@ Rule
       (action
         (action_name)
         (file_name_dep
-          (file_name)))))
+          (file_name
+            (interpolation)))
+        (interpolation)
+        (interpolation)
+        (interpolation))))
   (stanza
     (stanza_name)
     (stanza_field
@@ -240,7 +248,8 @@ Rule
       (action
         (action_name)
         (file_name_dep
-          (file_name))))
+          (file_name))
+        (interpolation)))
     (stanza_field
       (field_name)
       (lock_name)))
@@ -312,7 +321,8 @@ Rule
       (action
         (action_name)
         (file_name_target
-          (file_name))
+          (file_name
+            (interpolation)))
         (action
           (action_name)
           (quoted_string))))))
@@ -429,7 +439,8 @@ enabled_if
       (field_name)
       (blang
         (blang_op)
-        (blang)
+        (blang
+          (interpolation))
         (blang
           (quoted_string))))
     (stanza_field
@@ -437,7 +448,8 @@ enabled_if
       (action
         (action_name)
         (file_name_target
-          (file_name))
+          (file_name
+            (interpolation)))
         (action
           (action_name)
           (quoted_string)))))
@@ -449,7 +461,8 @@ enabled_if
       (field_name)
       (blang
         (blang_op)
-        (blang)
+        (blang
+          (interpolation))
         (blang
           (quoted_string))))
     (stanza_field
@@ -457,7 +470,8 @@ enabled_if
       (action
         (action_name)
         (file_name_target
-          (file_name))
+          (file_name
+            (interpolation)))
         (action
           (action_name)
           (quoted_string)))))
@@ -469,11 +483,13 @@ enabled_if
         (blang_op)
         (blang
           (blang_op)
-          (blang)
+          (blang
+            (interpolation))
           (blang))
         (blang
           (blang_op)
-          (blang)
+          (blang
+            (interpolation))
           (blang))))
     (stanza_field
       (field_name)
@@ -490,11 +506,13 @@ enabled_if
         (blang_op)
         (blang
           (blang_op)
-          (blang)
+          (blang
+            (interpolation))
           (blang))
         (blang
           (blang_op)
-          (blang)
+          (blang
+            (interpolation))
           (blang))))
     (stanza_field
       (field_name)
@@ -515,7 +533,8 @@ enabled_if
       (field_name)
       (blang
         (blang_op)
-        (blang)
+        (blang
+          (interpolation))
         (blang))))
   (stanza
     (stanza_name)
@@ -529,8 +548,10 @@ enabled_if
       (field_name)
       (blang
         (blang_op)
-        (blang)
-        (blang)))))
+        (blang
+          (interpolation))
+        (blang
+          (interpolation))))))
 
 =========
 re_export
@@ -743,7 +764,8 @@ cram
       (field_name))
     (stanza_field
       (field_name)
-      (file_name))))
+      (file_name
+        (interpolation)))))
 
 ====
 dirs
@@ -958,12 +980,14 @@ enabled_if and
         (blang_op)
         (blang
           (blang_op)
-          (blang)
+          (blang
+            (interpolation))
           (blang
             (quoted_string)))
         (blang
           (blang_op)
-          (blang)
+          (blang
+            (interpolation))
           (blang
             (quoted_string)))))
     (stanza_field
@@ -975,17 +999,20 @@ enabled_if and
       (field_name)
       (action
         (action_name)
-        (file_name)
+        (file_name
+          (interpolation))
         (action
           (action_name)
           (action
             (action_name)
             (file_name_dep
-              (file_name)))
+              (file_name))
+            (interpolation))
           (action
             (action_name)
             (file_name_dep
-              (file_name))
+              (file_name
+                (interpolation)))
             (file_name_dep
               (file_name))))))))
 
