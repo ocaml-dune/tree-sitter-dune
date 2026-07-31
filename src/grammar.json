@@ -3254,11 +3254,24 @@
           "type": "FIELD",
           "name": "value",
           "content": {
-            "type": "REPEAT1",
-            "content": {
-              "type": "SYMBOL",
-              "name": "_atom_or_qs"
-            }
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "("
+              },
+              {
+                "type": "REPEAT",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "tag_name"
+                }
+              },
+              {
+                "type": "STRING",
+                "value": ")"
+              }
+            ]
           }
         },
         {
@@ -3499,6 +3512,10 @@
       "name": "file_name"
     },
     "package_name": {
+      "type": "SYMBOL",
+      "name": "_atom_or_qs"
+    },
+    "tag_name": {
       "type": "SYMBOL",
       "name": "_atom_or_qs"
     },

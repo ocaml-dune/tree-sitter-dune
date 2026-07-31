@@ -371,3 +371,27 @@ package with multiple version constraints
         (version_constraint)
         (version_constraint)
         (version_constraint)))))
+
+=================
+package with tags
+=================
+
+(package
+  (name mylib)
+  (tags (elf object mach-o pe coff)))
+
+----
+
+(source_file
+  (stanza
+    (stanza_name)
+    (stanza_field
+      (field_name)
+      (package_name))
+    (stanza_field
+      (field_name)
+      (tag_name)
+      (tag_name)
+      (tag_name)
+      (tag_name)
+      (tag_name))))
