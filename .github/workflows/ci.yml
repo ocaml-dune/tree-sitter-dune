@@ -29,8 +29,27 @@ env:
   TREE_SITTER_VERSION: v0.27.0
 
 jobs:
+  versions:
+    runs-on: ubuntu-slim
+    outputs:
+      abi: ${{ steps.versions.outputs.abi }}
+      cli: ${{ steps.versions.outputs.cli }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Retrieve Tree Sitter version info
+        id: versions
+        run: |
+          ABI_VERSION=$(make abi-version)
+          CLI_VERSION=$(make cli-version)
+          echo "abi=$ABI_VERSION" >> "$GITHUB_OUTPUT"
+          echo "cli=$CLI_VERSION" >> "$GITHUB_OUTPUT"
+        shell: bash
+
   test:
     name: Test Parser
+    needs: versions
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
@@ -46,24 +65,13 @@ jobs:
       - name: Set up tree-sitter
         uses: tree-sitter/setup-action/cli@v2
         with:
-          tree-sitter-ref: ${{env.TREE_SITTER_VERSION}}
-
-      - name: Report tree-sitter version
-        run: tree-sitter --version
-        shell: bash
-
-      - name: Retrieve ABI version
-        id: abi
-        run: |
-          ABI_VERSION=$(make abi-version)
-          echo "version=$ABI_VERSION" >> "$GITHUB_OUTPUT"
-        shell: bash
+          tree-sitter-ref: ${{ needs.versions.outputs.cli }}
 
       - name: Run parser tests
         uses: tree-sitter/parser-test-action@v3
         with:
           generate: true
-          abi-version: ${{ steps.abi.outputs.version }}
+          abi-version: ${{ needs.versions.outputs.abi }}
           node-version: '20'
           test-rust: ${{runner.os == 'Linux'}}
           test-node: true
@@ -73,6 +81,7 @@ jobs:
 
   parse-examples:
     name: Parse Examples
+    needs: versions
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
@@ -85,7 +94,7 @@ jobs:
       - name: Set up tree-sitter
         uses: tree-sitter/setup-action/cli@v2
         with:
-          tree-sitter-ref: ${{env.TREE_SITTER_VERSION}}
+          tree-sitter-ref: ${{ needs.versions.outputs.cli }}
 
       - name: Generate parser
         run: make generate
@@ -97,6 +106,7 @@ jobs:
 
   check-queries:
     name: Check Queries
+    needs: versions
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -105,7 +115,7 @@ jobs:
       - name: Set up tree-sitter
         uses: tree-sitter/setup-action/cli@v2
         with:
-          tree-sitter-ref: ${{env.TREE_SITTER_VERSION}}
+          tree-sitter-ref: ${{ needs.versions.outputs.cli }}
 
       - name: Generate parser
         run: make generate

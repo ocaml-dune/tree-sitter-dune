@@ -16,10 +16,6 @@ concurrency:
   group: ${{github.workflow}}-${{github.ref}}
   cancel-in-progress: true
 
-env:
-  # Keep in sync with TREE_SITTER_VERSION in ci.yml.
-  TREE_SITTER_VERSION: v0.27.0
-
 jobs:
   fuzz:
     name: Fuzz
@@ -28,8 +24,17 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v7
 
+      - name: Retrieve Tree Sitter version info
+        id: versions
+        run: |
+          ABI_VERSION=$(make abi-version)
+          CLI_VERSION=$(make cli-version)
+          echo "abi=$ABI_VERSION" >> "$GITHUB_OUTPUT"
+          echo "cli=$CLI_VERSION" >> "$GITHUB_OUTPUT"
+        shell: bash
+
       - name: Fuzz parser
         uses: tree-sitter/fuzz-action@v4
         with:
           language: dune
-          tree-sitter-version: ${{env.TREE_SITTER_VERSION}}
+          tree-sitter-version: ${{ steps.versions.outputs.cli }}
