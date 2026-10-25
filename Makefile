@@ -1,11 +1,14 @@
-.PHONY: all install test generate clean abi-version cli-version
+.PHONY: all install test generate clean abi-version ts-version
 
 # Detect OS for platform-specific settings
 UNAME := $(shell uname)
 PREFIX ?= /usr/local
 PARSER_URL := tree_sitter_dune
+
+# Only place the versions are set; CI reads them via the targets below.
+# ABI 14 because most Emacs builds can't load ABI 15 yet.
+TREE_SITTER_VERSION := v0.27.0
 TS_ABI_VERSION := 14
-TS_CLI_VERSION := v0.27.0
 
 # Installation directories
 INCLUDEDIR := $(PREFIX)/include/tree_sitter
@@ -58,11 +61,12 @@ endif
 generate:
 	tree-sitter generate --abi $(TS_ABI_VERSION)
 
+# Read by the CI workflows.
 abi-version:
 	@echo $(TS_ABI_VERSION)
 
-cli-version:
-	@echo $(TS_CLI_VERSION)
+ts-version:
+	@echo $(TREE_SITTER_VERSION)
 
 # Install library and headers
 install: all
