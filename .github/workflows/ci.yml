@@ -9,6 +9,8 @@ on:
       - test/**
       - bindings/**
       - binding.gyp
+      - Makefile
+      - package.json
       - .github/workflows/ci.yml
   pull_request:
     paths:
@@ -17,6 +19,8 @@ on:
       - test/**
       - bindings/**
       - binding.gyp
+      - Makefile
+      - package.json
       - .github/workflows/ci.yml
   workflow_dispatch:
 
@@ -24,13 +28,50 @@ concurrency:
   group: ${{github.workflow}}-${{github.ref}}
   cancel-in-progress: true
 
-env:
-  # Keep in sync with TREE_SITTER_VERSION in fuzz.yml.
-  TREE_SITTER_VERSION: v0.27.0
-
 jobs:
+  versions:
+    # Versions come from the Makefile; other jobs read them from here.
+    name: Resolve Versions
+    runs-on: ubuntu-latest
+    outputs:
+      tree-sitter: ${{steps.read.outputs.tree-sitter}}
+      abi: ${{steps.read.outputs.abi}}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Read versions from the Makefile
+        id: read
+        run: |
+          {
+            echo "tree-sitter=$(make ts-version)"
+            echo "abi=$(make abi-version)"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Check the copies that cannot be derived
+        run: |
+          set -eu
+          abi=$(make abi-version)
+          ts=$(make ts-version)
+
+          # package.json can't read the Makefile, so check it matches.
+          pinned=$(jq -r '.devDependencies["tree-sitter-cli"]' package.json)
+          if [ "$pinned" != "${ts#v}" ]; then
+            echo "package.json pins tree-sitter-cli $pinned, Makefile says $ts" >&2
+            exit 1
+          fi
+
+          # Emacs loads the committed parser, so it must be at the pinned ABI.
+          built=$(sed -n 's/#define LANGUAGE_VERSION //p' src/parser.c)
+          if [ "$built" != "$abi" ]; then
+            echo "src/parser.c is ABI $built, Makefile says $abi" >&2
+            echo "run 'make generate' and commit the result" >&2
+            exit 1
+          fi
+
   test:
     name: Test Parser
+    needs: versions
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
@@ -46,24 +87,13 @@ jobs:
       - name: Set up tree-sitter
         uses: tree-sitter/setup-action/cli@v2
         with:
-          tree-sitter-ref: ${{env.TREE_SITTER_VERSION}}
-
-      - name: Report tree-sitter version
-        run: tree-sitter --version
-        shell: bash
-
-      - name: Retrieve ABI version
-        id: abi
-        run: |
-          ABI_VERSION=$(make abi-version)
-          echo "version=$ABI_VERSION" >> "$GITHUB_OUTPUT"
-        shell: bash
+          tree-sitter-ref: ${{needs.versions.outputs.tree-sitter}}
 
       - name: Run parser tests
         uses: tree-sitter/parser-test-action@v3
         with:
           generate: true
-          abi-version: ${{ steps.abi.outputs.version }}
+          abi-version: ${{needs.versions.outputs.abi}}
           node-version: '20'
           test-rust: ${{runner.os == 'Linux'}}
           test-node: true
@@ -73,6 +103,7 @@ jobs:
 
   parse-examples:
     name: Parse Examples
+    needs: versions
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
@@ -85,7 +116,7 @@ jobs:
       - name: Set up tree-sitter
         uses: tree-sitter/setup-action/cli@v2
         with:
-          tree-sitter-ref: ${{env.TREE_SITTER_VERSION}}
+          tree-sitter-ref: ${{needs.versions.outputs.tree-sitter}}
 
       - name: Generate parser
         run: make generate
@@ -97,6 +128,7 @@ jobs:
 
   check-queries:
     name: Check Queries
+    needs: versions
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -105,7 +137,7 @@ jobs:
       - name: Set up tree-sitter
         uses: tree-sitter/setup-action/cli@v2
         with:
-          tree-sitter-ref: ${{env.TREE_SITTER_VERSION}}
+          tree-sitter-ref: ${{needs.versions.outputs.tree-sitter}}
 
       - name: Generate parser
         run: make generate
