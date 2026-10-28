@@ -741,6 +741,16 @@
     "type": "stanza_field",
     "named": true,
     "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "field_name",
+            "named": true
+          }
+        ]
+      },
       "value": {
         "multiple": true,
         "required": false,
@@ -871,16 +881,6 @@
           }
         ]
       }
-    },
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "field_name",
-          "named": true
-        }
-      ]
     }
   },
   {

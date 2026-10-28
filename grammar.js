@@ -6,7 +6,8 @@ const wrap = (...a) => seq('(', ...a, ')');
 const dune_stanza = ($, name, field_parser) =>
   wrap(alias(name, $.stanza_name), repeat(field_parser));
 
-const dune_field = ($, name, value) => wrap(alias(name, $.field_name), field('value', value));
+const dune_field = ($, name, value) =>
+  wrap(field('name', alias(name, $.field_name)), field('value', value));
 
 const dune_osl = (element, self) =>
   choice(repeat1(element), wrap(optional(self)));
@@ -135,7 +136,8 @@ module.exports = grammar({
     _stanza_tests: ($) =>
       dune_stanza($, 'tests', choice($._field_buildable_multi, $._field_test, $.sexp)),
     // stanza_field is the named wrapper node type for field-value pairs.
-    // Concrete fields are hidden _sf_* rules aliased to this type.
+    // Concrete fields are hidden _sf_* rules aliased to this type; this body
+    // is never matched directly, it only names the type.
     stanza_field: ($) =>
       wrap(field('name', $.field_name), field('value', repeat($.sexp))),
     _field_test: ($) =>

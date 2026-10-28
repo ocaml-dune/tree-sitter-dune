@@ -1118,13 +1118,17 @@
           "value": "("
         },
         {
-          "type": "ALIAS",
+          "type": "FIELD",
+          "name": "name",
           "content": {
-            "type": "STRING",
-            "value": "name"
-          },
-          "named": true,
-          "value": "field_name"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "name"
+            },
+            "named": true,
+            "value": "field_name"
+          }
         },
         {
           "type": "FIELD",
@@ -1148,13 +1152,17 @@
           "value": "("
         },
         {
-          "type": "ALIAS",
+          "type": "FIELD",
+          "name": "name",
           "content": {
-            "type": "STRING",
-            "value": "name"
-          },
-          "named": true,
-          "value": "field_name"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "name"
+            },
+            "named": true,
+            "value": "field_name"
+          }
         },
         {
           "type": "FIELD",
@@ -1178,13 +1186,17 @@
           "value": "("
         },
         {
-          "type": "ALIAS",
+          "type": "FIELD",
+          "name": "name",
           "content": {
-            "type": "STRING",
-            "value": "name"
-          },
-          "named": true,
-          "value": "field_name"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "name"
+            },
+            "named": true,
+            "value": "field_name"
+          }
         },
         {
           "type": "FIELD",
@@ -1208,13 +1220,17 @@
           "value": "("
         },
         {
-          "type": "ALIAS",
+          "type": "FIELD",
+          "name": "name",
           "content": {
-            "type": "STRING",
-            "value": "name"
-          },
-          "named": true,
-          "value": "field_name"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "name"
+            },
+            "named": true,
+            "value": "field_name"
+          }
         },
         {
           "type": "FIELD",
@@ -1242,13 +1258,17 @@
           "value": "("
         },
         {
-          "type": "ALIAS",
+          "type": "FIELD",
+          "name": "name",
           "content": {
-            "type": "STRING",
-            "value": "public_name"
-          },
-          "named": true,
-          "value": "field_name"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "public_name"
+            },
+            "named": true,
+            "value": "field_name"
+          }
         },
         {
           "type": "FIELD",
@@ -1272,13 +1292,17 @@
           "value": "("
         },
         {
-          "type": "ALIAS",
+          "type": "FIELD",
+          "name": "name",
           "content": {
-            "type": "STRING",
-            "value": "names"
-          },
-          "named": true,
-          "value": "field_name"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "names"
+            },
+            "named": true,
+            "value": "field_name"
+          }
         },
         {
           "type": "FIELD",
@@ -1305,13 +1329,17 @@
           "value": "("
         },
         {
-          "type": "ALIAS",
+          "type": "FIELD",
+          "name": "name",
           "content": {
-            "type": "STRING",
-            "value": "names"
-          },
-          "named": true,
-          "value": "field_name"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "names"
+            },
+            "named": true,
+            "value": "field_name"
+          }
         },
         {
           "type": "FIELD",
@@ -1338,13 +1366,17 @@
           "value": "("
         },
         {
-          "type": "ALIAS",
+          "type": "FIELD",
+          "name": "name",
           "content": {
-            "type": "STRING",
-            "value": "public_names"
-          },
-          "named": true,
-          "value": "field_name"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "public_names"
+            },
+            "named": true,
+            "value": "field_name"
+          }
         },
         {
           "type": "FIELD",
@@ -1371,13 +1403,17 @@
           "value": "("
         },
         {
-          "type": "ALIAS",
+          "type": "FIELD",
+          "name": "name",
           "content": {
-            "type": "STRING",
-            "value": "libraries"
-          },
-          "named": true,
-          "value": "field_name"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "libraries"
+            },
+            "named": true,
+            "value": "field_name"
+          }
         },
         {
           "type": "FIELD",
@@ -1404,13 +1440,17 @@
           "value": "("
         },
         {
-          "type": "ALIAS",
+          "type": "FIELD",
+          "name": "name",
           "content": {
-            "type": "STRING",
-            "value": "modules"
-          },
-          "named": true,
-          "value": "field_name"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "modules"
+            },
+            "named": true,
+            "value": "field_name"
+          }
         },
         {
           "type": "FIELD",
@@ -1442,13 +1482,17 @@
           "value": "("
         },
         {
-          "type": "ALIAS",
+          "type": "FIELD",
+          "name": "name",
           "content": {
-            "type": "STRING",
-            "value": "modules"
-          },
-          "named": true,
-          "value": "field_name"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "modules"
+            },
+            "named": true,
+            "value": "field_name"
+          }
         },
         {
           "type": "FIELD",
@@ -1475,13 +1519,17 @@
           "value": "("
         },
         {
-          "type": "ALIAS",
+          "type": "FIELD",
+          "name": "name",
           "content": {
-            "type": "STRING",
-            "value": "modules"
-          },
-          "named": true,
-          "value": "field_name"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "modules"
+            },
+            "named": true,
+            "value": "field_name"
+          }
         },
         {
           "type": "FIELD",
@@ -1508,13 +1556,17 @@
           "value": "("
         },
         {
-          "type": "ALIAS",
+          "type": "FIELD",
+          "name": "name",
           "content": {
-            "type": "STRING",
-            "value": "enabled_if"
-          },
-          "named": true,
-          "value": "field_name"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "enabled_if"
+            },
+            "named": true,
+            "value": "field_name"
+          }
         },
         {
           "type": "FIELD",
@@ -1538,13 +1590,17 @@
           "value": "("
         },
         {
-          "type": "ALIAS",
+          "type": "FIELD",
+          "name": "name",
           "content": {
-            "type": "STRING",
-            "value": "build_if"
-          },
-          "named": true,
-          "value": "field_name"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "build_if"
+            },
+            "named": true,
+            "value": "field_name"
+          }
         },
         {
           "type": "FIELD",
@@ -1568,13 +1624,17 @@
           "value": "("
         },
         {
-          "type": "ALIAS",
+          "type": "FIELD",
+          "name": "name",
           "content": {
-            "type": "STRING",
-            "value": "action"
-          },
-          "named": true,
-          "value": "field_name"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "action"
+            },
+            "named": true,
+            "value": "field_name"
+          }
         },
         {
           "type": "FIELD",
@@ -1598,13 +1658,17 @@
           "value": "("
         },
         {
-          "type": "ALIAS",
+          "type": "FIELD",
+          "name": "name",
           "content": {
-            "type": "STRING",
-            "value": "action"
-          },
-          "named": true,
-          "value": "field_name"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "action"
+            },
+            "named": true,
+            "value": "field_name"
+          }
         },
         {
           "type": "FIELD",
@@ -1632,13 +1696,17 @@
           "value": "("
         },
         {
-          "type": "ALIAS",
+          "type": "FIELD",
+          "name": "name",
           "content": {
-            "type": "STRING",
-            "value": "deps"
-          },
-          "named": true,
-          "value": "field_name"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "deps"
+            },
+            "named": true,
+            "value": "field_name"
+          }
         },
         {
           "type": "FIELD",
@@ -1665,13 +1733,17 @@
           "value": "("
         },
         {
-          "type": "ALIAS",
+          "type": "FIELD",
+          "name": "name",
           "content": {
-            "type": "STRING",
-            "value": "re_export"
-          },
-          "named": true,
-          "value": "field_name"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "re_export"
+            },
+            "named": true,
+            "value": "field_name"
+          }
         },
         {
           "type": "FIELD",
@@ -1695,13 +1767,17 @@
           "value": "("
         },
         {
-          "type": "ALIAS",
+          "type": "FIELD",
+          "name": "name",
           "content": {
-            "type": "STRING",
-            "value": "select"
-          },
-          "named": true,
-          "value": "field_name"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "select"
+            },
+            "named": true,
+            "value": "field_name"
+          }
         },
         {
           "type": "FIELD",
@@ -1725,13 +1801,17 @@
           "value": "("
         },
         {
-          "type": "ALIAS",
+          "type": "FIELD",
+          "name": "name",
           "content": {
-            "type": "STRING",
-            "value": "package"
-          },
-          "named": true,
-          "value": "field_name"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "package"
+            },
+            "named": true,
+            "value": "field_name"
+          }
         },
         {
           "type": "FIELD",
@@ -1755,13 +1835,17 @@
           "value": "("
         },
         {
-          "type": "ALIAS",
+          "type": "FIELD",
+          "name": "name",
           "content": {
-            "type": "STRING",
-            "value": "files"
-          },
-          "named": true,
-          "value": "field_name"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "files"
+            },
+            "named": true,
+            "value": "field_name"
+          }
         },
         {
           "type": "FIELD",
@@ -1788,13 +1872,17 @@
           "value": "("
         },
         {
-          "type": "ALIAS",
+          "type": "FIELD",
+          "name": "name",
           "content": {
-            "type": "STRING",
-            "value": "files"
-          },
-          "named": true,
-          "value": "field_name"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "files"
+            },
+            "named": true,
+            "value": "field_name"
+          }
         },
         {
           "type": "FIELD",
@@ -1818,13 +1906,17 @@
           "value": "("
         },
         {
-          "type": "ALIAS",
+          "type": "FIELD",
+          "name": "name",
           "content": {
-            "type": "STRING",
-            "value": "files"
-          },
-          "named": true,
-          "value": "field_name"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "files"
+            },
+            "named": true,
+            "value": "field_name"
+          }
         },
         {
           "type": "FIELD",
@@ -1851,13 +1943,17 @@
           "value": "("
         },
         {
-          "type": "ALIAS",
+          "type": "FIELD",
+          "name": "name",
           "content": {
-            "type": "STRING",
-            "value": "flags"
-          },
-          "named": true,
-          "value": "field_name"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "flags"
+            },
+            "named": true,
+            "value": "field_name"
+          }
         },
         {
           "type": "FIELD",
@@ -1884,13 +1980,17 @@
           "value": "("
         },
         {
-          "type": "ALIAS",
+          "type": "FIELD",
+          "name": "name",
           "content": {
-            "type": "STRING",
-            "value": "alias"
-          },
-          "named": true,
-          "value": "field_name"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "alias"
+            },
+            "named": true,
+            "value": "field_name"
+          }
         },
         {
           "type": "FIELD",
@@ -1914,13 +2014,17 @@
           "value": "("
         },
         {
-          "type": "ALIAS",
+          "type": "FIELD",
+          "name": "name",
           "content": {
-            "type": "STRING",
-            "value": "alias"
-          },
-          "named": true,
-          "value": "field_name"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "alias"
+            },
+            "named": true,
+            "value": "field_name"
+          }
         },
         {
           "type": "FIELD",
@@ -1947,13 +2051,17 @@
           "value": "("
         },
         {
-          "type": "ALIAS",
+          "type": "FIELD",
+          "name": "name",
           "content": {
-            "type": "STRING",
-            "value": "synopsis"
-          },
-          "named": true,
-          "value": "field_name"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "synopsis"
+            },
+            "named": true,
+            "value": "field_name"
+          }
         },
         {
           "type": "FIELD",
@@ -1977,13 +2085,17 @@
           "value": "("
         },
         {
-          "type": "ALIAS",
+          "type": "FIELD",
+          "name": "name",
           "content": {
-            "type": "STRING",
-            "value": "description"
-          },
-          "named": true,
-          "value": "field_name"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "description"
+            },
+            "named": true,
+            "value": "field_name"
+          }
         },
         {
           "type": "FIELD",
@@ -2007,13 +2119,17 @@
           "value": "("
         },
         {
-          "type": "ALIAS",
+          "type": "FIELD",
+          "name": "name",
           "content": {
-            "type": "STRING",
-            "value": "instrumentation"
-          },
-          "named": true,
-          "value": "field_name"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "instrumentation"
+            },
+            "named": true,
+            "value": "field_name"
+          }
         },
         {
           "type": "FIELD",
@@ -2037,13 +2153,17 @@
           "value": "("
         },
         {
-          "type": "ALIAS",
+          "type": "FIELD",
+          "name": "name",
           "content": {
-            "type": "STRING",
-            "value": "kind"
-          },
-          "named": true,
-          "value": "field_name"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "kind"
+            },
+            "named": true,
+            "value": "field_name"
+          }
         },
         {
           "type": "FIELD",
@@ -2067,13 +2187,17 @@
           "value": "("
         },
         {
-          "type": "ALIAS",
+          "type": "FIELD",
+          "name": "name",
           "content": {
-            "type": "STRING",
-            "value": "ppx.driver"
-          },
-          "named": true,
-          "value": "field_name"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "ppx.driver"
+            },
+            "named": true,
+            "value": "field_name"
+          }
         },
         {
           "type": "FIELD",
@@ -2097,13 +2221,17 @@
           "value": "("
         },
         {
-          "type": "ALIAS",
+          "type": "FIELD",
+          "name": "name",
           "content": {
-            "type": "STRING",
-            "value": "wrapped"
-          },
-          "named": true,
-          "value": "field_name"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "wrapped"
+            },
+            "named": true,
+            "value": "field_name"
+          }
         },
         {
           "type": "FIELD",
@@ -2149,13 +2277,17 @@
           "value": "("
         },
         {
-          "type": "ALIAS",
+          "type": "FIELD",
+          "name": "name",
           "content": {
-            "type": "STRING",
-            "value": "transition"
-          },
-          "named": true,
-          "value": "field_name"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "transition"
+            },
+            "named": true,
+            "value": "field_name"
+          }
         },
         {
           "type": "FIELD",
@@ -2179,13 +2311,17 @@
           "value": "("
         },
         {
-          "type": "ALIAS",
+          "type": "FIELD",
+          "name": "name",
           "content": {
-            "type": "STRING",
-            "value": "section"
-          },
-          "named": true,
-          "value": "field_name"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "section"
+            },
+            "named": true,
+            "value": "field_name"
+          }
         },
         {
           "type": "FIELD",
@@ -2209,13 +2345,17 @@
           "value": "("
         },
         {
-          "type": "ALIAS",
+          "type": "FIELD",
+          "name": "name",
           "content": {
-            "type": "STRING",
-            "value": "dirs"
-          },
-          "named": true,
-          "value": "field_name"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "dirs"
+            },
+            "named": true,
+            "value": "field_name"
+          }
         },
         {
           "type": "FIELD",
@@ -2242,13 +2382,17 @@
           "value": "("
         },
         {
-          "type": "ALIAS",
+          "type": "FIELD",
+          "name": "name",
           "content": {
-            "type": "STRING",
-            "value": "sites"
-          },
-          "named": true,
-          "value": "field_name"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "sites"
+            },
+            "named": true,
+            "value": "field_name"
+          }
         },
         {
           "type": "FIELD",
@@ -2275,13 +2419,17 @@
           "value": "("
         },
         {
-          "type": "ALIAS",
+          "type": "FIELD",
+          "name": "name",
           "content": {
-            "type": "STRING",
-            "value": "mode"
-          },
-          "named": true,
-          "value": "field_name"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "mode"
+            },
+            "named": true,
+            "value": "field_name"
+          }
         },
         {
           "type": "FIELD",
@@ -2305,13 +2453,17 @@
           "value": "("
         },
         {
-          "type": "ALIAS",
+          "type": "FIELD",
+          "name": "name",
           "content": {
-            "type": "STRING",
-            "value": "target"
-          },
-          "named": true,
-          "value": "field_name"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "target"
+            },
+            "named": true,
+            "value": "field_name"
+          }
         },
         {
           "type": "FIELD",
@@ -2335,13 +2487,17 @@
           "value": "("
         },
         {
-          "type": "ALIAS",
+          "type": "FIELD",
+          "name": "name",
           "content": {
-            "type": "STRING",
-            "value": "targets"
-          },
-          "named": true,
-          "value": "field_name"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "targets"
+            },
+            "named": true,
+            "value": "field_name"
+          }
         },
         {
           "type": "FIELD",
@@ -2368,13 +2524,17 @@
           "value": "("
         },
         {
-          "type": "ALIAS",
+          "type": "FIELD",
+          "name": "name",
           "content": {
-            "type": "STRING",
-            "value": "fallback"
-          },
-          "named": true,
-          "value": "field_name"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "fallback"
+            },
+            "named": true,
+            "value": "field_name"
+          }
         },
         {
           "type": "FIELD",
@@ -2406,13 +2566,17 @@
           "value": "("
         },
         {
-          "type": "ALIAS",
+          "type": "FIELD",
+          "name": "name",
           "content": {
-            "type": "STRING",
-            "value": "locks"
-          },
-          "named": true,
-          "value": "field_name"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "locks"
+            },
+            "named": true,
+            "value": "field_name"
+          }
         },
         {
           "type": "FIELD",
@@ -2439,13 +2603,17 @@
           "value": "("
         },
         {
-          "type": "ALIAS",
+          "type": "FIELD",
+          "name": "name",
           "content": {
-            "type": "STRING",
-            "value": "only_sources"
-          },
-          "named": true,
-          "value": "field_name"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "only_sources"
+            },
+            "named": true,
+            "value": "field_name"
+          }
         },
         {
           "type": "FIELD",
@@ -2469,13 +2637,17 @@
           "value": "("
         },
         {
-          "type": "ALIAS",
+          "type": "FIELD",
+          "name": "name",
           "content": {
-            "type": "STRING",
-            "value": "applies_to"
-          },
-          "named": true,
-          "value": "field_name"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "applies_to"
+            },
+            "named": true,
+            "value": "field_name"
+          }
         },
         {
           "type": "FIELD",
@@ -2502,13 +2674,17 @@
           "value": "("
         },
         {
-          "type": "ALIAS",
+          "type": "FIELD",
+          "name": "name",
           "content": {
-            "type": "STRING",
-            "value": "merge_into"
-          },
-          "named": true,
-          "value": "field_name"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "merge_into"
+            },
+            "named": true,
+            "value": "field_name"
+          }
         },
         {
           "type": "FIELD",
@@ -2532,13 +2708,17 @@
           "value": "("
         },
         {
-          "type": "ALIAS",
+          "type": "FIELD",
+          "name": "name",
           "content": {
-            "type": "STRING",
-            "value": "infer"
-          },
-          "named": true,
-          "value": "field_name"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "infer"
+            },
+            "named": true,
+            "value": "field_name"
+          }
         },
         {
           "type": "FIELD",
@@ -2562,13 +2742,17 @@
           "value": "("
         },
         {
-          "type": "ALIAS",
+          "type": "FIELD",
+          "name": "name",
           "content": {
-            "type": "STRING",
-            "value": "explain"
-          },
-          "named": true,
-          "value": "field_name"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "explain"
+            },
+            "named": true,
+            "value": "field_name"
+          }
         },
         {
           "type": "FIELD",
@@ -2592,13 +2776,17 @@
           "value": "("
         },
         {
-          "type": "ALIAS",
+          "type": "FIELD",
+          "name": "name",
           "content": {
-            "type": "STRING",
-            "value": "archive_name"
-          },
-          "named": true,
-          "value": "field_name"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "archive_name"
+            },
+            "named": true,
+            "value": "field_name"
+          }
         },
         {
           "type": "FIELD",
@@ -2622,13 +2810,17 @@
           "value": "("
         },
         {
-          "type": "ALIAS",
+          "type": "FIELD",
+          "name": "name",
           "content": {
-            "type": "STRING",
-            "value": "language"
-          },
-          "named": true,
-          "value": "field_name"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "language"
+            },
+            "named": true,
+            "value": "field_name"
+          }
         },
         {
           "type": "FIELD",
@@ -2652,13 +2844,17 @@
           "value": "("
         },
         {
-          "type": "ALIAS",
+          "type": "FIELD",
+          "name": "name",
           "content": {
-            "type": "STRING",
-            "value": "include_dirs"
-          },
-          "named": true,
-          "value": "field_name"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "include_dirs"
+            },
+            "named": true,
+            "value": "field_name"
+          }
         },
         {
           "type": "FIELD",
@@ -2685,13 +2881,17 @@
           "value": "("
         },
         {
-          "type": "ALIAS",
+          "type": "FIELD",
+          "name": "name",
           "content": {
-            "type": "STRING",
-            "value": "optional"
-          },
-          "named": true,
-          "value": "field_name"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "optional"
+            },
+            "named": true,
+            "value": "field_name"
+          }
         },
         {
           "type": "FIELD",
@@ -2715,13 +2915,17 @@
           "value": "("
         },
         {
-          "type": "ALIAS",
+          "type": "FIELD",
+          "name": "name",
           "content": {
-            "type": "STRING",
-            "value": "site"
-          },
-          "named": true,
-          "value": "field_name"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "site"
+            },
+            "named": true,
+            "value": "field_name"
+          }
         },
         {
           "type": "FIELD",
@@ -2762,13 +2966,17 @@
           "value": "("
         },
         {
-          "type": "ALIAS",
+          "type": "FIELD",
+          "name": "name",
           "content": {
-            "type": "STRING",
-            "value": "packages"
-          },
-          "named": true,
-          "value": "field_name"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "packages"
+            },
+            "named": true,
+            "value": "field_name"
+          }
         },
         {
           "type": "FIELD",
@@ -2795,13 +3003,17 @@
           "value": "("
         },
         {
-          "type": "ALIAS",
+          "type": "FIELD",
+          "name": "name",
           "content": {
-            "type": "STRING",
-            "value": "preludes"
-          },
-          "named": true,
-          "value": "field_name"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "preludes"
+            },
+            "named": true,
+            "value": "field_name"
+          }
         },
         {
           "type": "FIELD",
@@ -2828,13 +3040,17 @@
           "value": "("
         },
         {
-          "type": "ALIAS",
+          "type": "FIELD",
+          "name": "name",
           "content": {
-            "type": "STRING",
-            "value": "theories"
-          },
-          "named": true,
-          "value": "field_name"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "theories"
+            },
+            "named": true,
+            "value": "field_name"
+          }
         },
         {
           "type": "FIELD",
@@ -2861,13 +3077,17 @@
           "value": "("
         },
         {
-          "type": "ALIAS",
+          "type": "FIELD",
+          "name": "name",
           "content": {
-            "type": "STRING",
-            "value": "plugins"
-          },
-          "named": true,
-          "value": "field_name"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "plugins"
+            },
+            "named": true,
+            "value": "field_name"
+          }
         },
         {
           "type": "FIELD",
@@ -2894,13 +3114,17 @@
           "value": "("
         },
         {
-          "type": "ALIAS",
+          "type": "FIELD",
+          "name": "name",
           "content": {
-            "type": "STRING",
-            "value": "depends"
-          },
-          "named": true,
-          "value": "field_name"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "depends"
+            },
+            "named": true,
+            "value": "field_name"
+          }
         },
         {
           "type": "FIELD",
@@ -2927,13 +3151,17 @@
           "value": "("
         },
         {
-          "type": "ALIAS",
+          "type": "FIELD",
+          "name": "name",
           "content": {
-            "type": "STRING",
-            "value": "conflicts"
-          },
-          "named": true,
-          "value": "field_name"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "conflicts"
+            },
+            "named": true,
+            "value": "field_name"
+          }
         },
         {
           "type": "FIELD",
@@ -2960,13 +3188,17 @@
           "value": "("
         },
         {
-          "type": "ALIAS",
+          "type": "FIELD",
+          "name": "name",
           "content": {
-            "type": "STRING",
-            "value": "depopts"
-          },
-          "named": true,
-          "value": "field_name"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "depopts"
+            },
+            "named": true,
+            "value": "field_name"
+          }
         },
         {
           "type": "FIELD",
@@ -2993,13 +3225,17 @@
           "value": "("
         },
         {
-          "type": "ALIAS",
+          "type": "FIELD",
+          "name": "name",
           "content": {
-            "type": "STRING",
-            "value": "tags"
-          },
-          "named": true,
-          "value": "field_name"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "tags"
+            },
+            "named": true,
+            "value": "field_name"
+          }
         },
         {
           "type": "FIELD",
@@ -3026,13 +3262,17 @@
           "value": "("
         },
         {
-          "type": "ALIAS",
+          "type": "FIELD",
+          "name": "name",
           "content": {
-            "type": "STRING",
-            "value": "deprecated_package_names"
-          },
-          "named": true,
-          "value": "field_name"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "deprecated_package_names"
+            },
+            "named": true,
+            "value": "field_name"
+          }
         },
         {
           "type": "FIELD",
@@ -3059,13 +3299,17 @@
           "value": "("
         },
         {
-          "type": "ALIAS",
+          "type": "FIELD",
+          "name": "name",
           "content": {
-            "type": "STRING",
-            "value": "allow_empty"
-          },
-          "named": true,
-          "value": "field_name"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "allow_empty"
+            },
+            "named": true,
+            "value": "field_name"
+          }
         },
         {
           "type": "FIELD",
@@ -3089,13 +3333,17 @@
           "value": "("
         },
         {
-          "type": "ALIAS",
+          "type": "FIELD",
+          "name": "name",
           "content": {
-            "type": "STRING",
-            "value": "promote"
-          },
-          "named": true,
-          "value": "field_name"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "promote"
+            },
+            "named": true,
+            "value": "field_name"
+          }
         },
         {
           "type": "FIELD",
@@ -3119,13 +3367,17 @@
           "value": "("
         },
         {
-          "type": "ALIAS",
+          "type": "FIELD",
+          "name": "name",
           "content": {
-            "type": "STRING",
-            "value": "promote-into"
-          },
-          "named": true,
-          "value": "field_name"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "promote-into"
+            },
+            "named": true,
+            "value": "field_name"
+          }
         },
         {
           "type": "FIELD",
@@ -3149,13 +3401,17 @@
           "value": "("
         },
         {
-          "type": "ALIAS",
+          "type": "FIELD",
+          "name": "name",
           "content": {
-            "type": "STRING",
-            "value": "only"
-          },
-          "named": true,
-          "value": "field_name"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "only"
+            },
+            "named": true,
+            "value": "field_name"
+          }
         },
         {
           "type": "FIELD",
@@ -3179,13 +3435,17 @@
           "value": "("
         },
         {
-          "type": "ALIAS",
+          "type": "FIELD",
+          "name": "name",
           "content": {
-            "type": "STRING",
-            "value": "into"
-          },
-          "named": true,
-          "value": "field_name"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "into"
+            },
+            "named": true,
+            "value": "field_name"
+          }
         },
         {
           "type": "FIELD",

@@ -236,13 +236,13 @@ Bug #6: package with allow_empty and dependencies
   (stanza
     (stanza_name)
     (stanza_field
-      (field_name)
+      name: (field_name)
       value: (package_name))
     (stanza_field
-      (field_name)
+      name: (field_name)
       value: (bool))
     (stanza_field
-      (field_name)
+      name: (field_name)
       value: (package_dep
         (package_name)
         (version_constraint))
@@ -267,10 +267,10 @@ package with nested version constraints
   (stanza
     (stanza_name)
     (stanza_field
-      (field_name)
+      name: (field_name)
       value: (package_name))
     (stanza_field
-      (field_name)
+      name: (field_name)
       value: (package_dep
         (package_name)
         (version_constraint
@@ -305,10 +305,10 @@ package with conflicts
   (stanza
     (stanza_name)
     (stanza_field
-      (field_name)
+      name: (field_name)
       value: (package_name))
     (stanza_field
-      (field_name)
+      name: (field_name)
       value: (package_dep
         (package_name)
         (version_constraint))
@@ -332,10 +332,10 @@ package with depopts
   (stanza
     (stanza_name)
     (stanza_field
-      (field_name)
+      name: (field_name)
       value: (package_name))
     (stanza_field
-      (field_name)
+      name: (field_name)
       value: (package_dep
         (package_name)
         (version_constraint))
@@ -362,10 +362,10 @@ package with multiple version constraints
   (stanza
     (stanza_name)
     (stanza_field
-      (field_name)
+      name: (field_name)
       value: (package_name))
     (stanza_field
-      (field_name)
+      name: (field_name)
       value: (package_dep
         (package_name)
         (version_constraint)
