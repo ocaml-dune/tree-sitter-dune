@@ -1,64 +1,24 @@
-; Tags for symbol navigation in Dune files
-; Enables "go to definition", symbol search, and code navigation
+; Tags for symbol navigation in Dune files.
+;
+; tree-sitter-tags only allows @name, @doc, @definition.*, @reference.* and
+; @local.* captures, so patterns can only be keyed on node types.  Names whose
+; role depends on the field (a library's own name vs. a module list) are not
+; tagged.
 
-; Library definitions
-(stanza
-  (stanza_name) @_stanza_type
-  (#eq? @_stanza_type "library")
-  (library_name
-    [(quoted_string) (multiline_string)] @name)) @definition.library
+; Library dependencies, including (re_export ...)
+(stanza_field
+  (library_name) @name) @reference.library
 
-; Executable definitions
-(stanza
-  (stanza_name) @_stanza_type
-  (#eq? @_stanza_type "executable")
-  (library_name
-    [(quoted_string) (multiline_string)] @name)) @definition.executable
+; Package dependencies in dune-project
+(package_dep
+  (package_name) @name) @reference.package
 
-; Test definitions
-(stanza
-  (stanza_name) @_stanza_type
-  (#eq? @_stanza_type "test")
-  (library_name
-    [(quoted_string) (multiline_string)] @name)) @definition.test
-
-; Public names (library/executable public names)
-(stanza
-  (public_name
-    [(quoted_string) (multiline_string)] @name)) @definition.public_name
-
-; Module names
-(module_name
-  [(quoted_string) (multiline_string)] @name) @definition.module
-
-; Package names
-(package_name
-  [(quoted_string) (multiline_string)] @name) @definition.package
-
-; Alias definitions
-(stanza
-  (stanza_name) @_stanza_type
-  (#eq? @_stanza_type "alias")
-  (alias_name
-    [(quoted_string) (multiline_string)] @name)) @definition.alias
-
-; Project name (in dune-project files)
-(stanza
-  (stanza_name) @_stanza_type
-  (#eq? @_stanza_type "name")
-  [(quoted_string) (multiline_string)] @name) @definition.project
+; Public names; "-" means no public name
+(stanza_field
+  (public_name) @name
+  (#not-eq? @name "-")) @definition.public_name
 
 ; Rule targets
-(stanza
-  (stanza_name) @_stanza_type
-  (#eq? @_stanza_type "rule")
+(stanza_field
   (file_name_target
-    (file_name
-      [(quoted_string) (multiline_string)] @name))) @definition.target
-
-; Library references (dependencies)
-(stanza
-  (field_name) @_field
-  (#eq? @_field "libraries")
-  (library_name
-    [(quoted_string) (multiline_string)] @name)) @reference.library
+    (file_name) @name)) @definition.target
