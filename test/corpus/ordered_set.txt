@@ -1,0 +1,140 @@
+==============
+modules with standard and difference in a group
+==============
+
+(library
+ (name l)
+ (modules (:standard \ internal_utils)))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (stanza_field
+      (field_name)
+      (module_name))
+    (stanza_field
+      (field_name)
+      (osl_standard)
+      (osl_difference)
+      (module_name))))
+
+==============
+modules with standard and difference without a group
+==============
+
+(library
+ (name l)
+ (modules :standard \ a b))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (stanza_field
+      (field_name)
+      (module_name))
+    (stanza_field
+      (field_name)
+      (osl_standard)
+      (osl_difference)
+      (module_name)
+      (module_name))))
+
+==============
+compiler flags with standard and include
+==============
+
+(library
+ (name l)
+ (ocamlopt_flags (:standard -O3))
+ (c_flags (:include extra-flags.sexp)))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (stanza_field
+      (field_name)
+      (module_name))
+    (stanza_field
+      (field_name)
+      (osl_standard))
+    (stanza_field
+      (field_name)
+      (osl_include
+        (file_name)))))
+
+==============
+executable flags mixing standard and include
+==============
+
+(executables
+ (names main)
+ (flags :standard (:include extra.sexp))
+ (link_flags (-linkall)))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (stanza_field
+      (field_name)
+      (module_name))
+    (stanza_field
+      (field_name)
+      (osl_standard)
+      (osl_include
+        (file_name)))
+    (stanza_field
+      (field_name))))
+
+==============
+difference against a nested group
+==============
+
+(library
+ (name l)
+ (flags (:standard \ (-w +a))))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (stanza_field
+      (field_name)
+      (module_name))
+    (stanza_field
+      (field_name)
+      (osl_standard)
+      (osl_difference))))
+
+==============
+atom starting with a backslash is not the difference operator
+==============
+
+(foreign_library
+ (archive_name stubs)
+ (language c)
+ (names stubs)
+ (flags (:standard -O2 \foo)))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (stanza_field
+      (field_name))
+    (stanza_field
+      (field_name))
+    (stanza_field
+      (field_name))
+    (stanza_field
+      (field_name)
+      (osl_standard))))

@@ -12,8 +12,16 @@ const dune_stanza = ($, name, field_parser) =>
 const dune_field = ($, name, value) =>
   wrap(field('name', alias(name, $.field_name)), field('value', value));
 
-const dune_osl = (element, self) =>
-  choice(repeat1(element), wrap(optional(self)));
+// One item of dune's ordered set language: an element, :standard, the \
+// difference operator, (:include file) or a nested group of items.
+const dune_osl_item = ($, element, self) =>
+  choice(
+    element,
+    $.osl_standard,
+    $.osl_difference,
+    $.osl_include,
+    wrap(repeat(self)),
+  );
 
 const dune_action = ($, name, value) => wrap(alias(name, $.action_name), field('arguments', value));
 
@@ -170,6 +178,7 @@ module.exports = grammar({
         alias($._sf_libraries, $.stanza_field),
         alias($._sf_modules, $.stanza_field),
         alias($._sf_enabled_if, $.stanza_field),
+        $._field_compile_flags,
       ),
     _field_buildable: ($) =>
       choice(
@@ -178,8 +187,20 @@ module.exports = grammar({
         alias($._sf_libraries, $.stanza_field),
         alias($._sf_modules, $.stanza_field),
         alias($._sf_enabled_if, $.stanza_field),
+        $._field_compile_flags,
       ),
-    _modules_osl: ($) => dune_osl($.module_name, $._modules_osl),
+    _field_compile_flags: ($) =>
+      choice(
+        alias($._sf_flags, $.stanza_field),
+        alias($._sf_ocamlc_flags, $.stanza_field),
+        alias($._sf_ocamlopt_flags, $.stanza_field),
+        alias($._sf_link_flags, $.stanza_field),
+      ),
+    osl_standard: ($) => ':standard',
+    osl_difference: ($) => '\\',
+    osl_include: ($) => wrap(':include', $.file_name),
+    _modules_osl_item: ($) => dune_osl_item($, $.module_name, $._modules_osl_item),
+    _flags_osl_item: ($) => dune_osl_item($, $._atom_or_qs, $._flags_osl_item),
     _lib_dep: ($) =>
       choice(
         $.library_name,
@@ -196,7 +217,7 @@ module.exports = grammar({
     _sf_names_atom: ($) => dune_field($, 'names', repeat1($._atom_or_qs)),
     _sf_public_names: ($) => dune_field($, 'public_names', repeat1($.public_name)),
     _sf_libraries: ($) => dune_field($, 'libraries', repeat($._lib_dep)),
-    _sf_modules: ($) => dune_field($, 'modules', optional($._modules_osl)),
+    _sf_modules: ($) => dune_field($, 'modules', repeat($._modules_osl_item)),
     _sf_modules_list: ($) => dune_field($, 'modules', repeat($.module_name)),
     _sf_modules_list1: ($) => dune_field($, 'modules', repeat1($.module_name)),
     _sf_enabled_if: ($) => dune_field($, 'enabled_if', $.blang),
@@ -210,7 +231,14 @@ module.exports = grammar({
     _sf_files_sexp: ($) => dune_field($, 'files', repeat($.sexp)),
     _sf_files_file: ($) => dune_field($, 'files', $.file_name),
     _sf_files_filelist: ($) => dune_field($, 'files', repeat($.file_name)),
-    _sf_flags: ($) => dune_field($, 'flags', repeat($._atom_or_qs)),
+    _sf_flags: ($) => dune_field($, 'flags', repeat($._flags_osl_item)),
+    _sf_ocamlc_flags: ($) => dune_field($, 'ocamlc_flags', repeat($._flags_osl_item)),
+    _sf_ocamlopt_flags: ($) => dune_field($, 'ocamlopt_flags', repeat($._flags_osl_item)),
+    _sf_link_flags: ($) => dune_field($, 'link_flags', repeat($._flags_osl_item)),
+    _sf_library_flags: ($) => dune_field($, 'library_flags', repeat($._flags_osl_item)),
+    _sf_c_library_flags: ($) => dune_field($, 'c_library_flags', repeat($._flags_osl_item)),
+    _sf_c_flags: ($) => dune_field($, 'c_flags', repeat($._flags_osl_item)),
+    _sf_cxx_flags: ($) => dune_field($, 'cxx_flags', repeat($._flags_osl_item)),
     _sf_alias_single: ($) => dune_field($, 'alias', $.alias_name),
     _sf_alias_list: ($) => dune_field($, 'alias', repeat1($.alias_name)),
     _sf_synopsis: ($) => dune_field($, 'synopsis', $._atom_or_qs),
@@ -363,6 +391,10 @@ module.exports = grammar({
           alias($._sf_wrapped, $.stanza_field),
           alias($._sf_kind, $.stanza_field),
           alias($._sf_ppx_driver, $.stanza_field),
+          alias($._sf_library_flags, $.stanza_field),
+          alias($._sf_c_library_flags, $.stanza_field),
+          alias($._sf_c_flags, $.stanza_field),
+          alias($._sf_cxx_flags, $.stanza_field),
           $.sexp,
         ),
       ),
