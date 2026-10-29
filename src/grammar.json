@@ -371,8 +371,22 @@
             {
               "type": "REPEAT",
               "content": {
-                "type": "SYMBOL",
-                "name": "sexp"
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "sexp"
+                  },
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_sf_generic"
+                    },
+                    "named": true,
+                    "value": "stanza_field"
+                  }
+                ]
               }
             },
             {
@@ -404,8 +418,22 @@
             {
               "type": "REPEAT",
               "content": {
-                "type": "SYMBOL",
-                "name": "_field_modules_maybe_inline"
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "_field_modules_maybe_inline"
+                  },
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_sf_generic"
+                    },
+                    "named": true,
+                    "value": "stanza_field"
+                  }
+                ]
               }
             },
             {
@@ -433,8 +461,22 @@
             {
               "type": "REPEAT",
               "content": {
-                "type": "SYMBOL",
-                "name": "_field_modules_maybe_inline"
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "_field_modules_maybe_inline"
+                  },
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_sf_generic"
+                    },
+                    "named": true,
+                    "value": "stanza_field"
+                  }
+                ]
               }
             },
             {
@@ -462,8 +504,22 @@
             {
               "type": "REPEAT",
               "content": {
-                "type": "SYMBOL",
-                "name": "sexp"
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "sexp"
+                  },
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_sf_generic"
+                    },
+                    "named": true,
+                    "value": "stanza_field"
+                  }
+                ]
               }
             },
             {
@@ -499,8 +555,22 @@
             {
               "type": "REPEAT",
               "content": {
-                "type": "SYMBOL",
-                "name": "file_name"
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "file_name"
+                  },
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_sf_generic"
+                    },
+                    "named": true,
+                    "value": "stanza_field"
+                  }
+                ]
               }
             },
             {
@@ -536,8 +606,22 @@
             {
               "type": "REPEAT",
               "content": {
-                "type": "SYMBOL",
-                "name": "sexp"
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "sexp"
+                  },
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_sf_generic"
+                    },
+                    "named": true,
+                    "value": "stanza_field"
+                  }
+                ]
               }
             },
             {
@@ -605,8 +689,22 @@
             {
               "type": "REPEAT",
               "content": {
-                "type": "SYMBOL",
-                "name": "sexp"
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "sexp"
+                  },
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_sf_generic"
+                    },
+                    "named": true,
+                    "value": "stanza_field"
+                  }
+                ]
               }
             },
             {
@@ -625,9 +723,101 @@
         },
         {
           "type": "SYMBOL",
+          "name": "_stanza_generic"
+        },
+        {
+          "type": "SYMBOL",
           "name": "sexp"
         }
       ]
+    },
+    "_stanza_generic": {
+      "type": "PREC",
+      "value": 1,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "("
+          },
+          {
+            "type": "ALIAS",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_atom"
+            },
+            "named": true,
+            "value": "stanza_name"
+          },
+          {
+            "type": "REPEAT",
+            "content": {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "_sf_generic"
+                  },
+                  "named": true,
+                  "value": "stanza_field"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "sexp"
+                }
+              ]
+            }
+          },
+          {
+            "type": "STRING",
+            "value": ")"
+          }
+        ]
+      }
+    },
+    "_sf_generic": {
+      "type": "PREC",
+      "value": 1,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "("
+          },
+          {
+            "type": "FIELD",
+            "name": "name",
+            "content": {
+              "type": "ALIAS",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_atom"
+              },
+              "named": true,
+              "value": "field_name"
+            }
+          },
+          {
+            "type": "FIELD",
+            "name": "value",
+            "content": {
+              "type": "REPEAT",
+              "content": {
+                "type": "SYMBOL",
+                "name": "sexp"
+              }
+            }
+          },
+          {
+            "type": "STRING",
+            "value": ")"
+          }
+        ]
+      }
     },
     "_field_modules_maybe_inline": {
       "type": "CHOICE",
@@ -669,30 +859,44 @@
             "type": "CHOICE",
             "members": [
               {
-                "type": "ALIAS",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "_sf_name_alias"
-                },
-                "named": true,
-                "value": "stanza_field"
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_sf_name_alias"
+                    },
+                    "named": true,
+                    "value": "stanza_field"
+                  },
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_sf_action_alias"
+                    },
+                    "named": true,
+                    "value": "stanza_field"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "_deps_field"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "sexp"
+                  }
+                ]
               },
               {
                 "type": "ALIAS",
                 "content": {
                   "type": "SYMBOL",
-                  "name": "_sf_action_alias"
+                  "name": "_sf_generic"
                 },
                 "named": true,
                 "value": "stanza_field"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "_deps_field"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "sexp"
               }
             ]
           }
@@ -766,12 +970,26 @@
             "type": "CHOICE",
             "members": [
               {
-                "type": "SYMBOL",
-                "name": "_field_buildable"
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "_field_buildable"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "sexp"
+                  }
+                ]
               },
               {
-                "type": "SYMBOL",
-                "name": "sexp"
+                "type": "ALIAS",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "_sf_generic"
+                },
+                "named": true,
+                "value": "stanza_field"
               }
             ]
           }
@@ -804,12 +1022,26 @@
             "type": "CHOICE",
             "members": [
               {
-                "type": "SYMBOL",
-                "name": "_field_buildable_multi"
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "_field_buildable_multi"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "sexp"
+                  }
+                ]
               },
               {
-                "type": "SYMBOL",
-                "name": "sexp"
+                "type": "ALIAS",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "_sf_generic"
+                },
+                "named": true,
+                "value": "stanza_field"
               }
             ]
           }
@@ -842,16 +1074,30 @@
             "type": "CHOICE",
             "members": [
               {
-                "type": "SYMBOL",
-                "name": "_field_buildable"
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "_field_buildable"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "_field_test"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "sexp"
+                  }
+                ]
               },
               {
-                "type": "SYMBOL",
-                "name": "_field_test"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "sexp"
+                "type": "ALIAS",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "_sf_generic"
+                },
+                "named": true,
+                "value": "stanza_field"
               }
             ]
           }
@@ -884,16 +1130,30 @@
             "type": "CHOICE",
             "members": [
               {
-                "type": "SYMBOL",
-                "name": "_field_buildable_multi"
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "_field_buildable_multi"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "_field_test"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "sexp"
+                  }
+                ]
               },
               {
-                "type": "SYMBOL",
-                "name": "_field_test"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "sexp"
+                "type": "ALIAS",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "_sf_generic"
+                },
+                "named": true,
+                "value": "stanza_field"
               }
             ]
           }
@@ -3549,90 +3809,104 @@
             "type": "CHOICE",
             "members": [
               {
-                "type": "SYMBOL",
-                "name": "action"
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "action"
+                  },
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_sf_mode_rule"
+                    },
+                    "named": true,
+                    "value": "stanza_field"
+                  },
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_sf_target"
+                    },
+                    "named": true,
+                    "value": "stanza_field"
+                  },
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_sf_targets"
+                    },
+                    "named": true,
+                    "value": "stanza_field"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "_deps_field"
+                  },
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_sf_action"
+                    },
+                    "named": true,
+                    "value": "stanza_field"
+                  },
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_sf_enabled_if"
+                    },
+                    "named": true,
+                    "value": "stanza_field"
+                  },
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_sf_alias_list"
+                    },
+                    "named": true,
+                    "value": "stanza_field"
+                  },
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_sf_package"
+                    },
+                    "named": true,
+                    "value": "stanza_field"
+                  },
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_sf_fallback"
+                    },
+                    "named": true,
+                    "value": "stanza_field"
+                  },
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_sf_locks"
+                    },
+                    "named": true,
+                    "value": "stanza_field"
+                  }
+                ]
               },
               {
                 "type": "ALIAS",
                 "content": {
                   "type": "SYMBOL",
-                  "name": "_sf_mode_rule"
-                },
-                "named": true,
-                "value": "stanza_field"
-              },
-              {
-                "type": "ALIAS",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "_sf_target"
-                },
-                "named": true,
-                "value": "stanza_field"
-              },
-              {
-                "type": "ALIAS",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "_sf_targets"
-                },
-                "named": true,
-                "value": "stanza_field"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "_deps_field"
-              },
-              {
-                "type": "ALIAS",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "_sf_action"
-                },
-                "named": true,
-                "value": "stanza_field"
-              },
-              {
-                "type": "ALIAS",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "_sf_enabled_if"
-                },
-                "named": true,
-                "value": "stanza_field"
-              },
-              {
-                "type": "ALIAS",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "_sf_alias_list"
-                },
-                "named": true,
-                "value": "stanza_field"
-              },
-              {
-                "type": "ALIAS",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "_sf_package"
-                },
-                "named": true,
-                "value": "stanza_field"
-              },
-              {
-                "type": "ALIAS",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "_sf_fallback"
-                },
-                "named": true,
-                "value": "stanza_field"
-              },
-              {
-                "type": "ALIAS",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "_sf_locks"
+                  "name": "_sf_generic"
                 },
                 "named": true,
                 "value": "stanza_field"
@@ -4808,57 +5082,71 @@
             "type": "CHOICE",
             "members": [
               {
-                "type": "SYMBOL",
-                "name": "_field_buildable"
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "_field_buildable"
+                  },
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_sf_synopsis"
+                    },
+                    "named": true,
+                    "value": "stanza_field"
+                  },
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_sf_instrumentation"
+                    },
+                    "named": true,
+                    "value": "stanza_field"
+                  },
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_sf_wrapped"
+                    },
+                    "named": true,
+                    "value": "stanza_field"
+                  },
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_sf_kind"
+                    },
+                    "named": true,
+                    "value": "stanza_field"
+                  },
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_sf_ppx_driver"
+                    },
+                    "named": true,
+                    "value": "stanza_field"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "sexp"
+                  }
+                ]
               },
               {
                 "type": "ALIAS",
                 "content": {
                   "type": "SYMBOL",
-                  "name": "_sf_synopsis"
+                  "name": "_sf_generic"
                 },
                 "named": true,
                 "value": "stanza_field"
-              },
-              {
-                "type": "ALIAS",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "_sf_instrumentation"
-                },
-                "named": true,
-                "value": "stanza_field"
-              },
-              {
-                "type": "ALIAS",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "_sf_wrapped"
-                },
-                "named": true,
-                "value": "stanza_field"
-              },
-              {
-                "type": "ALIAS",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "_sf_kind"
-                },
-                "named": true,
-                "value": "stanza_field"
-              },
-              {
-                "type": "ALIAS",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "_sf_ppx_driver"
-                },
-                "named": true,
-                "value": "stanza_field"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "sexp"
               }
             ]
           }
@@ -4891,26 +5179,40 @@
             "type": "CHOICE",
             "members": [
               {
-                "type": "ALIAS",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "_sf_name_module"
-                },
-                "named": true,
-                "value": "stanza_field"
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_sf_name_module"
+                    },
+                    "named": true,
+                    "value": "stanza_field"
+                  },
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_sf_libraries"
+                    },
+                    "named": true,
+                    "value": "stanza_field"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "sexp"
+                  }
+                ]
               },
               {
                 "type": "ALIAS",
                 "content": {
                   "type": "SYMBOL",
-                  "name": "_sf_libraries"
+                  "name": "_sf_generic"
                 },
                 "named": true,
                 "value": "stanza_field"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "sexp"
               }
             ]
           }
@@ -4943,44 +5245,58 @@
             "type": "CHOICE",
             "members": [
               {
-                "type": "ALIAS",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "_sf_section"
-                },
-                "named": true,
-                "value": "stanza_field"
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_sf_section"
+                    },
+                    "named": true,
+                    "value": "stanza_field"
+                  },
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_sf_files_sexp"
+                    },
+                    "named": true,
+                    "value": "stanza_field"
+                  },
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_sf_dirs_sexp"
+                    },
+                    "named": true,
+                    "value": "stanza_field"
+                  },
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_sf_package"
+                    },
+                    "named": true,
+                    "value": "stanza_field"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "sexp"
+                  }
+                ]
               },
               {
                 "type": "ALIAS",
                 "content": {
                   "type": "SYMBOL",
-                  "name": "_sf_files_sexp"
+                  "name": "_sf_generic"
                 },
                 "named": true,
                 "value": "stanza_field"
-              },
-              {
-                "type": "ALIAS",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "_sf_dirs_sexp"
-                },
-                "named": true,
-                "value": "stanza_field"
-              },
-              {
-                "type": "ALIAS",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "_sf_package"
-                },
-                "named": true,
-                "value": "stanza_field"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "sexp"
               }
             ]
           }
@@ -5013,21 +5329,35 @@
             "type": "CHOICE",
             "members": [
               {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_sf_applies_to"
+                    },
+                    "named": true,
+                    "value": "stanza_field"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "_deps_field"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "sexp"
+                  }
+                ]
+              },
+              {
                 "type": "ALIAS",
                 "content": {
                   "type": "SYMBOL",
-                  "name": "_sf_applies_to"
+                  "name": "_sf_generic"
                 },
                 "named": true,
                 "value": "stanza_field"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "_deps_field"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "sexp"
               }
             ]
           }
@@ -5057,8 +5387,22 @@
         {
           "type": "REPEAT",
           "content": {
-            "type": "SYMBOL",
-            "name": "sexp"
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "sexp"
+              },
+              {
+                "type": "ALIAS",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "_sf_generic"
+                },
+                "named": true,
+                "value": "stanza_field"
+              }
+            ]
           }
         },
         {
@@ -5599,8 +5943,22 @@
         {
           "type": "REPEAT",
           "content": {
-            "type": "SYMBOL",
-            "name": "sexp"
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "ALIAS",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "_sf_generic"
+                },
+                "named": true,
+                "value": "stanza_field"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "sexp"
+              }
+            ]
           }
         },
         {
@@ -5768,6 +6126,15 @@
                 "content": {
                   "type": "SYMBOL",
                   "name": "_sf_allow_empty"
+                },
+                "named": true,
+                "value": "stanza_field"
+              },
+              {
+                "type": "ALIAS",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "_sf_generic"
                 },
                 "named": true,
                 "value": "stanza_field"
@@ -6469,53 +6836,67 @@
             "type": "CHOICE",
             "members": [
               {
-                "type": "ALIAS",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "_sf_files_file"
-                },
-                "named": true,
-                "value": "stanza_field"
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_sf_files_file"
+                    },
+                    "named": true,
+                    "value": "stanza_field"
+                  },
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_sf_alias_single"
+                    },
+                    "named": true,
+                    "value": "stanza_field"
+                  },
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_sf_mode_rule"
+                    },
+                    "named": true,
+                    "value": "stanza_field"
+                  },
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_sf_enabled_if"
+                    },
+                    "named": true,
+                    "value": "stanza_field"
+                  },
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_sf_only_sources"
+                    },
+                    "named": true,
+                    "value": "stanza_field"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "sexp"
+                  }
+                ]
               },
               {
                 "type": "ALIAS",
                 "content": {
                   "type": "SYMBOL",
-                  "name": "_sf_alias_single"
+                  "name": "_sf_generic"
                 },
                 "named": true,
                 "value": "stanza_field"
-              },
-              {
-                "type": "ALIAS",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "_sf_mode_rule"
-                },
-                "named": true,
-                "value": "stanza_field"
-              },
-              {
-                "type": "ALIAS",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "_sf_enabled_if"
-                },
-                "named": true,
-                "value": "stanza_field"
-              },
-              {
-                "type": "ALIAS",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "_sf_only_sources"
-                },
-                "named": true,
-                "value": "stanza_field"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "sexp"
               }
             ]
           }
@@ -6548,53 +6929,67 @@
             "type": "CHOICE",
             "members": [
               {
-                "type": "ALIAS",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "_sf_modules_list1"
-                },
-                "named": true,
-                "value": "stanza_field"
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_sf_modules_list1"
+                    },
+                    "named": true,
+                    "value": "stanza_field"
+                  },
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_sf_merge_into"
+                    },
+                    "named": true,
+                    "value": "stanza_field"
+                  },
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_sf_flags"
+                    },
+                    "named": true,
+                    "value": "stanza_field"
+                  },
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_sf_infer"
+                    },
+                    "named": true,
+                    "value": "stanza_field"
+                  },
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_sf_explain"
+                    },
+                    "named": true,
+                    "value": "stanza_field"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "sexp"
+                  }
+                ]
               },
               {
                 "type": "ALIAS",
                 "content": {
                   "type": "SYMBOL",
-                  "name": "_sf_merge_into"
+                  "name": "_sf_generic"
                 },
                 "named": true,
                 "value": "stanza_field"
-              },
-              {
-                "type": "ALIAS",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "_sf_flags"
-                },
-                "named": true,
-                "value": "stanza_field"
-              },
-              {
-                "type": "ALIAS",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "_sf_infer"
-                },
-                "named": true,
-                "value": "stanza_field"
-              },
-              {
-                "type": "ALIAS",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "_sf_explain"
-                },
-                "named": true,
-                "value": "stanza_field"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "sexp"
               }
             ]
           }
@@ -6653,53 +7048,67 @@
             "type": "CHOICE",
             "members": [
               {
-                "type": "ALIAS",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "_sf_archive_name"
-                },
-                "named": true,
-                "value": "stanza_field"
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_sf_archive_name"
+                    },
+                    "named": true,
+                    "value": "stanza_field"
+                  },
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_sf_language"
+                    },
+                    "named": true,
+                    "value": "stanza_field"
+                  },
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_sf_names_atom"
+                    },
+                    "named": true,
+                    "value": "stanza_field"
+                  },
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_sf_flags"
+                    },
+                    "named": true,
+                    "value": "stanza_field"
+                  },
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_sf_include_dirs"
+                    },
+                    "named": true,
+                    "value": "stanza_field"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "sexp"
+                  }
+                ]
               },
               {
                 "type": "ALIAS",
                 "content": {
                   "type": "SYMBOL",
-                  "name": "_sf_language"
+                  "name": "_sf_generic"
                 },
                 "named": true,
                 "value": "stanza_field"
-              },
-              {
-                "type": "ALIAS",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "_sf_names_atom"
-                },
-                "named": true,
-                "value": "stanza_field"
-              },
-              {
-                "type": "ALIAS",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "_sf_flags"
-                },
-                "named": true,
-                "value": "stanza_field"
-              },
-              {
-                "type": "ALIAS",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "_sf_include_dirs"
-                },
-                "named": true,
-                "value": "stanza_field"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "sexp"
               }
             ]
           }
@@ -6732,44 +7141,58 @@
             "type": "CHOICE",
             "members": [
               {
-                "type": "ALIAS",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "_sf_name_module"
-                },
-                "named": true,
-                "value": "stanza_field"
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_sf_name_module"
+                    },
+                    "named": true,
+                    "value": "stanza_field"
+                  },
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_sf_libraries"
+                    },
+                    "named": true,
+                    "value": "stanza_field"
+                  },
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_sf_optional"
+                    },
+                    "named": true,
+                    "value": "stanza_field"
+                  },
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_sf_site"
+                    },
+                    "named": true,
+                    "value": "stanza_field"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "sexp"
+                  }
+                ]
               },
               {
                 "type": "ALIAS",
                 "content": {
                   "type": "SYMBOL",
-                  "name": "_sf_libraries"
+                  "name": "_sf_generic"
                 },
                 "named": true,
                 "value": "stanza_field"
-              },
-              {
-                "type": "ALIAS",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "_sf_optional"
-                },
-                "named": true,
-                "value": "stanza_field"
-              },
-              {
-                "type": "ALIAS",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "_sf_site"
-                },
-                "named": true,
-                "value": "stanza_field"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "sexp"
               }
             ]
           }
@@ -6802,39 +7225,53 @@
             "type": "CHOICE",
             "members": [
               {
-                "type": "ALIAS",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "_sf_files_filelist"
-                },
-                "named": true,
-                "value": "stanza_field"
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_sf_files_filelist"
+                    },
+                    "named": true,
+                    "value": "stanza_field"
+                  },
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_sf_packages"
+                    },
+                    "named": true,
+                    "value": "stanza_field"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "_deps_field"
+                  },
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_sf_preludes"
+                    },
+                    "named": true,
+                    "value": "stanza_field"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "sexp"
+                  }
+                ]
               },
               {
                 "type": "ALIAS",
                 "content": {
                   "type": "SYMBOL",
-                  "name": "_sf_packages"
+                  "name": "_sf_generic"
                 },
                 "named": true,
                 "value": "stanza_field"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "_deps_field"
-              },
-              {
-                "type": "ALIAS",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "_sf_preludes"
-                },
-                "named": true,
-                "value": "stanza_field"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "sexp"
               }
             ]
           }
@@ -6898,6 +7335,15 @@
                 "content": {
                   "type": "SYMBOL",
                   "name": "_sf_plugins"
+                },
+                "named": true,
+                "value": "stanza_field"
+              },
+              {
+                "type": "ALIAS",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "_sf_generic"
                 },
                 "named": true,
                 "value": "stanza_field"
@@ -7354,8 +7800,22 @@
         {
           "type": "REPEAT",
           "content": {
-            "type": "SYMBOL",
-            "name": "sexp"
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "ALIAS",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "_sf_generic"
+                },
+                "named": true,
+                "value": "stanza_field"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "sexp"
+              }
+            ]
           }
         },
         {
@@ -7413,8 +7873,22 @@
         {
           "type": "REPEAT",
           "content": {
-            "type": "SYMBOL",
-            "name": "sexp"
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "ALIAS",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "_sf_generic"
+                },
+                "named": true,
+                "value": "stanza_field"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "sexp"
+              }
+            ]
           }
         },
         {

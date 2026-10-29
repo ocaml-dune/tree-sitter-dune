@@ -1,0 +1,104 @@
+==============
+unknown stanza with fields
+==============
+
+(cinaps
+ (files *.ml)
+ (libraries foo))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (stanza_field
+      (field_name)
+      (sexp))
+    (stanza_field
+      (field_name)
+      (sexp))))
+
+==============
+unknown stanzas without fields
+==============
+
+(dynamic_include foo/dune.inc)
+
+(unknown_flag)
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (sexp))
+  (stanza
+    (stanza_name)))
+
+==============
+unknown field in a known stanza
+==============
+
+(library
+ (name l)
+ (preprocess (pps ppx_deriving.show))
+ (libraries foo))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (stanza_field
+      (field_name)
+      (module_name))
+    (stanza_field
+      (field_name)
+      (sexp
+        (sexp)
+        (sexp)))
+    (stanza_field
+      (field_name)
+      (library_name))))
+
+==============
+unknown fields in a dune-project package
+==============
+
+(package
+ (name p)
+ (license MIT)
+ (authors "A. Author"))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (stanza_field
+      (field_name)
+      (package_name))
+    (stanza_field
+      (field_name)
+      (sexp))
+    (stanza_field
+      (field_name)
+      (sexp
+        (quoted_string)))))
+
+==============
+stanza with a quoted head stays a sexp
+==============
+
+("quoted" (a b))
+
+---
+
+(source_file
+  (stanza
+    (sexp
+      (sexp
+        (quoted_string))
+      (sexp
+        (sexp)
+        (sexp)))))

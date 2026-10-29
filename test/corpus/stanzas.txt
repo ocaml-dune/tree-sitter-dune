@@ -723,15 +723,15 @@ test
     (stanza_field
       (field_name)
       (module_name))
-    (sexp
-      (sexp)
+    (stanza_field
+      (field_name)
       (sexp))
     (stanza_field
       (field_name)
       (library_name)
       (library_name))
-    (sexp
-      (sexp)
+    (stanza_field
+      (field_name)
       (sexp))))
 
 ==============
@@ -844,8 +844,8 @@ env
 (source_file
   (stanza
     (stanza_name)
-    (sexp
-      (sexp)
+    (stanza_field
+      (field_name)
       (sexp
         (sexp)
         (sexp
@@ -901,8 +901,8 @@ wrapped transition
     (stanza_field
       (field_name)
       (module_name))
-    (sexp
-      (sexp)
+    (stanza_field
+      (field_name)
       (sexp))
     (stanza_field
       (field_name)
