@@ -151,7 +151,7 @@
     },
     "interpolation": {
       "type": "PATTERN",
-      "value": "%\\{[^}]+\\}"
+      "value": "%\\{[^}\\s()\";]+\\}"
     },
     "_atom": {
       "type": "CHOICE",

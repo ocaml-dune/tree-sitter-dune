@@ -3,3 +3,4 @@
 (quoted_string) @string
 (multiline_string) @string
 (action_name) @keyword
+(interpolation) @variable
