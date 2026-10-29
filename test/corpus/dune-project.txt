@@ -395,3 +395,67 @@ package with tags
       (tag_name)
       (tag_name)
       (tag_name))))
+
+=================
+package with empty tags
+=================
+
+(package
+  (name mylib)
+  (tags ()))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (stanza_field
+      (field_name)
+      (package_name))
+    (stanza_field
+      (field_name))))
+
+=================
+package with colon and quoted tags
+=================
+
+(package
+  (name mylib)
+  (tags (org:mirage clib:sqlite3 "with space")))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (stanza_field
+      (field_name)
+      (package_name))
+    (stanza_field
+      (field_name)
+      (tag_name)
+      (tag_name)
+      (tag_name
+        (quoted_string)))))
+
+=================
+package with unparenthesised tags is an error
+:error
+=================
+
+(package
+  (name mylib)
+  (tags elf object))
+
+---
+
+=================
+package with no tags list is an error
+:error
+=================
+
+(package
+  (name mylib)
+  (tags))
+
+---
