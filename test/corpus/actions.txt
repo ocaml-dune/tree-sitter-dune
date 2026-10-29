@@ -487,6 +487,7 @@ with-accepted-exit-codes
       (field_name)
       (action
         (action_name)
+        (blang)
         (action
           (action_name)
           (file_name_target

@@ -241,13 +241,22 @@ config
 lock_dir
 ========
 
-(lock_dir dune.lock)
+(lock_dir
+ (path dune.lock)
+ (repositories overlay upstream))
 
 ---
 
 (source_file
   (stanza
-    (stanza_name)))
+    (stanza_name)
+    (stanza_field
+      (field_name)
+      (sexp))
+    (stanza_field
+      (field_name)
+      (sexp)
+      (sexp))))
 
 ==========
 repository

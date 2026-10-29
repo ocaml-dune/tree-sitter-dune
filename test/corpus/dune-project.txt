@@ -136,14 +136,24 @@ pin
 ===
 
 (pin
- (base https://github.com/user/base.git))
+ (url "git+https://github.com/user/base.git")
+ (package (name base) (version 1.0)))
 
 ---
 
 (source_file
   (stanza
     (stanza_name)
-    (package_name)))
+    (stanza_field
+      (field_name)
+      (quoted_string))
+    (stanza_field
+      (field_name)
+      (stanza_field
+        (field_name)
+        (package_name))
+      (stanza_field
+        (field_name)))))
 
 ========
 warnings

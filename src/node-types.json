@@ -12,6 +12,10 @@
             "named": true
           },
           {
+            "type": "blang",
+            "named": true
+          },
+          {
             "type": "file_name",
             "named": true
           },
@@ -544,7 +548,7 @@
         ]
       },
       "license": {
-        "multiple": false,
+        "multiple": true,
         "required": false,
         "types": [
           {
@@ -566,15 +570,7 @@
         "required": false,
         "types": [
           {
-            "type": "interpolation",
-            "named": true
-          },
-          {
-            "type": "multiline_string",
-            "named": true
-          },
-          {
-            "type": "quoted_string",
+            "type": "sexp",
             "named": true
           }
         ]
@@ -599,24 +595,6 @@
       },
       "opam_root": {
         "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "interpolation",
-            "named": true
-          },
-          {
-            "type": "multiline_string",
-            "named": true
-          },
-          {
-            "type": "quoted_string",
-            "named": true
-          }
-        ]
-      },
-      "path": {
-        "multiple": false,
         "required": false,
         "types": [
           {
@@ -853,10 +831,6 @@
           "named": true
         },
         {
-          "type": "package_name",
-          "named": true
-        },
-        {
           "type": "quoted_string",
           "named": true
         },
@@ -902,6 +876,10 @@
             "named": false
           },
           {
+            "type": ":as",
+            "named": false
+          },
+          {
             "type": "action",
             "named": true
           },
@@ -930,11 +908,19 @@
             "named": false
           },
           {
+            "type": "env",
+            "named": false
+          },
+          {
             "type": "env_var",
             "named": false
           },
           {
             "type": "fallback",
+            "named": false
+          },
+          {
+            "type": "file",
             "named": false
           },
           {
@@ -950,8 +936,20 @@
             "named": false
           },
           {
+            "type": "glob_files_rec",
+            "named": false
+          },
+          {
+            "type": "include",
+            "named": false
+          },
+          {
             "type": "interpolation",
             "named": true
+          },
+          {
+            "type": "lib",
+            "named": false
           },
           {
             "type": "library_name",
@@ -1026,7 +1024,15 @@
             "named": true
           },
           {
+            "type": "site",
+            "named": false
+          },
+          {
             "type": "source_tree",
+            "named": false
+          },
+          {
+            "type": "standard",
             "named": false
           },
           {
@@ -1127,6 +1133,10 @@
     "named": false
   },
   {
+    "type": ":as",
+    "named": false
+  },
+  {
     "type": ":include",
     "named": false
   },
@@ -1171,6 +1181,14 @@
     "named": false
   },
   {
+    "type": "bitbucket",
+    "named": false
+  },
+  {
+    "type": "codeberg",
+    "named": false
+  },
+  {
     "type": "comment",
     "named": true,
     "extra": true
@@ -1212,6 +1230,10 @@
     "named": false
   },
   {
+    "type": "file",
+    "named": false
+  },
+  {
     "type": "generate_merlin_rules",
     "named": false
   },
@@ -1224,7 +1246,15 @@
     "named": false
   },
   {
+    "type": "gitlab",
+    "named": false
+  },
+  {
     "type": "glob_files",
+    "named": false
+  },
+  {
+    "type": "glob_files_rec",
     "named": false
   },
   {
@@ -1232,8 +1262,20 @@
     "named": false
   },
   {
+    "type": "include",
+    "named": false
+  },
+  {
+    "type": "instrument_with",
+    "named": false
+  },
+  {
     "type": "interpolation",
     "named": true
+  },
+  {
+    "type": "lib",
+    "named": false
   },
   {
     "type": "lock_dir",
@@ -1254,6 +1296,10 @@
   {
     "type": "named_variable",
     "named": true
+  },
+  {
+    "type": "not",
+    "named": false
   },
   {
     "type": "opam",
@@ -1300,11 +1346,27 @@
     "named": false
   },
   {
+    "type": "site",
+    "named": false
+  },
+  {
     "type": "source_tree",
     "named": false
   },
   {
+    "type": "sourcehut",
+    "named": false
+  },
+  {
+    "type": "standard",
+    "named": false
+  },
+  {
     "type": "switch",
+    "named": false
+  },
+  {
+    "type": "tangled",
     "named": false
   },
   {
