@@ -260,6 +260,21 @@
     "fields": {}
   },
   {
+    "type": "osl_include",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "file_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "package_dep",
     "named": true,
     "fields": {},
@@ -959,6 +974,18 @@
             "named": true
           },
           {
+            "type": "osl_difference",
+            "named": true
+          },
+          {
+            "type": "osl_include",
+            "named": true
+          },
+          {
+            "type": "osl_standard",
+            "named": true
+          },
+          {
             "type": "package",
             "named": false
           },
@@ -1100,6 +1127,10 @@
     "named": false
   },
   {
+    "type": ":include",
+    "named": false
+  },
+  {
     "type": "<",
     "named": false
   },
@@ -1231,6 +1262,14 @@
   {
     "type": "or",
     "named": false
+  },
+  {
+    "type": "osl_difference",
+    "named": true
+  },
+  {
+    "type": "osl_standard",
+    "named": true
   },
   {
     "type": "package",

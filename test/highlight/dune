@@ -4,3 +4,11 @@
  (action (run %{bin:foo} %{deps})))
  ;            ^ variable
  ;                       ^ variable
+
+(library
+ (name l)
+ (modules (:standard \ internal_utils))
+ ;         ^ keyword
+ ;                   ^ operator
+ (c_flags (:include extra-flags.sexp)))
+ ;         ^ keyword

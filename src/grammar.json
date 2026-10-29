@@ -1266,6 +1266,10 @@
           },
           "named": true,
           "value": "stanza_field"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_field_compile_flags"
         }
       ]
     },
@@ -1316,18 +1320,101 @@
           },
           "named": true,
           "value": "stanza_field"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_field_compile_flags"
         }
       ]
     },
-    "_modules_osl": {
+    "_field_compile_flags": {
       "type": "CHOICE",
       "members": [
         {
-          "type": "REPEAT1",
+          "type": "ALIAS",
           "content": {
             "type": "SYMBOL",
-            "name": "module_name"
-          }
+            "name": "_sf_flags"
+          },
+          "named": true,
+          "value": "stanza_field"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_sf_ocamlc_flags"
+          },
+          "named": true,
+          "value": "stanza_field"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_sf_ocamlopt_flags"
+          },
+          "named": true,
+          "value": "stanza_field"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_sf_link_flags"
+          },
+          "named": true,
+          "value": "stanza_field"
+        }
+      ]
+    },
+    "osl_standard": {
+      "type": "STRING",
+      "value": ":standard"
+    },
+    "osl_difference": {
+      "type": "STRING",
+      "value": "\\"
+    },
+    "osl_include": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "("
+        },
+        {
+          "type": "STRING",
+          "value": ":include"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "file_name"
+        },
+        {
+          "type": "STRING",
+          "value": ")"
+        }
+      ]
+    },
+    "_modules_osl_item": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "module_name"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "osl_standard"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "osl_difference"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "osl_include"
         },
         {
           "type": "SEQ",
@@ -1337,16 +1424,52 @@
               "value": "("
             },
             {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "SYMBOL",
-                  "name": "_modules_osl"
-                },
-                {
-                  "type": "BLANK"
-                }
-              ]
+              "type": "REPEAT",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_modules_osl_item"
+              }
+            },
+            {
+              "type": "STRING",
+              "value": ")"
+            }
+          ]
+        }
+      ]
+    },
+    "_flags_osl_item": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_atom_or_qs"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "osl_standard"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "osl_difference"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "osl_include"
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "("
+            },
+            {
+              "type": "REPEAT",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_flags_osl_item"
+              }
             },
             {
               "type": "STRING",
@@ -1729,16 +1852,11 @@
           "type": "FIELD",
           "name": "value",
           "content": {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "_modules_osl"
-              },
-              {
-                "type": "BLANK"
-              }
-            ]
+            "type": "REPEAT",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_modules_osl_item"
+            }
           }
         },
         {
@@ -2235,7 +2353,266 @@
             "type": "REPEAT",
             "content": {
               "type": "SYMBOL",
-              "name": "_atom_or_qs"
+              "name": "_flags_osl_item"
+            }
+          }
+        },
+        {
+          "type": "STRING",
+          "value": ")"
+        }
+      ]
+    },
+    "_sf_ocamlc_flags": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "("
+        },
+        {
+          "type": "FIELD",
+          "name": "name",
+          "content": {
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "ocamlc_flags"
+            },
+            "named": true,
+            "value": "field_name"
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "value",
+          "content": {
+            "type": "REPEAT",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_flags_osl_item"
+            }
+          }
+        },
+        {
+          "type": "STRING",
+          "value": ")"
+        }
+      ]
+    },
+    "_sf_ocamlopt_flags": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "("
+        },
+        {
+          "type": "FIELD",
+          "name": "name",
+          "content": {
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "ocamlopt_flags"
+            },
+            "named": true,
+            "value": "field_name"
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "value",
+          "content": {
+            "type": "REPEAT",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_flags_osl_item"
+            }
+          }
+        },
+        {
+          "type": "STRING",
+          "value": ")"
+        }
+      ]
+    },
+    "_sf_link_flags": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "("
+        },
+        {
+          "type": "FIELD",
+          "name": "name",
+          "content": {
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "link_flags"
+            },
+            "named": true,
+            "value": "field_name"
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "value",
+          "content": {
+            "type": "REPEAT",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_flags_osl_item"
+            }
+          }
+        },
+        {
+          "type": "STRING",
+          "value": ")"
+        }
+      ]
+    },
+    "_sf_library_flags": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "("
+        },
+        {
+          "type": "FIELD",
+          "name": "name",
+          "content": {
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "library_flags"
+            },
+            "named": true,
+            "value": "field_name"
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "value",
+          "content": {
+            "type": "REPEAT",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_flags_osl_item"
+            }
+          }
+        },
+        {
+          "type": "STRING",
+          "value": ")"
+        }
+      ]
+    },
+    "_sf_c_library_flags": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "("
+        },
+        {
+          "type": "FIELD",
+          "name": "name",
+          "content": {
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "c_library_flags"
+            },
+            "named": true,
+            "value": "field_name"
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "value",
+          "content": {
+            "type": "REPEAT",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_flags_osl_item"
+            }
+          }
+        },
+        {
+          "type": "STRING",
+          "value": ")"
+        }
+      ]
+    },
+    "_sf_c_flags": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "("
+        },
+        {
+          "type": "FIELD",
+          "name": "name",
+          "content": {
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "c_flags"
+            },
+            "named": true,
+            "value": "field_name"
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "value",
+          "content": {
+            "type": "REPEAT",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_flags_osl_item"
+            }
+          }
+        },
+        {
+          "type": "STRING",
+          "value": ")"
+        }
+      ]
+    },
+    "_sf_cxx_flags": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "("
+        },
+        {
+          "type": "FIELD",
+          "name": "name",
+          "content": {
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "cxx_flags"
+            },
+            "named": true,
+            "value": "field_name"
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "value",
+          "content": {
+            "type": "REPEAT",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_flags_osl_item"
             }
           }
         },
@@ -5239,6 +5616,42 @@
                     "content": {
                       "type": "SYMBOL",
                       "name": "_sf_ppx_driver"
+                    },
+                    "named": true,
+                    "value": "stanza_field"
+                  },
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_sf_library_flags"
+                    },
+                    "named": true,
+                    "value": "stanza_field"
+                  },
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_sf_c_library_flags"
+                    },
+                    "named": true,
+                    "value": "stanza_field"
+                  },
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_sf_c_flags"
+                    },
+                    "named": true,
+                    "value": "stanza_field"
+                  },
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_sf_cxx_flags"
                     },
                     "named": true,
                     "value": "stanza_field"
