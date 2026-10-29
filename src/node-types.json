@@ -675,6 +675,82 @@
           }
         ]
       },
+      "version": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "multiline_string",
+            "named": true
+          },
+          {
+            "type": "quoted_string",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "action",
+          "named": true
+        },
+        {
+          "type": "bool",
+          "named": true
+        },
+        {
+          "type": "file_name",
+          "named": true
+        },
+        {
+          "type": "module_name",
+          "named": true
+        },
+        {
+          "type": "multiline_string",
+          "named": true
+        },
+        {
+          "type": "package_name",
+          "named": true
+        },
+        {
+          "type": "quoted_string",
+          "named": true
+        },
+        {
+          "type": "sexp",
+          "named": true
+        },
+        {
+          "type": "stanza_field",
+          "named": true
+        },
+        {
+          "type": "stanza_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "stanza_field",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "field_name",
+            "named": true
+          }
+        ]
+      },
       "value": {
         "multiple": true,
         "required": false,
@@ -722,10 +798,6 @@
           {
             "type": "fallback",
             "named": false
-          },
-          {
-            "type": "field_name",
-            "named": true
           },
           {
             "type": "file_name",
@@ -800,71 +872,15 @@
             "named": false
           },
           {
+            "type": "stanza_field",
+            "named": true
+          },
+          {
             "type": "universe",
             "named": false
           }
         ]
-      },
-      "version": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "multiline_string",
-            "named": true
-          },
-          {
-            "type": "quoted_string",
-            "named": true
-          }
-        ]
       }
-    },
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "action",
-          "named": true
-        },
-        {
-          "type": "bool",
-          "named": true
-        },
-        {
-          "type": "field_name",
-          "named": true
-        },
-        {
-          "type": "file_name",
-          "named": true
-        },
-        {
-          "type": "module_name",
-          "named": true
-        },
-        {
-          "type": "multiline_string",
-          "named": true
-        },
-        {
-          "type": "package_name",
-          "named": true
-        },
-        {
-          "type": "quoted_string",
-          "named": true
-        },
-        {
-          "type": "sexp",
-          "named": true
-        },
-        {
-          "type": "stanza_name",
-          "named": true
-        }
-      ]
     }
   },
   {

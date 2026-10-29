@@ -62,6 +62,7 @@
   ],
   "scripts": {
     "install": "node-gyp-build",
+    "generate": "make generate",
     "lint": "eslint grammar.js",
     "prebuildify": "prebuildify --napi --strip",
     "prestart": "tree-sitter build --wasm",

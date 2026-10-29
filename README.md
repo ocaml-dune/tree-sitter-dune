@@ -41,9 +41,14 @@ cargo add tree-sitter-dune
 ```bash
 git clone https://github.com/tmcgilchrist/tree-sitter-dune
 cd tree-sitter-dune
-tree-sitter generate
-tree-sitter test
+npm ci                # installs the pinned tree-sitter CLI
+npm run generate      # make generate, at the pinned ABI
+npx tree-sitter test
 ```
+
+The committed `src/parser.c` is ABI 14, because most Emacs builds cannot load
+ABI 15 yet. The CLI and ABI versions are set in the `Makefile`
+(`TREE_SITTER_VERSION` and `TS_ABI_VERSION`).
 
 ## Usage
 
@@ -217,21 +222,28 @@ require'nvim-treesitter.configs'.setup {
 ### Building
 
 ```bash
-npm install -g tree-sitter-cli
-tree-sitter generate
+npm ci
+npm run generate
 ```
+
+`npm ci` also builds the Node binding, which fails on Node 26 (CI uses Node 20).
+For grammar work only the CLI is needed:
+`npm ci --ignore-scripts && npm rebuild tree-sitter-cli`.
 
 ### Testing
 
 ```bash
-tree-sitter test
+npx tree-sitter test
 ```
+
+This runs the corpus tests in `test/corpus/` and the tag assertions in
+`test/tags/`.
 
 ### Debugging
 
 ```bash
-tree-sitter parse examples/dune
-tree-sitter parse --debug examples/dune-project
+npx tree-sitter parse test/examples/dune
+npx tree-sitter parse --debug test/examples/dune-project
 ```
 
 ## Contributing
@@ -239,7 +251,7 @@ tree-sitter parse --debug examples/dune-project
 Contributions are welcome! Please:
 
 1. Add tests for any new features in `test/corpus/`
-2. Ensure all tests pass with `tree-sitter test`
+2. Ensure all tests pass with `npx tree-sitter test`
 3. Update this README if adding new stanza support
 4. Follow the existing code style
 
@@ -252,15 +264,19 @@ Contributions are welcome! Please:
        $,
        "my_stanza",
        choice(
-         dune_field($, "field_name", $.value_type),
+         alias($._sf_my_field, $.stanza_field),
          $.sexp,
        ),
      ),
+   _sf_my_field: ($) => dune_field($, "my_field", $.value_type),
    ```
+
+   Each field is a hidden `_sf_*` rule aliased to `stanza_field`, so every
+   field gets one wrapper node. Reuse an existing `_sf_*` rule when one fits.
 
 2. Add it to the `stanza` choice list
 3. Create tests in `test/corpus/`
-4. Run `tree-sitter generate && tree-sitter test`
+4. Run `npm run generate && npx tree-sitter test`
 
 ## Resources
 

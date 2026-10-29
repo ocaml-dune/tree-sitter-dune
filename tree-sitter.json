@@ -5,7 +5,8 @@
       "scope": "source.dune",
       "file-types": ["dune", "dune-project", "dune-workspace"],
       "highlights": "queries/highlights.scm",
-      "injections": "queries/injections.scm"
+      "injections": "queries/injections.scm",
+      "tags": "queries/tags.scm"
     }
   ],
   "metadata": {
