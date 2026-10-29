@@ -118,6 +118,21 @@
     "fields": {}
   },
   {
+    "type": "field_name",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "interpolation",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "file_name",
     "named": true,
     "fields": {},
@@ -1020,6 +1035,21 @@
     }
   },
   {
+    "type": "stanza_name",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "interpolation",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "tag_name",
     "named": true,
     "fields": {},
@@ -1167,10 +1197,6 @@
     "named": false
   },
   {
-    "type": "field_name",
-    "named": true
-  },
-  {
     "type": "generate_merlin_rules",
     "named": false
   },
@@ -1249,10 +1275,6 @@
   {
     "type": "source_tree",
     "named": false
-  },
-  {
-    "type": "stanza_name",
-    "named": true
   },
   {
     "type": "switch",

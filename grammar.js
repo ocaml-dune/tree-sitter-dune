@@ -3,8 +3,11 @@
 
 const wrap = (...a) => seq('(', ...a, ')');
 
+// A (name values...) field the grammar doesn't know.
+const generic_field = ($) => alias($._sf_generic, $.stanza_field);
+
 const dune_stanza = ($, name, field_parser) =>
-  wrap(alias(name, $.stanza_name), repeat(field_parser));
+  wrap(alias(name, $.stanza_name), repeat(choice(field_parser, generic_field($))));
 
 const dune_field = ($, name, value) =>
   wrap(field('name', alias(name, $.field_name)), field('value', value));
@@ -115,8 +118,18 @@ module.exports = grammar({
         dune_stanza($, 'documentation', $.sexp),
         $._stanza_env,
         $._stanza_subdir,
+        $._stanza_generic,
         $.sexp,
       ),
+    // Fallback for stanzas the grammar doesn't know: keep the name and
+    // treat (name values...) children as fields.
+    _stanza_generic: ($) =>
+      prec(1, wrap(
+        alias($._atom, $.stanza_name),
+        repeat(choice(generic_field($), $.sexp)),
+      )),
+    _sf_generic: ($) =>
+      prec(1, wrap(field('name', alias($._atom, $.field_name)), field('value', repeat($.sexp)))),
     _field_modules_maybe_inline: ($) =>
       choice($.module_name, alias($._sf_modules_list, $.stanza_field)),
     _stanza_alias: ($) =>
@@ -431,7 +444,7 @@ module.exports = grammar({
         ),
       ),
     _stanza_dialect: ($) =>
-      wrap(alias('dialect', $.stanza_name), repeat($.sexp)),
+      wrap(alias('dialect', $.stanza_name), repeat(choice(generic_field($), $.sexp))),
     _stanza_explicit_js_mode: ($) =>
       wrap(alias('explicit_js_mode', $.stanza_name)),
     _stanza_cram_project: ($) =>
@@ -451,6 +464,7 @@ module.exports = grammar({
             alias($._sf_deprecated_package_names, $.stanza_field),
             alias($._sf_sites, $.stanza_field),
             alias($._sf_allow_empty, $.stanza_field),
+            generic_field($),
             $.sexp,
           ),
         ),
@@ -581,6 +595,7 @@ module.exports = grammar({
           alias($._sf_theories, $.stanza_field),
           alias($._sf_modules_list, $.stanza_field),
           alias($._sf_plugins, $.stanza_field),
+          generic_field($),
           $.sexp,
         )),
       ),
@@ -624,10 +639,10 @@ module.exports = grammar({
       wrap(alias('maintenance_intent', $.stanza_name), $._atom_or_qs),
     // Additional dune-workspace stanzas (note: env is shared with dune files)
     _stanza_config: ($) =>
-      wrap(alias('config', $.stanza_name), repeat($.sexp)),
+      wrap(alias('config', $.stanza_name), repeat(choice(generic_field($), $.sexp))),
     _stanza_lock_dir: ($) =>
       wrap(alias('lock_dir', $.stanza_name), field('path', $._atom_or_qs)),
     _stanza_repository: ($) =>
-      wrap(alias('repository', $.stanza_name), repeat($.sexp)),
+      wrap(alias('repository', $.stanza_name), repeat(choice(generic_field($), $.sexp))),
   },
 });
