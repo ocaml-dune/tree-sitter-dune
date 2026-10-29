@@ -455,24 +455,6 @@
           }
         ]
       },
-      "context_name": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "interpolation",
-            "named": true
-          },
-          {
-            "type": "multiline_string",
-            "named": true
-          },
-          {
-            "type": "quoted_string",
-            "named": true
-          }
-        ]
-      },
       "directory": {
         "multiple": false,
         "required": false,
@@ -495,24 +477,6 @@
       },
       "extension": {
         "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "interpolation",
-            "named": true
-          },
-          {
-            "type": "multiline_string",
-            "named": true
-          },
-          {
-            "type": "quoted_string",
-            "named": true
-          }
-        ]
-      },
-      "host_context": {
-        "multiple": true,
         "required": false,
         "types": [
           {
@@ -565,53 +529,7 @@
           }
         ]
       },
-      "lock_dir": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "sexp",
-            "named": true
-          }
-        ]
-      },
       "maintainer": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "interpolation",
-            "named": true
-          },
-          {
-            "type": "multiline_string",
-            "named": true
-          },
-          {
-            "type": "quoted_string",
-            "named": true
-          }
-        ]
-      },
-      "opam_root": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "interpolation",
-            "named": true
-          },
-          {
-            "type": "multiline_string",
-            "named": true
-          },
-          {
-            "type": "quoted_string",
-            "named": true
-          }
-        ]
-      },
-      "profile": {
         "multiple": true,
         "required": false,
         "types": [
@@ -689,78 +607,6 @@
         "types": [
           {
             "type": "stanza",
-            "named": true
-          }
-        ]
-      },
-      "switch": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "interpolation",
-            "named": true
-          },
-          {
-            "type": "multiline_string",
-            "named": true
-          },
-          {
-            "type": "quoted_string",
-            "named": true
-          }
-        ]
-      },
-      "target_exe": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "interpolation",
-            "named": true
-          },
-          {
-            "type": "multiline_string",
-            "named": true
-          },
-          {
-            "type": "quoted_string",
-            "named": true
-          }
-        ]
-      },
-      "target_triple": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "interpolation",
-            "named": true
-          },
-          {
-            "type": "multiline_string",
-            "named": true
-          },
-          {
-            "type": "quoted_string",
-            "named": true
-          }
-        ]
-      },
-      "toolchain": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "interpolation",
-            "named": true
-          },
-          {
-            "type": "multiline_string",
-            "named": true
-          },
-          {
-            "type": "quoted_string",
             "named": true
           }
         ]
@@ -1202,10 +1048,6 @@
     "named": false
   },
   {
-    "type": "disable_dynamically_linked_foreign_archives",
-    "named": false
-  },
-  {
     "type": "enabled_for",
     "named": false
   },
@@ -1226,15 +1068,7 @@
     "named": false
   },
   {
-    "type": "fdo",
-    "named": false
-  },
-  {
     "type": "file",
-    "named": false
-  },
-  {
-    "type": "generate_merlin_rules",
     "named": false
   },
   {
@@ -1258,15 +1092,7 @@
     "named": false
   },
   {
-    "type": "host",
-    "named": false
-  },
-  {
     "type": "include",
-    "named": false
-  },
-  {
-    "type": "instrument_with",
     "named": false
   },
   {
@@ -1278,20 +1104,8 @@
     "named": false
   },
   {
-    "type": "lock_dir",
-    "named": false
-  },
-  {
-    "type": "merlin",
-    "named": false
-  },
-  {
     "type": "multiline_string",
     "named": true
-  },
-  {
-    "type": "name",
-    "named": false
   },
   {
     "type": "named_variable",
@@ -1299,10 +1113,6 @@
   },
   {
     "type": "not",
-    "named": false
-  },
-  {
-    "type": "opam",
     "named": false
   },
   {
@@ -1322,23 +1132,11 @@
     "named": false
   },
   {
-    "type": "paths",
-    "named": false
-  },
-  {
-    "type": "profile",
-    "named": false
-  },
-  {
     "type": "promote",
     "named": false
   },
   {
     "type": "promote-until-clean",
-    "named": false
-  },
-  {
-    "type": "root",
     "named": false
   },
   {
@@ -1362,23 +1160,7 @@
     "named": false
   },
   {
-    "type": "switch",
-    "named": false
-  },
-  {
     "type": "tangled",
-    "named": false
-  },
-  {
-    "type": "target",
-    "named": false
-  },
-  {
-    "type": "targets",
-    "named": false
-  },
-  {
-    "type": "toolchain",
     "named": false
   },
   {

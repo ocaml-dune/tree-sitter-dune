@@ -38,7 +38,11 @@ opam context basic
 
 (source_file
   (stanza
-    (stanza_name)))
+    (stanza_name)
+    (stanza_field
+      (field_name)
+      (stanza_field
+        (field_name)))))
 
 ==========================
 opam context with fields
@@ -54,7 +58,15 @@ opam context with fields
 
 (source_file
   (stanza
-    (stanza_name)))
+    (stanza_name)
+    (stanza_field
+      (field_name)
+      (stanza_field
+        (field_name))
+      (stanza_field
+        (field_name))
+      (stanza_field
+        (field_name)))))
 
 ===============================
 opam context with merlin
@@ -69,7 +81,13 @@ opam context with merlin
 
 (source_file
   (stanza
-    (stanza_name)))
+    (stanza_name)
+    (stanza_field
+      (field_name)
+      (stanza_field
+        (field_name))
+      (stanza_field
+        (field_name)))))
 
 ====================================
 opam context with cross-compilation
@@ -86,7 +104,17 @@ opam context with cross-compilation
 
 (source_file
   (stanza
-    (stanza_name)))
+    (stanza_name)
+    (stanza_field
+      (field_name)
+      (stanza_field
+        (field_name))
+      (stanza_field
+        (field_name))
+      (stanza_field
+        (field_name))
+      (stanza_field
+        (field_name)))))
 
 =============================
 multiple contexts
@@ -108,9 +136,17 @@ multiple contexts
   (stanza
     (stanza_name))
   (stanza
-    (stanza_name))
+    (stanza_name)
+    (stanza_field
+      (field_name)
+      (stanza_field
+        (field_name))))
   (stanza
-    (stanza_name)))
+    (stanza_name)
+    (stanza_field
+      (field_name)
+      (stanza_field
+        (field_name)))))
 
 ================================
 context with all common fields
@@ -129,7 +165,21 @@ context with all common fields
 
 (source_file
   (stanza
-    (stanza_name)))
+    (stanza_name)
+    (stanza_field
+      (field_name)
+      (stanza_field
+        (field_name))
+      (stanza_field
+        (field_name))
+      (stanza_field
+        (field_name))
+      (stanza_field
+        (field_name))
+      (stanza_field
+        (field_name))
+      (stanza_field
+        (field_name)))))
 
 ====================================
 workspace with profile and context
@@ -165,7 +215,13 @@ opam context with disable flag
 (source_file
   (stanza
     (stanza_name)
-    (bool)))
+    (stanza_field
+      (field_name)
+      (stanza_field
+        (field_name))
+      (stanza_field
+        (field_name)
+        (bool)))))
 
 ==========================
 opam context with paths
@@ -181,11 +237,17 @@ opam context with paths
 (source_file
   (stanza
     (stanza_name)
-    (sexp
-      (sexp)
-      (sexp
-        (sexp)
-        (sexp)))))
+    (stanza_field
+      (field_name)
+      (stanza_field
+        (field_name))
+      (stanza_field
+        (field_name)
+        (sexp
+          (sexp)
+          (sexp
+            (sexp)
+            (sexp)))))))
 
 ===================================
 complete workspace example
@@ -218,9 +280,23 @@ complete workspace example
   (stanza
     (stanza_name))
   (stanza
-    (stanza_name))
+    (stanza_name)
+    (stanza_field
+      (field_name)
+      (stanza_field
+        (field_name))
+      (stanza_field
+        (field_name))
+      (stanza_field
+        (field_name))))
   (stanza
-    (stanza_name)))
+    (stanza_name)
+    (stanza_field
+      (field_name)
+      (stanza_field
+        (field_name))
+      (stanza_field
+        (field_name)))))
 
 ======
 config

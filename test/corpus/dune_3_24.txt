@@ -14,7 +14,17 @@ context default with fields
 (source_file
   (stanza
     (stanza_name)
-    (sexp)))
+    (stanza_field
+      (field_name)
+      (stanza_field
+        (field_name))
+      (stanza_field
+        (field_name))
+      (stanza_field
+        (field_name))
+      (stanza_field
+        (field_name)
+        (sexp)))))
 
 ==============================
 context default without fields
@@ -26,7 +36,9 @@ context default without fields
 
 (source_file
   (stanza
-    (stanza_name)))
+    (stanza_name)
+    (stanza_field
+      (field_name))))
 
 ===============================================
 context merlin with a value and instrument_with
@@ -42,8 +54,14 @@ context merlin with a value and instrument_with
 (source_file
   (stanza
     (stanza_name)
-    (bool)
-    (sexp)))
+    (stanza_field
+      (field_name)
+      (stanza_field
+        (field_name)
+        (bool))
+      (stanza_field
+        (field_name)
+        (sexp)))))
 
 ===========================
 lock_dir with solver fields
@@ -875,14 +893,18 @@ context targets with a toolchain
 (source_file
   (stanza
     (stanza_name)
-    (sexp)
-    (sexp
-      (sexp
+    (stanza_field
+      (field_name)
+      (stanza_field
+        (field_name)
         (sexp)
-        (sexp))
-      (sexp
-        (sexp)
-        (sexp)))))
+        (sexp
+          (sexp
+            (sexp)
+            (sexp))
+          (sexp
+            (sexp)
+            (sexp)))))))
 
 ==========================
 context lock_dir with cond
@@ -900,15 +922,19 @@ context lock_dir with cond
 (source_file
   (stanza
     (stanza_name)
-    (sexp
-      (sexp)
-      (sexp
+    (stanza_field
+      (field_name)
+      (stanza_field
+        (field_name)
         (sexp
           (sexp)
           (sexp
-            (interpolation))
-          (sexp))
-        (sexp))
-      (sexp
-        (sexp)
-        (sexp)))))
+            (sexp
+              (sexp)
+              (sexp
+                (interpolation))
+              (sexp))
+            (sexp))
+          (sexp
+            (sexp)
+            (sexp)))))))
