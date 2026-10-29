@@ -329,7 +329,8 @@ pipe-outputs
             (action
               (action_name)
               (file_name_dep
-                (file_name)))
+                (file_name
+                  (interpolation))))
             (action
               (action_name)
               (file_name_dep
@@ -368,11 +369,13 @@ pipe-outputs
           (action
             (action_name)
             (file_name_dep
-              (file_name)))
+              (file_name
+                (interpolation))))
           (action
             (action_name)
             (file_name_dep
-              (file_name))))))))
+              (file_name
+                (interpolation)))))))))
 
 =====
 diff?
@@ -476,7 +479,8 @@ with-accepted-exit-codes
       (field_name)
       (blang
         (blang_op)
-        (blang)
+        (blang
+          (interpolation))
         (blang
           (quoted_string))))
     (stanza_field
@@ -486,7 +490,8 @@ with-accepted-exit-codes
         (action
           (action_name)
           (file_name_target
-            (file_name))
+            (file_name
+              (interpolation)))
           (action
             (action_name)
             (file_name_dep

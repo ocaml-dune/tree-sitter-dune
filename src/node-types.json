@@ -24,6 +24,10 @@
             "named": true
           },
           {
+            "type": "interpolation",
+            "named": true
+          },
+          {
             "type": "multiline_string",
             "named": true
           },
@@ -58,6 +62,10 @@
       "required": false,
       "types": [
         {
+          "type": "interpolation",
+          "named": true
+        },
+        {
           "type": "multiline_string",
           "named": true
         },
@@ -82,6 +90,10 @@
         },
         {
           "type": "blang_op",
+          "named": true
+        },
+        {
+          "type": "interpolation",
           "named": true
         },
         {
@@ -113,6 +125,10 @@
       "multiple": false,
       "required": false,
       "types": [
+        {
+          "type": "interpolation",
+          "named": true
+        },
         {
           "type": "multiline_string",
           "named": true
@@ -163,6 +179,10 @@
       "required": false,
       "types": [
         {
+          "type": "interpolation",
+          "named": true
+        },
+        {
           "type": "multiline_string",
           "named": true
         },
@@ -182,6 +202,10 @@
       "required": false,
       "types": [
         {
+          "type": "interpolation",
+          "named": true
+        },
+        {
           "type": "multiline_string",
           "named": true
         },
@@ -200,6 +224,10 @@
       "multiple": false,
       "required": false,
       "types": [
+        {
+          "type": "interpolation",
+          "named": true
+        },
         {
           "type": "multiline_string",
           "named": true
@@ -244,6 +272,10 @@
       "required": false,
       "types": [
         {
+          "type": "interpolation",
+          "named": true
+        },
+        {
           "type": "multiline_string",
           "named": true
         },
@@ -262,6 +294,10 @@
       "multiple": false,
       "required": false,
       "types": [
+        {
+          "type": "interpolation",
+          "named": true
+        },
         {
           "type": "multiline_string",
           "named": true
@@ -286,6 +322,10 @@
       "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "interpolation",
+          "named": true
+        },
         {
           "type": "multiline_string",
           "named": true
@@ -324,6 +364,10 @@
       "multiple": false,
       "required": false,
       "types": [
+        {
+          "type": "interpolation",
+          "named": true
+        },
         {
           "type": "multiline_string",
           "named": true
@@ -364,6 +408,10 @@
         "required": false,
         "types": [
           {
+            "type": "interpolation",
+            "named": true
+          },
+          {
             "type": "multiline_string",
             "named": true
           },
@@ -377,6 +425,10 @@
         "multiple": true,
         "required": false,
         "types": [
+          {
+            "type": "interpolation",
+            "named": true
+          },
           {
             "type": "multiline_string",
             "named": true
@@ -412,6 +464,10 @@
         "required": false,
         "types": [
           {
+            "type": "interpolation",
+            "named": true
+          },
+          {
             "type": "multiline_string",
             "named": true
           },
@@ -425,6 +481,10 @@
         "multiple": true,
         "required": false,
         "types": [
+          {
+            "type": "interpolation",
+            "named": true
+          },
           {
             "type": "multiline_string",
             "named": true
@@ -440,6 +500,10 @@
         "required": false,
         "types": [
           {
+            "type": "interpolation",
+            "named": true
+          },
+          {
             "type": "multiline_string",
             "named": true
           },
@@ -453,6 +517,10 @@
         "multiple": false,
         "required": false,
         "types": [
+          {
+            "type": "interpolation",
+            "named": true
+          },
           {
             "type": "multiline_string",
             "named": true
@@ -468,6 +536,10 @@
         "required": false,
         "types": [
           {
+            "type": "interpolation",
+            "named": true
+          },
+          {
             "type": "multiline_string",
             "named": true
           },
@@ -481,6 +553,10 @@
         "multiple": true,
         "required": false,
         "types": [
+          {
+            "type": "interpolation",
+            "named": true
+          },
           {
             "type": "multiline_string",
             "named": true
@@ -516,6 +592,10 @@
         "required": false,
         "types": [
           {
+            "type": "interpolation",
+            "named": true
+          },
+          {
             "type": "multiline_string",
             "named": true
           },
@@ -529,6 +609,10 @@
         "multiple": false,
         "required": false,
         "types": [
+          {
+            "type": "interpolation",
+            "named": true
+          },
           {
             "type": "multiline_string",
             "named": true
@@ -544,6 +628,10 @@
         "required": false,
         "types": [
           {
+            "type": "interpolation",
+            "named": true
+          },
+          {
             "type": "multiline_string",
             "named": true
           },
@@ -557,6 +645,10 @@
         "multiple": false,
         "required": false,
         "types": [
+          {
+            "type": "interpolation",
+            "named": true
+          },
           {
             "type": "multiline_string",
             "named": true
@@ -572,6 +664,10 @@
         "required": false,
         "types": [
           {
+            "type": "interpolation",
+            "named": true
+          },
+          {
             "type": "multiline_string",
             "named": true
           },
@@ -585,6 +681,10 @@
         "multiple": false,
         "required": false,
         "types": [
+          {
+            "type": "interpolation",
+            "named": true
+          },
           {
             "type": "multiline_string",
             "named": true
@@ -610,6 +710,10 @@
         "required": false,
         "types": [
           {
+            "type": "interpolation",
+            "named": true
+          },
+          {
             "type": "multiline_string",
             "named": true
           },
@@ -623,6 +727,10 @@
         "multiple": true,
         "required": false,
         "types": [
+          {
+            "type": "interpolation",
+            "named": true
+          },
           {
             "type": "multiline_string",
             "named": true
@@ -638,6 +746,10 @@
         "required": false,
         "types": [
           {
+            "type": "interpolation",
+            "named": true
+          },
+          {
             "type": "multiline_string",
             "named": true
           },
@@ -651,6 +763,10 @@
         "multiple": true,
         "required": false,
         "types": [
+          {
+            "type": "interpolation",
+            "named": true
+          },
           {
             "type": "multiline_string",
             "named": true
@@ -666,6 +782,10 @@
         "required": false,
         "types": [
           {
+            "type": "interpolation",
+            "named": true
+          },
+          {
             "type": "multiline_string",
             "named": true
           },
@@ -679,6 +799,10 @@
         "multiple": false,
         "required": false,
         "types": [
+          {
+            "type": "interpolation",
+            "named": true
+          },
           {
             "type": "multiline_string",
             "named": true
@@ -704,6 +828,10 @@
         },
         {
           "type": "file_name",
+          "named": true
+        },
+        {
+          "type": "interpolation",
           "named": true
         },
         {
@@ -812,6 +940,10 @@
             "named": false
           },
           {
+            "type": "interpolation",
+            "named": true
+          },
+          {
             "type": "library_name",
             "named": true
           },
@@ -891,6 +1023,10 @@
       "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "interpolation",
+          "named": true
+        },
         {
           "type": "multiline_string",
           "named": true
@@ -1026,6 +1162,10 @@
   {
     "type": "host",
     "named": false
+  },
+  {
+    "type": "interpolation",
+    "named": true
   },
   {
     "type": "lock_dir",
