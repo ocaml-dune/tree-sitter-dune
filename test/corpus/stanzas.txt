@@ -1085,7 +1085,7 @@ include
 ignored_subdirs
 ===============
 
-(ignored_subdirs vendor _build)
+(ignored_subdirs (vendor _build))
 
 ---
 
@@ -1168,12 +1168,83 @@ coq.theory
 deprecated_library_name
 ========================
 
-(deprecated_library_name old_lib new_lib)
+(deprecated_library_name
+ (old_public_name old_lib)
+ (new_public_name new_lib))
 
 ---
 
 (source_file
   (stanza
     (stanza_name)
-    (library_name)
-    (library_name)))
+    (stanza_field
+      (field_name)
+      (library_name))
+    (stanza_field
+      (field_name)
+      (library_name))))
+
+===============
+rule promote with until-clean and into
+===============
+
+(rule
+ (targets x)
+ (mode (promote (until-clean) (into subdir)))
+ (action (with-stdout-to x (echo hi))))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (stanza_field
+      (field_name)
+      (file_name_target
+        (file_name)))
+    (stanza_field
+      (field_name)
+      (stanza_field
+        (field_name)
+        (stanza_field
+          (field_name))
+        (stanza_field
+          (field_name)
+          (file_name))))
+    (stanza_field
+      (field_name)
+      (action
+        (action_name)
+        (file_name_target
+          (file_name))
+        (action
+          (action_name))))))
+
+===============
+rule promote-until-clean mode (dune lang < 3.0)
+===============
+
+(rule
+ (targets x)
+ (mode promote-until-clean)
+ (action (with-stdout-to x (echo hi))))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (stanza_field
+      (field_name)
+      (file_name_target
+        (file_name)))
+    (stanza_field
+      (field_name))
+    (stanza_field
+      (field_name)
+      (action
+        (action_name)
+        (file_name_target
+          (file_name))
+        (action
+          (action_name))))))

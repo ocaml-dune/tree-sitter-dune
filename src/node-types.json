@@ -582,26 +582,6 @@
           }
         ]
       },
-      "new_name": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "library_name",
-            "named": true
-          }
-        ]
-      },
-      "old_name": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "library_name",
-            "named": true
-          }
-        ]
-      },
       "opam_root": {
         "multiple": true,
         "required": false,
@@ -995,6 +975,10 @@
             "named": false
           },
           {
+            "type": "promote-until-clean",
+            "named": false
+          },
+          {
             "type": "public_name",
             "named": true
           },
@@ -1262,6 +1246,10 @@
   },
   {
     "type": "promote",
+    "named": false
+  },
+  {
+    "type": "promote-until-clean",
     "named": false
   },
   {

@@ -3635,8 +3635,11 @@
           "type": "FIELD",
           "name": "value",
           "content": {
-            "type": "SYMBOL",
-            "name": "_rule_mode_promote_field"
+            "type": "REPEAT",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_rule_mode_promote_field"
+            }
           }
         },
         {
@@ -3739,6 +3742,100 @@
           "content": {
             "type": "SYMBOL",
             "name": "file_name"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": ")"
+        }
+      ]
+    },
+    "_sf_until_clean": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "("
+        },
+        {
+          "type": "FIELD",
+          "name": "name",
+          "content": {
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "until-clean"
+            },
+            "named": true,
+            "value": "field_name"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": ")"
+        }
+      ]
+    },
+    "_sf_old_public_name": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "("
+        },
+        {
+          "type": "FIELD",
+          "name": "name",
+          "content": {
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "old_public_name"
+            },
+            "named": true,
+            "value": "field_name"
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "value",
+          "content": {
+            "type": "SYMBOL",
+            "name": "library_name"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": ")"
+        }
+      ]
+    },
+    "_sf_new_public_name": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "("
+        },
+        {
+          "type": "FIELD",
+          "name": "name",
+          "content": {
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "new_public_name"
+            },
+            "named": true,
+            "value": "field_name"
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "value",
+          "content": {
+            "type": "SYMBOL",
+            "name": "library_name"
           }
         },
         {
@@ -4172,6 +4269,10 @@
           "value": "promote"
         },
         {
+          "type": "STRING",
+          "value": "promote-until-clean"
+        },
+        {
           "type": "ALIAS",
           "content": {
             "type": "SYMBOL",
@@ -4208,6 +4309,15 @@
           "content": {
             "type": "SYMBOL",
             "name": "_sf_into"
+          },
+          "named": true,
+          "value": "stanza_field"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_sf_until_clean"
           },
           "named": true,
           "value": "stanza_field"
@@ -5526,12 +5636,20 @@
           "value": "stanza_name"
         },
         {
-          "type": "FIELD",
-          "name": "enabled",
-          "content": {
-            "type": "SYMBOL",
-            "name": "bool"
-          }
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "FIELD",
+              "name": "enabled",
+              "content": {
+                "type": "SYMBOL",
+                "name": "bool"
+              }
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         },
         {
           "type": "STRING",
@@ -7378,25 +7496,48 @@
           "value": "stanza_name"
         },
         {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "FIELD",
-              "name": "old_name",
-              "content": {
-                "type": "SYMBOL",
-                "name": "library_name"
+          "type": "REPEAT",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_sf_old_public_name"
+                    },
+                    "named": true,
+                    "value": "stanza_field"
+                  },
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_sf_new_public_name"
+                    },
+                    "named": true,
+                    "value": "stanza_field"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "sexp"
+                  }
+                ]
+              },
+              {
+                "type": "ALIAS",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "_sf_generic"
+                },
+                "named": true,
+                "value": "stanza_field"
               }
-            },
-            {
-              "type": "FIELD",
-              "name": "new_name",
-              "content": {
-                "type": "SYMBOL",
-                "name": "library_name"
-              }
-            }
-          ]
+            ]
+          }
         },
         {
           "type": "STRING",
@@ -7421,11 +7562,24 @@
           "value": "stanza_name"
         },
         {
-          "type": "REPEAT1",
-          "content": {
-            "type": "SYMBOL",
-            "name": "file_name"
-          }
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "("
+            },
+            {
+              "type": "REPEAT",
+              "content": {
+                "type": "SYMBOL",
+                "name": "file_name"
+              }
+            },
+            {
+              "type": "STRING",
+              "value": ")"
+            }
+          ]
         },
         {
           "type": "STRING",
@@ -7542,6 +7696,18 @@
           },
           "named": true,
           "value": "stanza_name"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "bool"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         },
         {
           "type": "STRING",

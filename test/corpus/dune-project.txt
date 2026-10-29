@@ -459,3 +459,19 @@ package with no tags list is an error
   (tags))
 
 ---
+
+=================
+boolean stanzas with and without a value
+=================
+
+(generate_opam_files)
+(executables_implicit_empty_intf true)
+
+---
+
+(source_file
+  (stanza
+    (stanza_name))
+  (stanza
+    (stanza_name)
+    (bool)))

@@ -256,10 +256,13 @@ module.exports = grammar({
     _sf_tags: ($) => dune_field($, 'tags', wrap(repeat($.tag_name))),
     _sf_deprecated_package_names: ($) => dune_field($, 'deprecated_package_names', repeat1($.package_name)),
     _sf_allow_empty: ($) => dune_field($, 'allow_empty', $.bool),
-    _sf_promote: ($) => dune_field($, 'promote', $._rule_mode_promote_field),
+    _sf_promote: ($) => dune_field($, 'promote', repeat($._rule_mode_promote_field)),
     _sf_promote_into: ($) => dune_field($, 'promote-into', $.file_name),
     _sf_only: ($) => dune_field($, 'only', $._atom_or_qs),
     _sf_into: ($) => dune_field($, 'into', $.file_name),
+    _sf_until_clean: ($) => wrap(field('name', alias('until-clean', $.field_name))),
+    _sf_old_public_name: ($) => dune_field($, 'old_public_name', $.library_name),
+    _sf_new_public_name: ($) => dune_field($, 'new_public_name', $.library_name),
     library_name: ($) => $._atom_or_qs,
     public_name: ($) => $._atom_or_qs,
     module_name: ($) => $._atom_or_qs,
@@ -307,6 +310,7 @@ module.exports = grammar({
       choice(
         'fallback',
         'promote',
+        'promote-until-clean', // dune lang < 3.0
         alias($._sf_promote, $.stanza_field),
         alias($._sf_promote_into, $.stanza_field),
       ),
@@ -314,6 +318,7 @@ module.exports = grammar({
       choice(
         alias($._sf_only, $.stanza_field),
         alias($._sf_into, $.stanza_field),
+        alias($._sf_until_clean, $.stanza_field),
       ),
     blang: ($) => choice($._atom_or_qs, wrap($.blang_op, repeat1($.blang))),
     blang_op: ($) => choice('=', '<>', '>', '<', '>=', '<=', 'or', 'and'),
@@ -407,7 +412,7 @@ module.exports = grammar({
     _stanza_version: ($) =>
       wrap(alias('version', $.stanza_name), field('version', $._atom_or_qs)),
     _stanza_generate_opam_files: ($) =>
-      wrap(alias('generate_opam_files', $.stanza_name), field('enabled', $.bool)),
+      wrap(alias('generate_opam_files', $.stanza_name), optional(field('enabled', $.bool))),
     _stanza_source: ($) =>
       wrap(
         alias('source', $.stanza_name),
@@ -600,15 +605,17 @@ module.exports = grammar({
         )),
       ),
     _stanza_deprecated_library_name: ($) =>
-      wrap(
-        alias('deprecated_library_name', $.stanza_name),
-        seq(
-          field('old_name', $.library_name),
-          field('new_name', $.library_name),
+      dune_stanza(
+        $,
+        'deprecated_library_name',
+        choice(
+          alias($._sf_old_public_name, $.stanza_field),
+          alias($._sf_new_public_name, $.stanza_field),
+          $.sexp,
         ),
       ),
     _stanza_ignored_subdirs: ($) =>
-      wrap(alias('ignored_subdirs', $.stanza_name), repeat1($.file_name)),
+      wrap(alias('ignored_subdirs', $.stanza_name), wrap(repeat($.file_name))),
     // Additional dune-project stanzas
     _stanza_pin: ($) =>
       wrap(
@@ -620,7 +627,7 @@ module.exports = grammar({
     _stanza_accept_alternative_dune_file_name: ($) =>
       wrap(alias('accept_alternative_dune_file_name', $.stanza_name)),
     _stanza_executables_implicit_empty_intf: ($) =>
-      wrap(alias('executables_implicit_empty_intf', $.stanza_name)),
+      wrap(alias('executables_implicit_empty_intf', $.stanza_name), optional($.bool)),
     _stanza_expand_aliases_in_sandbox: ($) =>
       wrap(alias('expand_aliases_in_sandbox', $.stanza_name)),
     _stanza_implicit_transitive_deps: ($) =>
