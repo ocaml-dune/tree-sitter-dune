@@ -17,7 +17,9 @@ const PREC = {COMMENT: 0, STRING: 1};
 
 const atom_regexp = /[^;()"\s]+/;
 
-const pform_regexp = /%\{[^}]+\}/;
+// A pform cannot contain whitespace, parens, quotes or comments; stopping
+// there keeps an unterminated %{ from running on to a later }.
+const pform_regexp = /%\{[^}\s()";]+\}/;
 
 const seq_regexp = (a, b) => new RegExp(a.source + b.source);
 

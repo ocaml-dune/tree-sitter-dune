@@ -1,0 +1,95 @@
+=============
+bare pforms
+=============
+
+(rule
+ (deps %{x})
+ (action (run %{bin:foo} %{deps})))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (field_name)
+    (file_name
+      (interpolation))
+    (field_name)
+    (action
+      (action_name)
+      (file_name_dep
+        (file_name
+          (interpolation)))
+      (interpolation))))
+
+=============
+pform inside a longer atom
+=============
+
+(rule
+ (action (run %{deps}.bak -I%{lib:foo:.})))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (field_name)
+    (action
+      (action_name)
+      (file_name_dep
+        (file_name)))))
+
+=============
+pform containing whitespace
+=============
+
+(rule
+ (action (run %{a b})))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (field_name)
+    (action
+      (action_name)
+      (file_name_dep
+        (file_name)))))
+
+=============
+unterminated pform does not swallow later stanzas
+=============
+
+(rule
+ (action (run %{dep)))
+
+(library
+ (name foo))
+
+(rule
+ (action (run %{bin:x})))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (field_name)
+    (action
+      (action_name)
+      (file_name_dep
+        (file_name))))
+  (stanza
+    (stanza_name)
+    (field_name)
+    (module_name))
+  (stanza
+    (stanza_name)
+    (field_name)
+    (action
+      (action_name)
+      (file_name_dep
+        (file_name
+          (interpolation))))))

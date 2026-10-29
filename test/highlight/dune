@@ -1,0 +1,6 @@
+(rule
+ (deps %{x})
+ ;     ^ variable
+ (action (run %{bin:foo} %{deps})))
+ ;            ^ variable
+ ;                       ^ variable
