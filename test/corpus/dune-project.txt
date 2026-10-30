@@ -485,3 +485,146 @@ boolean stanzas with and without a value
   (stanza
     (stanza_name)
     (bool)))
+
+================
+project metadata
+================
+
+(homepage https://example.com/proj)
+(bug_reports https://example.com/proj/issues)
+(maintainers "Jane Doe <jane@example.com>" "John Doe")
+
+---
+
+(source_file
+  (stanza
+    (stanza_name))
+  (stanza
+    (stanza_name))
+  (stanza
+    (stanza_name)
+    (quoted_string)
+    (quoted_string)))
+
+=============
+project flags
+=============
+
+(wrapped_executables false)
+(map_workspace_root true)
+(use_standard_c_and_cxx_flags)
+(expand_aliases_in_sandbox)
+(accept_alternative_dune_file_name)
+(explicit_js_mode)
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (bool))
+  (stanza
+    (stanza_name)
+    (bool))
+  (stanza
+    (stanza_name))
+  (stanza
+    (stanza_name))
+  (stanza
+    (stanza_name))
+  (stanza
+    (stanza_name)))
+
+==========
+source uri
+==========
+
+(source (uri https://example.com/proj.tar.gz))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)))
+
+===============================================
+package description, deprecated names and sites
+===============================================
+
+(package
+ (name mylib)
+ (description "A longer description")
+ (deprecated_package_names old_name)
+ (sites (lib plugins) (share data)))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (stanza_field
+      (field_name)
+      (package_name))
+    (stanza_field
+      (field_name)
+      (quoted_string))
+    (stanza_field
+      (field_name)
+      (package_name))
+    (stanza_field
+      (field_name)
+      (sexp
+        (sexp)
+        (sexp))
+      (sexp
+        (sexp)
+        (sexp)))))
+
+=======
+dialect
+=======
+
+(dialect
+ (name myml)
+ (implementation
+  (extension mf)
+  (preprocess (run ./pp.exe %{input-file})))
+ (interface (extension mfi)))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (stanza_field
+      (field_name)
+      (sexp))
+    (stanza_field
+      (field_name)
+      (sexp
+        (sexp)
+        (sexp))
+      (sexp
+        (sexp)
+        (sexp
+          (sexp)
+          (sexp)
+          (sexp
+            (interpolation)))))
+    (stanza_field
+      (field_name)
+      (sexp
+        (sexp)
+        (sexp)))))
+
+======================
+formatting enabled_for
+======================
+
+(formatting (enabled_for ocaml dune))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)))

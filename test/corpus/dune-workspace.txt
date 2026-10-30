@@ -353,3 +353,59 @@ repository
     (stanza_field
       (field_name)
       (sexp))))
+
+===========================
+default context fdo and env
+===========================
+
+(lang dune 3.24)
+(context
+ (default
+  (fdo src/main.exe)
+  (env (_ (flags (:standard -w +a))))))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name))
+  (stanza
+    (stanza_name)
+    (stanza_field
+      (field_name)
+      (stanza_field
+        (field_name))
+      (stanza_field
+        (field_name)
+        (sexp
+          (sexp)
+          (sexp
+            (sexp)
+            (sexp
+              (sexp)
+              (sexp)
+              (sexp))))))))
+
+=================
+opam context root
+=================
+
+(lang dune 3.24)
+(context
+ (opam
+  (switch 4.14.1)
+  (root /home/me/.opam)))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name))
+  (stanza
+    (stanza_name)
+    (stanza_field
+      (field_name)
+      (stanza_field
+        (field_name))
+      (stanza_field
+        (field_name)))))

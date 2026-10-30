@@ -284,7 +284,7 @@ module.exports = grammar({
         'include_dirs',
         repeat(choice($._atom_or_qs, wrap('lib', $.library_name), wrap('include', $.file_name))),
       ),
-    _sf_optional: ($) => dune_field($, 'optional', $.bool),
+    _sf_optional: ($) => dune_field($, 'optional', optional($.bool)),
     _sf_site: ($) => dune_field($, 'site', wrap($.package_name, $._atom_or_qs)),
     _sf_packages: ($) => dune_field($, 'packages', repeat($.package_name)),
     _sf_preludes: ($) =>
@@ -492,7 +492,6 @@ module.exports = grammar({
             choice('github', 'gitlab', 'bitbucket', 'sourcehut', 'codeberg', 'tangled'),
             field('repo', $._atom_or_qs),
           ),
-          wrap('git', field('url', $._atom_or_qs)),
           wrap('uri', field('url', $._atom_or_qs)),
         ),
       ),
@@ -689,7 +688,8 @@ module.exports = grammar({
       ),
     _stanza_coq_theory: ($) =>
       wrap(
-        alias('coq.theory', $.stanza_name),
+        // rocq.theory replaces coq.theory, which dune 3.24 no longer accepts.
+        alias(choice('coq.theory', 'rocq.theory'), $.stanza_name),
         repeat(choice(
           alias($._sf_name_atom, $.stanza_field),
           alias($._sf_theories, $.stanza_field),
