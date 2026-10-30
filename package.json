@@ -1,5 +1,5 @@
 {
-  "name": "tree-sitter-dune",
+  "name": "@ocaml-dune/tree-sitter-dune",
   "version": "0.1.0",
   "description": "Tree-sitter grammar for Dune build system files (dune, dune-project, dune-workspace)",
   "main": "bindings/node",
@@ -52,6 +52,9 @@
       "injections": "queries/injections.scm"
     }
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "files": [
     "grammar.js",
     "binding.gyp",
