@@ -1,6 +1,6 @@
 # tree-sitter-dune
 
-[![CI](https://github.com/emillon/tree-sitter-dune/workflows/CI/badge.svg)](https://github.com/tmcgilchrist/tree-sitter-dune/actions)
+[![CI](https://github.com/ocaml-dune/tree-sitter-dune/actions/workflows/ci.yml/badge.svg)](https://github.com/ocaml-dune/tree-sitter-dune/actions)
 [![npm](https://img.shields.io/npm/v/tree-sitter-dune.svg)](https://www.npmjs.com/package/tree-sitter-dune)
 [![crates.io](https://img.shields.io/crates/v/tree-sitter-dune.svg)](https://crates.io/crates/tree-sitter-dune)
 [![pypi](https://img.shields.io/pypi/v/tree-sitter-dune.svg)](https://pypi.org/project/tree-sitter-dune/)
@@ -39,7 +39,7 @@ cargo add tree-sitter-dune
 ### Tree-sitter CLI
 
 ```bash
-git clone https://github.com/tmcgilchrist/tree-sitter-dune
+git clone https://github.com/ocaml-dune/tree-sitter-dune
 cd tree-sitter-dune
 npm ci                # installs the pinned tree-sitter CLI
 npm run generate      # make generate, at the pinned ABI
@@ -119,7 +119,7 @@ import (
     "context"
     "fmt"
     sitter "github.com/tree-sitter/go-tree-sitter"
-    dune "github.com/tmcgilchrist/tree-sitter-dune/bindings/go"
+    dune "github.com/ocaml-dune/tree-sitter-dune/bindings/go"
 )
 
 func main() {

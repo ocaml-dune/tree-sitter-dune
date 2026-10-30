@@ -16,10 +16,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/emillon/tree-sitter-dune.git"
+    "url": "https://github.com/ocaml-dune/tree-sitter-dune.git"
   },
   "bugs": {
-    "url": "https://github.com/emillon/tree-sitter-dune/issues"
+    "url": "https://github.com/ocaml-dune/tree-sitter-dune/issues"
   },
   "dependencies": {
     "node-addon-api": "^8.0.0",

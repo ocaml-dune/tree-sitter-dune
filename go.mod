@@ -1,4 +1,4 @@
-module github.com/emillon/tree-sitter-dune
+module github.com/ocaml-dune/tree-sitter-dune
 
 go 1.22
 
