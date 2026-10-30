@@ -1256,3 +1256,172 @@ rule promote-until-clean mode (dune lang < 3.0)
           (file_name))
         (action
           (action_name))))))
+
+====================================
+tests, executables and library flags
+====================================
+
+(tests
+ (names test_a test_b)
+ (libraries alcotest)
+ (build_if %{arch_sixtyfour})
+ (ocamlc_flags (:standard -g)))
+
+(executables
+ (names main tool)
+ (public_names main -))
+
+(library
+ (name mylib)
+ (library_flags (-linkall))
+ (c_library_flags (-lm)))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (stanza_field
+      (field_name)
+      (module_name)
+      (module_name))
+    (stanza_field
+      (field_name)
+      (library_name))
+    (stanza_field
+      (field_name)
+      (blang
+        (interpolation)))
+    (stanza_field
+      (field_name)
+      (osl_standard)))
+  (stanza
+    (stanza_name)
+    (stanza_field
+      (field_name)
+      (module_name)
+      (module_name))
+    (stanza_field
+      (field_name)
+      (public_name)
+      (public_name)))
+  (stanza
+    (stanza_name)
+    (stanza_field
+      (field_name)
+      (module_name))
+    (stanza_field
+      (field_name))
+    (stanza_field
+      (field_name))))
+
+===================================
+library cxx_flags (dune lang < 2.0)
+===================================
+
+(library
+ (name mylib)
+ (cxx_flags (-O2)))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (stanza_field
+      (field_name)
+      (module_name))
+    (stanza_field
+      (field_name))))
+
+========================
+menhir infer and explain
+========================
+
+(menhir
+ (modules parser)
+ (infer true)
+ (explain true))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (stanza_field
+      (field_name)
+      (module_name))
+    (stanza_field
+      (field_name)
+      (bool))
+    (stanza_field
+      (field_name)
+      (blang))))
+
+======
+plugin
+======
+
+(plugin
+ (name myplugin)
+ (libraries mylib)
+ (site (mypkg plugins))
+ (optional))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (stanza_field
+      (field_name)
+      (module_name))
+    (stanza_field
+      (field_name)
+      (library_name))
+    (stanza_field
+      (field_name)
+      (package_name))
+    (stanza_field
+      (field_name))))
+
+============
+mdx packages
+============
+
+(mdx
+ (files README.md)
+ (packages mypkg))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (stanza_field
+      (field_name)
+      (file_name))
+    (stanza_field
+      (field_name)
+      (package_name))))
+
+===========
+rocq.theory
+===========
+
+(rocq.theory
+ (name Foo)
+ (theories Bar)
+ (plugins mypkg.plugin))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (stanza_field
+      (field_name))
+    (stanza_field
+      (field_name))
+    (stanza_field
+      (field_name))))

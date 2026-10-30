@@ -1072,10 +1072,6 @@
     "named": false
   },
   {
-    "type": "git",
-    "named": false
-  },
-  {
     "type": "github",
     "named": false
   },

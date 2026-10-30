@@ -3737,8 +3737,16 @@
           "type": "FIELD",
           "name": "value",
           "content": {
-            "type": "SYMBOL",
-            "name": "bool"
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "bool"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
           }
         },
         {
@@ -6908,31 +6916,6 @@
                 },
                 {
                   "type": "STRING",
-                  "value": "git"
-                },
-                {
-                  "type": "FIELD",
-                  "name": "url",
-                  "content": {
-                    "type": "SYMBOL",
-                    "name": "_atom_or_qs"
-                  }
-                },
-                {
-                  "type": "STRING",
-                  "value": ")"
-                }
-              ]
-            },
-            {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "STRING",
-                  "value": "("
-                },
-                {
-                  "type": "STRING",
                   "value": "uri"
                 },
                 {
@@ -9126,8 +9109,17 @@
         {
           "type": "ALIAS",
           "content": {
-            "type": "STRING",
-            "value": "coq.theory"
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "coq.theory"
+              },
+              {
+                "type": "STRING",
+                "value": "rocq.theory"
+              }
+            ]
           },
           "named": true,
           "value": "stanza_name"
