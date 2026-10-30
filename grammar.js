@@ -52,7 +52,10 @@ module.exports = grammar({
       token.immediate(
         prec(
           PREC.STRING,
-          choice(/[^\\"]/, seq('\\', choice('n', '\n', '\r', 'r', '"', '\\'))),
+          choice(
+            /[^\\"]/,
+            seq('\\', choice('n', '\n', '\r', 'r', 't', 'b', '"', '\\', '%', /x[0-9a-fA-F]{2}/, /[0-9]{3}/)),
+          ),
         ),
       ),
     interpolation: ($) => pform_regexp,
@@ -139,7 +142,7 @@ module.exports = grammar({
     _sf_generic: ($) =>
       prec(1, wrap(field('name', alias($._atom, $.field_name)), field('value', repeat($.sexp)))),
     _field_modules_maybe_inline: ($) =>
-      choice($.module_name, alias($._sf_modules_list, $.stanza_field)),
+      choice($.module_name, alias($._sf_modules, $.stanza_field)),
     _stanza_alias: ($) =>
       dune_stanza(
         $,
@@ -206,6 +209,7 @@ module.exports = grammar({
         $.library_name,
         alias($._sf_re_export, $.stanza_field),
         alias($._sf_select, $.stanza_field),
+        alias($._sf_instantiate, $.stanza_field),
       ),
     // Shared _sf_* field rules (used across multiple stanzas)
     _sf_name_module: ($) => dune_field($, 'name', $.module_name),
@@ -224,9 +228,11 @@ module.exports = grammar({
     _sf_build_if: ($) => dune_field($, 'build_if', $.blang),
     _sf_action: ($) => dune_field($, 'action', $.action),
     _sf_action_alias: ($) => dune_field($, 'action', field('action', $.action)),
-    _sf_deps: ($) => dune_field($, 'deps', repeat1($._dep)),
+    _sf_deps: ($) => dune_field($, 'deps', repeat($._dep)),
     _sf_re_export: ($) => dune_field($, 're_export', $.library_name),
     _sf_select: ($) => dune_field($, 'select', $.sexps1),
+    _sf_instantiate: ($) =>
+      dune_field($, 'instantiate', seq(repeat1($.library_name), optional(seq(':as', $.library_name)))),
     _sf_package: ($) => dune_field($, 'package', $.package_name),
     _sf_files_sexp: ($) => dune_field($, 'files', repeat($.sexp)),
     _sf_files_file: ($) => dune_field($, 'files', $.file_name),
@@ -256,26 +262,33 @@ module.exports = grammar({
         ),
       ),
     _sf_transition: ($) => dune_field($, 'transition', $._atom_or_qs),
-    _sf_section: ($) => dune_field($, 'section', $._atom_or_qs),
+    _sf_section: ($) =>
+      dune_field($, 'section', choice($._atom_or_qs, wrap('site', wrap($.package_name, $._atom_or_qs)))),
     _sf_dirs_sexp: ($) => dune_field($, 'dirs', repeat($.sexp)),
     _sf_sites: ($) => dune_field($, 'sites', repeat($.sexp)),
     _sf_mode_rule: ($) => dune_field($, 'mode', $._rule_mode),
-    _sf_target: ($) => dune_field($, 'target', $._atom_or_qs),
+    _sf_target: ($) => dune_field($, 'target', $._target),
     _sf_targets: ($) => dune_field($, 'targets', repeat($._target)),
     _sf_fallback: ($) => dune_field($, 'fallback', optional($.bool)),
     _sf_locks: ($) => dune_field($, 'locks', repeat1($.lock_name)),
-    _sf_only_sources: ($) => dune_field($, 'only_sources', $.blang),
+    _sf_only_sources: ($) => dune_field($, 'only_sources', optional($.blang)),
     _sf_applies_to: ($) => dune_field($, 'applies_to', repeat($._atom_or_qs)),
     _sf_merge_into: ($) => dune_field($, 'merge_into', $.module_name),
     _sf_infer: ($) => dune_field($, 'infer', $.bool),
     _sf_explain: ($) => dune_field($, 'explain', $.blang),
     _sf_archive_name: ($) => dune_field($, 'archive_name', $._atom_or_qs),
     _sf_language: ($) => dune_field($, 'language', $._atom_or_qs),
-    _sf_include_dirs: ($) => dune_field($, 'include_dirs', repeat($._atom_or_qs)),
+    _sf_include_dirs: ($) =>
+      dune_field(
+        $,
+        'include_dirs',
+        repeat(choice($._atom_or_qs, wrap('lib', $.library_name), wrap('include', $.file_name))),
+      ),
     _sf_optional: ($) => dune_field($, 'optional', $.bool),
     _sf_site: ($) => dune_field($, 'site', wrap($.package_name, $._atom_or_qs)),
     _sf_packages: ($) => dune_field($, 'packages', repeat($.package_name)),
-    _sf_preludes: ($) => dune_field($, 'preludes', repeat($.file_name)),
+    _sf_preludes: ($) =>
+      dune_field($, 'preludes', repeat(choice($.file_name, wrap('env', $._atom_or_qs, $.file_name)))),
     _sf_theories: ($) => dune_field($, 'theories', repeat($._atom_or_qs)),
     _sf_plugins: ($) => dune_field($, 'plugins', repeat($._atom_or_qs)),
     _sf_depends: ($) => dune_field($, 'depends', repeat1($.package_dep)),
@@ -283,14 +296,27 @@ module.exports = grammar({
     _sf_depopts: ($) => dune_field($, 'depopts', repeat1($.package_dep)),
     _sf_tags: ($) => dune_field($, 'tags', wrap(repeat($.tag_name))),
     _sf_deprecated_package_names: ($) => dune_field($, 'deprecated_package_names', repeat1($.package_name)),
-    _sf_allow_empty: ($) => dune_field($, 'allow_empty', $.bool),
+    _sf_allow_empty: ($) => dune_field($, 'allow_empty', optional($.bool)),
     _sf_promote: ($) => dune_field($, 'promote', repeat($._rule_mode_promote_field)),
     _sf_promote_into: ($) => dune_field($, 'promote-into', $.file_name),
+    _sf_promote_until_clean_into: ($) => dune_field($, 'promote-until-clean-into', $.file_name),
     _sf_only: ($) => dune_field($, 'only', $._atom_or_qs),
     _sf_into: ($) => dune_field($, 'into', $.file_name),
     _sf_until_clean: ($) => wrap(field('name', alias('until-clean', $.field_name))),
     _sf_old_public_name: ($) => dune_field($, 'old_public_name', $.library_name),
     _sf_new_public_name: ($) => dune_field($, 'new_public_name', $.library_name),
+    _sf_url: ($) => dune_field($, 'url', $._atom_or_qs),
+    _sf_version: ($) => dune_field($, 'version', $._atom_or_qs),
+    _sf_pin_package: ($) =>
+      dune_field(
+        $,
+        'package',
+        repeat(choice(
+          alias($._sf_name_package, $.stanza_field),
+          alias($._sf_version, $.stanza_field),
+          generic_field($),
+        )),
+      ),
     library_name: ($) => $._atom_or_qs,
     public_name: ($) => $._atom_or_qs,
     module_name: ($) => $._atom_or_qs,
@@ -330,17 +356,22 @@ module.exports = grammar({
         wrap('source_tree', $.file_name),
         wrap('package', $.package_name),
         wrap('glob_files', repeat1($._atom_or_qs)),
+        wrap('glob_files_rec', repeat1($._atom_or_qs)),
+        wrap('file', $.file_name),
+        wrap('include', $.file_name),
         $.file_name,
       ),
     _target: ($) => choice($.file_name_target, wrap('dir', $.file_name_target)),
     bool: ($) => choice('true', 'false'),
     _rule_mode: ($) =>
       choice(
+        'standard',
         'fallback',
         'promote',
         'promote-until-clean', // dune lang < 3.0
         alias($._sf_promote, $.stanza_field),
         alias($._sf_promote_into, $.stanza_field),
+        alias($._sf_promote_until_clean_into, $.stanza_field), // dune lang < 3.0
       ),
     _rule_mode_promote_field: ($) =>
       choice(
@@ -349,23 +380,30 @@ module.exports = grammar({
         alias($._sf_until_clean, $.stanza_field),
       ),
     blang: ($) => choice($._atom_or_qs, wrap($.blang_op, repeat1($.blang))),
-    blang_op: ($) => choice('=', '<>', '>', '<', '>=', '<=', 'or', 'and'),
+    blang_op: ($) => choice('=', '<>', '>', '<', '>=', '<=', 'or', 'and', 'not'),
     field_name: ($) => $._atom_or_qs,
     alias_name: ($) => $._atom_or_qs,
     action: ($) =>
       choice(
         dune_action($, 'bash', $.shell_command),
-        dune_action($, 'cat', $.file_name_dep),
+        dune_action($, 'cat', repeat1($.file_name_dep)),
         dune_action($, 'cmp', seq($.file_name_dep, $.file_name_dep)),
         dune_action($, 'chdir', seq($.file_name, $.action)),
+        dune_action($, 'concurrent', repeat($.action)),
         dune_action($, 'copy', seq($.file_name_dep, $.file_name_target)),
         dune_action($, 'copy#', seq($.file_name_dep, $.file_name_target)),
         dune_action($, 'diff', seq($.file_name_dep, $.file_name_dep)),
         dune_action($, 'diff?', seq($.file_name_dep, $.file_name_dep)),
+        dune_action($, 'dynamic-run', seq($.file_name_dep, repeat($._atom_or_qs))),
         dune_action($, 'echo', repeat1($._atom_or_qs)),
+        dune_action($, 'format-dune-file', seq($.file_name_dep, $.file_name_target)),
         dune_action($, 'ignore-stdout', $.action),
+        dune_action($, 'ignore-stderr', $.action),
+        dune_action($, 'ignore-outputs', $.action),
         dune_action($, 'no-infer', $.action),
         dune_action($, 'pipe-outputs', repeat1($.action)),
+        dune_action($, 'pipe-stdout', repeat1($.action)),
+        dune_action($, 'pipe-stderr', repeat1($.action)),
         dune_action($, 'progn', repeat($.action)),
         dune_action($, 'run', seq($.file_name_dep, repeat($._atom_or_qs))),
         dune_action($, 'setenv', seq($._atom_or_qs, $._atom_or_qs, $.action)),
@@ -373,11 +411,12 @@ module.exports = grammar({
         dune_action(
           $,
           'with-accepted-exit-codes',
-          seq($._atom_or_qs, $.action),
+          seq($.blang, $.action),
         ),
         dune_action($, 'with-outputs-to', seq($.file_name_target, $.action)),
         dune_action($, 'with-stderr-to', seq($.file_name_target, $.action)),
         dune_action($, 'with-stdout-to', seq($.file_name_target, $.action)),
+        dune_action($, 'with-stdin-from', seq($.file_name_dep, $.action)),
         dune_action($, 'write-file', seq($.file_name_target, $._atom_or_qs)),
       ),
     _stanza_library: ($) =>
@@ -449,7 +488,10 @@ module.exports = grammar({
       wrap(
         alias('source', $.stanza_name),
         choice(
-          wrap('github', field('repo', $._atom_or_qs)),
+          wrap(
+            choice('github', 'gitlab', 'bitbucket', 'sourcehut', 'codeberg', 'tangled'),
+            field('repo', $._atom_or_qs),
+          ),
           wrap('git', field('url', $._atom_or_qs)),
           wrap('uri', field('url', $._atom_or_qs)),
         ),
@@ -459,7 +501,7 @@ module.exports = grammar({
     _stanza_maintainers: ($) =>
       wrap(alias('maintainers', $.stanza_name), repeat1(field('maintainer', $._atom_or_qs))),
     _stanza_license: ($) =>
-      wrap(alias('license', $.stanza_name), field('license', $._atom_or_qs)),
+      wrap(alias('license', $.stanza_name), repeat1(field('license', $._atom_or_qs))),
     _stanza_homepage: ($) =>
       wrap(alias('homepage', $.stanza_name), field('url', $._atom_or_qs)),
     _stanza_documentation_url: ($) =>
@@ -471,14 +513,15 @@ module.exports = grammar({
         alias('using', $.stanza_name),
         field('extension', $._atom_or_qs),
         field('version', $._atom_or_qs),
+        repeat($.sexp), // e.g. (using fmt 1.2 (enabled_for ...)) in dune lang 1.x
       ),
     _stanza_formatting: ($) =>
       wrap(
         alias('formatting', $.stanza_name),
-        choice(
+        optional(choice(
           $._atom_or_qs, // disabled, ocamlformat, etc.
           wrap('enabled_for', repeat1($._atom_or_qs)),
-        ),
+        )),
       ),
     _stanza_dialect: ($) =>
       wrap(alias('dialect', $.stanza_name), repeat(choice(generic_field($), $.sexp))),
@@ -513,12 +556,13 @@ module.exports = grammar({
       ),
     version_constraint: ($) =>
       choice(
-        wrap('=', $._atom_or_qs),
-        wrap('>=', $._atom_or_qs),
-        wrap('>', $._atom_or_qs),
-        wrap('<=', $._atom_or_qs),
-        wrap('<', $._atom_or_qs),
-        wrap('<>', $._atom_or_qs),
+        wrap('=', $._atom_or_qs, optional($._atom_or_qs)),
+        wrap('>=', $._atom_or_qs, optional($._atom_or_qs)),
+        wrap('>', $._atom_or_qs, optional($._atom_or_qs)),
+        wrap('<=', $._atom_or_qs, optional($._atom_or_qs)),
+        wrap('<', $._atom_or_qs, optional($._atom_or_qs)),
+        wrap('<>', $._atom_or_qs, optional($._atom_or_qs)),
+        wrap('not', $.version_constraint),
         wrap('and', repeat1($.version_constraint)),
         wrap('or', repeat1($.version_constraint)),
         $._atom_or_qs, // for :dev, :with-test, etc.
@@ -529,33 +573,52 @@ module.exports = grammar({
         alias('context', $.stanza_name),
         choice(
           'default',
-          $._context_opam,
+          alias($._sf_context_default, $.stanza_field),
+          alias($._sf_context_opam, $.stanza_field),
         ),
       ),
-    _context_opam: ($) =>
-      wrap(
-        'opam',
-        repeat(
-          choice(
-            wrap('switch', field('switch', $._atom_or_qs)),
-            wrap('name', field('context_name', $._atom_or_qs)),
-            wrap('profile', field('profile', $._atom_or_qs)),
-            wrap('toolchain', field('toolchain', $._atom_or_qs)),
-            wrap('host', field('host_context', $._atom_or_qs)),
-            wrap('target', field('target_triple', $._atom_or_qs)),
-            wrap('merlin'),
-            wrap('generate_merlin_rules'),
-            wrap('disable_dynamically_linked_foreign_archives', $.bool),
-            wrap('root', field('opam_root', $._atom_or_qs)),
-            wrap('lock_dir', field('lock_dir', $._atom_or_qs)),
-            wrap('paths', repeat($.sexp)),
-            wrap('env', repeat($.sexp)),
-            wrap('fdo', field('target_exe', $._atom_or_qs)),
-            wrap('targets', repeat($._atom_or_qs)),
-            $.sexp,
-          ),
-        ),
+    // (default ...) and (opam ...) are fields holding the context's fields.
+    _sf_context_default: ($) => dune_field($, 'default', repeat($._context_field)),
+    _sf_context_opam: ($) => dune_field($, 'opam', repeat($._context_field)),
+    _context_field: ($) =>
+      choice(
+        alias($._sf_name_atom, $.stanza_field),
+        alias($._sf_context_switch, $.stanza_field),
+        alias($._sf_context_profile, $.stanza_field),
+        alias($._sf_context_toolchain, $.stanza_field),
+        alias($._sf_context_host, $.stanza_field),
+        alias($._sf_context_target, $.stanza_field),
+        alias($._sf_context_merlin, $.stanza_field),
+        alias($._sf_context_generate_merlin_rules, $.stanza_field),
+        alias($._sf_context_disable_dynamically_linked_foreign_archives, $.stanza_field),
+        alias($._sf_context_root, $.stanza_field),
+        alias($._sf_context_lock_dir, $.stanza_field),
+        alias($._sf_context_paths, $.stanza_field),
+        alias($._sf_context_env, $.stanza_field),
+        alias($._sf_context_fdo, $.stanza_field),
+        alias($._sf_context_targets, $.stanza_field),
+        alias($._sf_context_instrument_with, $.stanza_field),
+        generic_field($),
+        $.sexp,
       ),
+    _sf_context_switch: ($) => dune_field($, 'switch', $._atom_or_qs),
+    _sf_context_profile: ($) => dune_field($, 'profile', $._atom_or_qs),
+    _sf_context_toolchain: ($) => dune_field($, 'toolchain', $._atom_or_qs),
+    _sf_context_host: ($) => dune_field($, 'host', $._atom_or_qs),
+    _sf_context_target: ($) => dune_field($, 'target', $._atom_or_qs),
+    _sf_context_merlin: ($) => dune_field($, 'merlin', optional($.bool)),
+    _sf_context_generate_merlin_rules: ($) =>
+      dune_field($, 'generate_merlin_rules', optional($.bool)),
+    _sf_context_disable_dynamically_linked_foreign_archives: ($) =>
+      dune_field($, 'disable_dynamically_linked_foreign_archives', $.bool),
+    _sf_context_root: ($) => dune_field($, 'root', $._atom_or_qs),
+    // A path or a (cond ...)
+    _sf_context_lock_dir: ($) => dune_field($, 'lock_dir', $.sexp),
+    _sf_context_paths: ($) => dune_field($, 'paths', repeat($.sexp)),
+    _sf_context_env: ($) => dune_field($, 'env', repeat($.sexp)),
+    _sf_context_fdo: ($) => dune_field($, 'fdo', $._atom_or_qs),
+    _sf_context_targets: ($) => dune_field($, 'targets', repeat($.sexp)),
+    _sf_context_instrument_with: ($) => dune_field($, 'instrument_with', repeat($.sexp)),
     _stanza_profile: ($) =>
       wrap(alias('profile', $.stanza_name), field('profile_name', $._atom_or_qs)),
     // Additional dune stanzas
@@ -652,10 +715,15 @@ module.exports = grammar({
     _stanza_pin: ($) =>
       wrap(
         alias('pin', $.stanza_name),
-        repeat(wrap($.package_name, $._atom_or_qs)),
+        repeat(choice(
+          alias($._sf_name_atom, $.stanza_field),
+          alias($._sf_url, $.stanza_field),
+          alias($._sf_pin_package, $.stanza_field),
+          generic_field($),
+        )),
       ),
     _stanza_warnings: ($) =>
-      wrap(alias('warnings', $.stanza_name), $._atom_or_qs),
+      wrap(alias('warnings', $.stanza_name), repeat(choice(generic_field($), $._atom_or_qs))),
     _stanza_accept_alternative_dune_file_name: ($) =>
       wrap(alias('accept_alternative_dune_file_name', $.stanza_name)),
     _stanza_executables_implicit_empty_intf: ($) =>
@@ -663,24 +731,24 @@ module.exports = grammar({
     _stanza_expand_aliases_in_sandbox: ($) =>
       wrap(alias('expand_aliases_in_sandbox', $.stanza_name)),
     _stanza_implicit_transitive_deps: ($) =>
-      wrap(alias('implicit_transitive_deps', $.stanza_name), optional($.bool)),
+      wrap(alias('implicit_transitive_deps', $.stanza_name), optional(choice($.bool, $._atom_or_qs))),
     _stanza_map_workspace_root: ($) =>
       wrap(alias('map_workspace_root', $.stanza_name), optional($.bool)),
     _stanza_opam_file_location: ($) =>
       wrap(alias('opam_file_location', $.stanza_name), $._atom_or_qs),
     _stanza_subst: ($) =>
-      wrap(alias('subst', $.stanza_name)),
+      wrap(alias('subst', $.stanza_name), optional($._atom_or_qs)),
     _stanza_use_standard_c_and_cxx_flags: ($) =>
       wrap(alias('use_standard_c_and_cxx_flags', $.stanza_name), optional($.bool)),
     _stanza_wrapped_executables: ($) =>
       wrap(alias('wrapped_executables', $.stanza_name), optional($.bool)),
     _stanza_maintenance_intent: ($) =>
-      wrap(alias('maintenance_intent', $.stanza_name), $._atom_or_qs),
+      wrap(alias('maintenance_intent', $.stanza_name), repeat1($._atom_or_qs)),
     // Additional dune-workspace stanzas (note: env is shared with dune files)
     _stanza_config: ($) =>
       wrap(alias('config', $.stanza_name), repeat(choice(generic_field($), $.sexp))),
     _stanza_lock_dir: ($) =>
-      wrap(alias('lock_dir', $.stanza_name), field('path', $._atom_or_qs)),
+      wrap(alias('lock_dir', $.stanza_name), repeat(generic_field($))),
     _stanza_repository: ($) =>
       wrap(alias('repository', $.stanza_name), repeat(choice(generic_field($), $.sexp))),
   },

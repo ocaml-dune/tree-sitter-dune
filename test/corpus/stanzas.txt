@@ -153,7 +153,9 @@ Rule
     (stanza_field
       (field_name))
     (stanza_field
-      (field_name))
+      (field_name)
+      (file_name_target
+        (file_name)))
     (stanza_field
       (field_name)
       (action
@@ -308,7 +310,9 @@ Rule
   (stanza
     (stanza_name)
     (stanza_field
-      (field_name))
+      (field_name)
+      (file_name_target
+        (file_name)))
     (stanza_field
       (field_name)
       (stanza_field
@@ -434,7 +438,9 @@ enabled_if
   (stanza
     (stanza_name)
     (stanza_field
-      (field_name))
+      (field_name)
+      (file_name_target
+        (file_name)))
     (stanza_field
       (field_name)
       (blang
@@ -456,7 +462,9 @@ enabled_if
   (stanza
     (stanza_name)
     (stanza_field
-      (field_name))
+      (field_name)
+      (file_name_target
+        (file_name)))
     (stanza_field
       (field_name)
       (blang

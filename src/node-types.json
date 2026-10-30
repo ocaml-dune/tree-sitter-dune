@@ -12,6 +12,10 @@
             "named": true
           },
           {
+            "type": "blang",
+            "named": true
+          },
+          {
             "type": "file_name",
             "named": true
           },
@@ -451,24 +455,6 @@
           }
         ]
       },
-      "context_name": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "interpolation",
-            "named": true
-          },
-          {
-            "type": "multiline_string",
-            "named": true
-          },
-          {
-            "type": "quoted_string",
-            "named": true
-          }
-        ]
-      },
       "directory": {
         "multiple": false,
         "required": false,
@@ -507,24 +493,6 @@
           }
         ]
       },
-      "host_context": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "interpolation",
-            "named": true
-          },
-          {
-            "type": "multiline_string",
-            "named": true
-          },
-          {
-            "type": "quoted_string",
-            "named": true
-          }
-        ]
-      },
       "language": {
         "multiple": false,
         "required": false,
@@ -544,24 +512,6 @@
         ]
       },
       "license": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "interpolation",
-            "named": true
-          },
-          {
-            "type": "multiline_string",
-            "named": true
-          },
-          {
-            "type": "quoted_string",
-            "named": true
-          }
-        ]
-      },
-      "lock_dir": {
         "multiple": true,
         "required": false,
         "types": [
@@ -580,60 +530,6 @@
         ]
       },
       "maintainer": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "interpolation",
-            "named": true
-          },
-          {
-            "type": "multiline_string",
-            "named": true
-          },
-          {
-            "type": "quoted_string",
-            "named": true
-          }
-        ]
-      },
-      "opam_root": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "interpolation",
-            "named": true
-          },
-          {
-            "type": "multiline_string",
-            "named": true
-          },
-          {
-            "type": "quoted_string",
-            "named": true
-          }
-        ]
-      },
-      "path": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "interpolation",
-            "named": true
-          },
-          {
-            "type": "multiline_string",
-            "named": true
-          },
-          {
-            "type": "quoted_string",
-            "named": true
-          }
-        ]
-      },
-      "profile": {
         "multiple": true,
         "required": false,
         "types": [
@@ -715,78 +611,6 @@
           }
         ]
       },
-      "switch": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "interpolation",
-            "named": true
-          },
-          {
-            "type": "multiline_string",
-            "named": true
-          },
-          {
-            "type": "quoted_string",
-            "named": true
-          }
-        ]
-      },
-      "target_exe": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "interpolation",
-            "named": true
-          },
-          {
-            "type": "multiline_string",
-            "named": true
-          },
-          {
-            "type": "quoted_string",
-            "named": true
-          }
-        ]
-      },
-      "target_triple": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "interpolation",
-            "named": true
-          },
-          {
-            "type": "multiline_string",
-            "named": true
-          },
-          {
-            "type": "quoted_string",
-            "named": true
-          }
-        ]
-      },
-      "toolchain": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "interpolation",
-            "named": true
-          },
-          {
-            "type": "multiline_string",
-            "named": true
-          },
-          {
-            "type": "quoted_string",
-            "named": true
-          }
-        ]
-      },
       "url": {
         "multiple": false,
         "required": false,
@@ -853,10 +677,6 @@
           "named": true
         },
         {
-          "type": "package_name",
-          "named": true
-        },
-        {
           "type": "quoted_string",
           "named": true
         },
@@ -902,6 +722,10 @@
             "named": false
           },
           {
+            "type": ":as",
+            "named": false
+          },
+          {
             "type": "action",
             "named": true
           },
@@ -930,11 +754,19 @@
             "named": false
           },
           {
+            "type": "env",
+            "named": false
+          },
+          {
             "type": "env_var",
             "named": false
           },
           {
             "type": "fallback",
+            "named": false
+          },
+          {
+            "type": "file",
             "named": false
           },
           {
@@ -950,8 +782,20 @@
             "named": false
           },
           {
+            "type": "glob_files_rec",
+            "named": false
+          },
+          {
+            "type": "include",
+            "named": false
+          },
+          {
             "type": "interpolation",
             "named": true
+          },
+          {
+            "type": "lib",
+            "named": false
           },
           {
             "type": "library_name",
@@ -1026,7 +870,15 @@
             "named": true
           },
           {
+            "type": "site",
+            "named": false
+          },
+          {
             "type": "source_tree",
+            "named": false
+          },
+          {
+            "type": "standard",
             "named": false
           },
           {
@@ -1127,6 +979,10 @@
     "named": false
   },
   {
+    "type": ":as",
+    "named": false
+  },
+  {
     "type": ":include",
     "named": false
   },
@@ -1171,6 +1027,14 @@
     "named": false
   },
   {
+    "type": "bitbucket",
+    "named": false
+  },
+  {
+    "type": "codeberg",
+    "named": false
+  },
+  {
     "type": "comment",
     "named": true,
     "extra": true
@@ -1181,10 +1045,6 @@
   },
   {
     "type": "dir",
-    "named": false
-  },
-  {
-    "type": "disable_dynamically_linked_foreign_archives",
     "named": false
   },
   {
@@ -1208,11 +1068,7 @@
     "named": false
   },
   {
-    "type": "fdo",
-    "named": false
-  },
-  {
-    "type": "generate_merlin_rules",
+    "type": "file",
     "named": false
   },
   {
@@ -1224,11 +1080,19 @@
     "named": false
   },
   {
+    "type": "gitlab",
+    "named": false
+  },
+  {
     "type": "glob_files",
     "named": false
   },
   {
-    "type": "host",
+    "type": "glob_files_rec",
+    "named": false
+  },
+  {
+    "type": "include",
     "named": false
   },
   {
@@ -1236,11 +1100,7 @@
     "named": true
   },
   {
-    "type": "lock_dir",
-    "named": false
-  },
-  {
-    "type": "merlin",
+    "type": "lib",
     "named": false
   },
   {
@@ -1248,15 +1108,11 @@
     "named": true
   },
   {
-    "type": "name",
-    "named": false
-  },
-  {
     "type": "named_variable",
     "named": true
   },
   {
-    "type": "opam",
+    "type": "not",
     "named": false
   },
   {
@@ -1276,14 +1132,6 @@
     "named": false
   },
   {
-    "type": "paths",
-    "named": false
-  },
-  {
-    "type": "profile",
-    "named": false
-  },
-  {
     "type": "promote",
     "named": false
   },
@@ -1292,11 +1140,11 @@
     "named": false
   },
   {
-    "type": "root",
+    "type": "sandbox",
     "named": false
   },
   {
-    "type": "sandbox",
+    "type": "site",
     "named": false
   },
   {
@@ -1304,19 +1152,15 @@
     "named": false
   },
   {
-    "type": "switch",
+    "type": "sourcehut",
     "named": false
   },
   {
-    "type": "target",
+    "type": "standard",
     "named": false
   },
   {
-    "type": "targets",
-    "named": false
-  },
-  {
-    "type": "toolchain",
+    "type": "tangled",
     "named": false
   },
   {

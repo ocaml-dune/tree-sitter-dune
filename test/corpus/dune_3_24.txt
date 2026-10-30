@@ -1,0 +1,940 @@
+===========================
+context default with fields
+===========================
+
+(context
+ (default
+  (name host)
+  (profile release)
+  (merlin)
+  (targets native)))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (stanza_field
+      (field_name)
+      (stanza_field
+        (field_name))
+      (stanza_field
+        (field_name))
+      (stanza_field
+        (field_name))
+      (stanza_field
+        (field_name)
+        (sexp)))))
+
+==============================
+context default without fields
+==============================
+
+(context (default))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (stanza_field
+      (field_name))))
+
+===============================================
+context merlin with a value and instrument_with
+===============================================
+
+(context
+ (default
+  (merlin false)
+  (instrument_with bisect_ppx)))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (stanza_field
+      (field_name)
+      (stanza_field
+        (field_name)
+        (bool))
+      (stanza_field
+        (field_name)
+        (sexp)))))
+
+===========================
+lock_dir with solver fields
+===========================
+
+(lock_dir
+ (path dune.lock)
+ (repositories overlay upstream)
+ (solver_env (os linux)))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (stanza_field
+      (field_name)
+      (sexp))
+    (stanza_field
+      (field_name)
+      (sexp)
+      (sexp))
+    (stanza_field
+      (field_name)
+      (sexp
+        (sexp)
+        (sexp)))))
+
+=======================
+workspace pin with name
+=======================
+
+(pin
+ (name local-fmt)
+ (url "git+https://github.com/dbuenzli/fmt.git")
+ (package (name fmt)))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (stanza_field
+      (field_name))
+    (stanza_field
+      (field_name)
+      (quoted_string))
+    (stanza_field
+      (field_name)
+      (stanza_field
+        (field_name)
+        (package_name)))))
+
+=======================
+pin with package fields
+=======================
+
+(pin
+ (url "git+https://github.com/dbuenzli/fmt.git")
+ (package
+  (name fmt)
+  (version 0.9.0)))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (stanza_field
+      (field_name)
+      (quoted_string))
+    (stanza_field
+      (field_name)
+      (stanza_field
+        (field_name)
+        (package_name))
+      (stanza_field
+        (field_name)))))
+
+===================================
+package allow_empty without a value
+===================================
+
+(package
+ (name a)
+ (allow_empty))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (stanza_field
+      (field_name)
+      (package_name))
+    (stanza_field
+      (field_name))))
+
+============================================
+package depends with two-operand constraints
+============================================
+
+(package
+ (name a)
+ (depends
+  (conf-libX11 (<> :os win32))
+  (ocaml (and (>= 4.14) (< 6.0)))))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (stanza_field
+      (field_name)
+      (package_name))
+    (stanza_field
+      (field_name)
+      (package_dep
+        (package_name)
+        (version_constraint))
+      (package_dep
+        (package_name)
+        (version_constraint
+          (version_constraint)
+          (version_constraint))))))
+
+==================
+subst with a value
+==================
+
+(subst disabled)
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)))
+
+===========================
+license with several values
+===========================
+
+(license MIT ISC)
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)))
+
+==============
+source kinds
+==============
+
+(source (gitlab org/project/repo))
+(source (codeberg user/repo))
+(source (tangled @anil.recoil.org/foo))
+(source (sourcehut user/repo))
+(source (bitbucket user/repo))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name))
+  (stanza
+    (stanza_name))
+  (stanza
+    (stanza_name))
+  (stanza
+    (stanza_name))
+  (stanza
+    (stanza_name)))
+
+=======================================
+implicit_transitive_deps with a setting
+=======================================
+
+(implicit_transitive_deps false-if-hidden-includes-supported)
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)))
+
+======================================
+maintenance_intent with several values
+======================================
+
+(maintenance_intent "(latest)" "1.2")
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (quoted_string)
+    (quoted_string)))
+
+===================
+warnings with names
+===================
+
+(warnings (no_keep_locs disabled))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (stanza_field
+      (field_name)
+      (sexp))))
+
+==========================
+formatting without a value
+==========================
+
+(formatting)
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)))
+
+==============================
+using with extension arguments
+==============================
+
+(lang dune 1.11)
+(using fmt 1.2 (enabled_for ocaml))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name))
+  (stanza
+    (stanza_name)
+    (sexp
+      (sexp)
+      (sexp))))
+
+==============
+blang not
+==============
+
+(library
+ (name a)
+ (enabled_if (not (= %{profile} release))))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (stanza_field
+      (field_name)
+      (module_name))
+    (stanza_field
+      (field_name)
+      (blang
+        (blang_op)
+        (blang
+          (blang_op)
+          (blang
+            (interpolation))
+          (blang))))))
+
+==============
+string escapes
+==============
+
+(rule
+ (alias a)
+ (action (echo "tab\there\b\x41\065 100\%")))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (stanza_field
+      (field_name)
+      (alias_name))
+    (stanza_field
+      (field_name)
+      (action
+        (action_name)
+        (quoted_string)))))
+
+====================
+rule with empty deps
+====================
+
+(rule
+ (alias a)
+ (deps)
+ (action (echo x)))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (stanza_field
+      (field_name)
+      (alias_name))
+    (stanza_field
+      (field_name))
+    (stanza_field
+      (field_name)
+      (action
+        (action_name)))))
+
+=========================================
+rule deps file glob_files_rec and include
+=========================================
+
+(rule
+ (alias a)
+ (deps (file in.txt) (glob_files_rec sub/*.txt) (include deps.d))
+ (action (echo x)))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (stanza_field
+      (field_name)
+      (alias_name))
+    (stanza_field
+      (field_name)
+      (file_name)
+      (file_name))
+    (stanza_field
+      (field_name)
+      (action
+        (action_name)))))
+
+=====================
+rule directory target
+=====================
+
+(rule
+ (target (dir out))
+ (action (system "mkdir -p out")))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (stanza_field
+      (field_name)
+      (file_name_target
+        (file_name)))
+    (stanza_field
+      (field_name)
+      (action
+        (action_name)
+        (shell_command
+          (quoted_string))))))
+
+==================
+rule standard mode
+==================
+
+(rule
+ (targets x)
+ (mode standard)
+ (action (with-stdout-to x (echo hi))))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (stanza_field
+      (field_name)
+      (file_name_target
+        (file_name)))
+    (stanza_field
+      (field_name))
+    (stanza_field
+      (field_name)
+      (action
+        (action_name)
+        (file_name_target
+          (file_name))
+        (action
+          (action_name))))))
+
+======================
+action with-stdin-from
+======================
+
+(rule
+ (alias a)
+ (action (with-stdin-from in.txt (run cat -))))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (stanza_field
+      (field_name)
+      (alias_name))
+    (stanza_field
+      (field_name)
+      (action
+        (action_name)
+        (file_name_dep
+          (file_name))
+        (action
+          (action_name)
+          (file_name_dep
+            (file_name)))))))
+
+=================
+action concurrent
+=================
+
+(rule
+ (alias a)
+ (action (concurrent (echo a) (echo b))))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (stanza_field
+      (field_name)
+      (alias_name))
+    (stanza_field
+      (field_name)
+      (action
+        (action_name)
+        (action
+          (action_name))
+        (action
+          (action_name))))))
+
+=============================
+action cat with several files
+=============================
+
+(rule
+ (targets x)
+ (action (with-stdout-to x (cat a.txt b.txt))))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (stanza_field
+      (field_name)
+      (file_name_target
+        (file_name)))
+    (stanza_field
+      (field_name)
+      (action
+        (action_name)
+        (file_name_target
+          (file_name))
+        (action
+          (action_name)
+          (file_name_dep
+            (file_name))
+          (file_name_dep
+            (file_name)))))))
+
+==================
+action dynamic-run
+==================
+
+(rule
+ (alias a)
+ (action (dynamic-run ./plugin.exe --flag)))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (stanza_field
+      (field_name)
+      (alias_name))
+    (stanza_field
+      (field_name)
+      (action
+        (action_name)
+        (file_name_dep
+          (file_name))))))
+
+=======================
+action format-dune-file
+=======================
+
+(rule
+ (targets out.dune)
+ (action (format-dune-file in.dune out.dune)))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (stanza_field
+      (field_name)
+      (file_name_target
+        (file_name)))
+    (stanza_field
+      (field_name)
+      (action
+        (action_name)
+        (file_name_dep
+          (file_name))
+        (file_name_target
+          (file_name))))))
+
+================================
+actions ignore and pipe variants
+================================
+
+(rule
+ (alias a)
+ (action
+  (progn
+   (ignore-stderr (echo a))
+   (ignore-outputs (echo b))
+   (pipe-stdout (echo c) (run cat))
+   (pipe-stderr (echo d) (run cat)))))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (stanza_field
+      (field_name)
+      (alias_name))
+    (stanza_field
+      (field_name)
+      (action
+        (action_name)
+        (action
+          (action_name)
+          (action
+            (action_name)))
+        (action
+          (action_name)
+          (action
+            (action_name)))
+        (action
+          (action_name)
+          (action
+            (action_name))
+          (action
+            (action_name)
+            (file_name_dep
+              (file_name))))
+        (action
+          (action_name)
+          (action
+            (action_name))
+          (action
+            (action_name)
+            (file_name_dep
+              (file_name))))))))
+
+==================================
+with-accepted-exit-codes predicate
+==================================
+
+(rule
+ (alias a)
+ (action (with-accepted-exit-codes (or 0 1) (run false))))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (stanza_field
+      (field_name)
+      (alias_name))
+    (stanza_field
+      (field_name)
+      (action
+        (action_name)
+        (blang
+          (blang_op)
+          (blang)
+          (blang))
+        (action
+          (action_name)
+          (file_name_dep
+            (file_name)))))))
+
+====================
+install section site
+====================
+
+(install
+ (section (site (mypkg tools)))
+ (files a.ml))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (stanza_field
+      (field_name)
+      (package_name))
+    (stanza_field
+      (field_name)
+      (sexp))))
+
+============================================
+foreign_library include_dirs lib and include
+============================================
+
+(foreign_library
+ (archive_name x)
+ (language c)
+ (names x)
+ (include_dirs dir (lib answer) (include dirs.sexp)))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (stanza_field
+      (field_name))
+    (stanza_field
+      (field_name))
+    (stanza_field
+      (field_name))
+    (stanza_field
+      (field_name)
+      (library_name)
+      (file_name))))
+
+=======================================
+copy_files only_sources without a value
+=======================================
+
+(copy_files
+ (files gen/*)
+ (only_sources))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (stanza_field
+      (field_name)
+      (file_name))
+    (stanza_field
+      (field_name))))
+
+============================
+ocamllex modules ordered set
+============================
+
+(ocamllex
+ (modules (:include gen/lst)))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (stanza_field
+      (field_name)
+      (osl_include
+        (file_name)))))
+
+=====================
+mdx preludes with env
+=====================
+
+(mdx
+ (files README.md)
+ (preludes a.ml (env b b.ml)))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (stanza_field
+      (field_name)
+      (file_name))
+    (stanza_field
+      (field_name)
+      (file_name)
+      (file_name))))
+
+=====================
+libraries instantiate
+=====================
+
+(executable
+ (name main)
+ (libraries
+  (instantiate lib impl)
+  (instantiate lib impl2 :as lib2)))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (stanza_field
+      (field_name)
+      (module_name))
+    (stanza_field
+      (field_name)
+      (stanza_field
+        (field_name)
+        (library_name)
+        (library_name))
+      (stanza_field
+        (field_name)
+        (library_name)
+        (library_name)
+        (library_name)))))
+
+====================================================
+rule promote-until-clean-into mode (dune lang < 3.0)
+====================================================
+
+(rule
+ (targets p)
+ (action (with-stdout-to p (echo hi)))
+ (mode (promote-until-clean-into subdir)))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (stanza_field
+      (field_name)
+      (file_name_target
+        (file_name)))
+    (stanza_field
+      (field_name)
+      (action
+        (action_name)
+        (file_name_target
+          (file_name))
+        (action
+          (action_name))))
+    (stanza_field
+      (field_name)
+      (stanza_field
+        (field_name)
+        (file_name)))))
+
+=================================
+action concurrent without actions
+=================================
+
+(rule
+ (alias a)
+ (action (concurrent)))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (stanza_field
+      (field_name)
+      (alias_name))
+    (stanza_field
+      (field_name)
+      (action
+        (action_name)))))
+
+=====================================
+package depends with a not constraint
+=====================================
+
+(package
+ (name a)
+ (depends (ocp-indent (not :with-test))))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (stanza_field
+      (field_name)
+      (package_name))
+    (stanza_field
+      (field_name)
+      (package_dep
+        (package_name)
+        (version_constraint
+          (version_constraint))))))
+
+================================
+context targets with a toolchain
+================================
+
+(context
+ (default
+  (targets
+   native
+   ((name test_toolchain) (target_exec wrapper.sh)))))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (stanza_field
+      (field_name)
+      (stanza_field
+        (field_name)
+        (sexp)
+        (sexp
+          (sexp
+            (sexp)
+            (sexp))
+          (sexp
+            (sexp)
+            (sexp)))))))
+
+==========================
+context lock_dir with cond
+==========================
+
+(context
+ (default
+  (lock_dir
+   (cond
+    ((= %{system} macosx) dune.macos.lock)
+    (true dune.lock)))))
+
+---
+
+(source_file
+  (stanza
+    (stanza_name)
+    (stanza_field
+      (field_name)
+      (stanza_field
+        (field_name)
+        (sexp
+          (sexp)
+          (sexp
+            (sexp
+              (sexp)
+              (sexp
+                (interpolation))
+              (sexp))
+            (sexp))
+          (sexp
+            (sexp)
+            (sexp)))))))
