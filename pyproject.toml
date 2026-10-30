@@ -22,7 +22,7 @@ license.text = "MIT"
 readme = "README.md"
 
 [project.urls]
-Homepage = "https://github.com/emillon/tree-sitter-dune"
+Homepage = "https://github.com/ocaml-dune/tree-sitter-dune"
 
 [project.optional-dependencies]
 core = ["tree-sitter~=0.22"]

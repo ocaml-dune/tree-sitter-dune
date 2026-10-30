@@ -1,7 +1,7 @@
 # tree-sitter-dune
 
-[![CI](https://github.com/emillon/tree-sitter-dune/workflows/CI/badge.svg)](https://github.com/tmcgilchrist/tree-sitter-dune/actions)
-[![npm](https://img.shields.io/npm/v/tree-sitter-dune.svg)](https://www.npmjs.com/package/tree-sitter-dune)
+[![CI](https://github.com/ocaml-dune/tree-sitter-dune/actions/workflows/ci.yml/badge.svg)](https://github.com/ocaml-dune/tree-sitter-dune/actions)
+[![npm](https://img.shields.io/npm/v/@ocaml-dune/tree-sitter-dune.svg)](https://www.npmjs.com/package/@ocaml-dune/tree-sitter-dune)
 [![crates.io](https://img.shields.io/crates/v/tree-sitter-dune.svg)](https://crates.io/crates/tree-sitter-dune)
 [![pypi](https://img.shields.io/pypi/v/tree-sitter-dune.svg)](https://pypi.org/project/tree-sitter-dune/)
 
@@ -27,7 +27,7 @@ Tree-sitter grammar for [Dune](https://dune.readthedocs.io/) build system files.
 ### NPM
 
 ```bash
-npm install tree-sitter-dune
+npm install @ocaml-dune/tree-sitter-dune
 ```
 
 ### Cargo
@@ -39,7 +39,7 @@ cargo add tree-sitter-dune
 ### Tree-sitter CLI
 
 ```bash
-git clone https://github.com/tmcgilchrist/tree-sitter-dune
+git clone https://github.com/ocaml-dune/tree-sitter-dune
 cd tree-sitter-dune
 npm ci                # installs the pinned tree-sitter CLI
 npm run generate      # make generate, at the pinned ABI
@@ -56,7 +56,7 @@ ABI 15 yet. The CLI and ABI versions are set in the `Makefile`
 
 ```javascript
 const Parser = require('tree-sitter');
-const Dune = require('tree-sitter-dune');
+const Dune = require('@ocaml-dune/tree-sitter-dune');
 
 const parser = new Parser();
 parser.setLanguage(Dune);
@@ -119,7 +119,7 @@ import (
     "context"
     "fmt"
     sitter "github.com/tree-sitter/go-tree-sitter"
-    dune "github.com/tmcgilchrist/tree-sitter-dune/bindings/go"
+    dune "github.com/ocaml-dune/tree-sitter-dune/bindings/go"
 )
 
 func main() {

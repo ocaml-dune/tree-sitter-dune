@@ -1,5 +1,5 @@
 {
-  "name": "tree-sitter-dune",
+  "name": "@ocaml-dune/tree-sitter-dune",
   "version": "0.1.0",
   "description": "Tree-sitter grammar for Dune build system files (dune, dune-project, dune-workspace)",
   "main": "bindings/node",
@@ -16,10 +16,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/emillon/tree-sitter-dune.git"
+    "url": "https://github.com/ocaml-dune/tree-sitter-dune.git"
   },
   "bugs": {
-    "url": "https://github.com/emillon/tree-sitter-dune/issues"
+    "url": "https://github.com/ocaml-dune/tree-sitter-dune/issues"
   },
   "dependencies": {
     "node-addon-api": "^8.0.0",
@@ -52,6 +52,9 @@
       "injections": "queries/injections.scm"
     }
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "files": [
     "grammar.js",
     "binding.gyp",

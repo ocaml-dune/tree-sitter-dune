@@ -22,7 +22,7 @@
       }
     ],
     "links": {
-      "repository": "https://github.com/tmcgilchrist/tree-sitter-dune"
+      "repository": "https://github.com/ocaml-dune/tree-sitter-dune"
     }
   },
   "bindings": {

@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.13)
 project(tree-sitter-dune
         VERSION "0.1.0"
         DESCRIPTION "Tree-sitter grammar for Dune build system files"
-        HOMEPAGE_URL "https://github.com/emillon/tree-sitter-dune"
+        HOMEPAGE_URL "https://github.com/ocaml-dune/tree-sitter-dune"
         LANGUAGES C)
 
 if(NOT CMAKE_BUILD_TYPE)
