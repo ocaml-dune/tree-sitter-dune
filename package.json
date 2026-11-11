@@ -1,6 +1,6 @@
 {
   "name": "@ocaml-dune/tree-sitter-dune",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "description": "Tree-sitter grammar for Dune build system files (dune, dune-project, dune-workspace)",
   "main": "bindings/node",

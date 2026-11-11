@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.13)
 
 project(tree-sitter-dune
-        VERSION "0.1.0"
+        VERSION "0.1.1"
         DESCRIPTION "Tree-sitter grammar for Dune build system files"
         HOMEPAGE_URL "https://github.com/ocaml-dune/tree-sitter-dune"
         LANGUAGES C)
@@ -33,7 +33,7 @@ set_target_properties(tree-sitter-dune
     C_VISIBILITY_PRESET hidden
     POSITION_INDEPENDENT_CODE ON
     SOVERSION 0
-    VERSION "0.1.0"
+    VERSION "0.1.1"
 )
 
 if(WIN32)
@@ -78,7 +78,7 @@ configure_package_config_file(
 )
 write_basic_package_version_file(
     ${CMAKE_CURRENT_BINARY_DIR}/tree-sitter-dune-config-version.cmake
-    VERSION "0.1.0"
+    VERSION "0.1.1"
     COMPATIBILITY SameMajorVersion
 )
 
