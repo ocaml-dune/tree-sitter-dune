@@ -7,12 +7,13 @@ keywords = ["incremental", "parsing", "dune", "ocaml"]
 categories = ["parsing", "text-editors"]
 repository = "https://github.com/ocaml-dune/tree-sitter-dune"
 edition = "2021"
+rust-version = "1.90"
 license = "MIT"
 readme = "README.md"
 autoexamples = false
 
 build = "bindings/rust/build.rs"
-include = ["LICENSE", "bindings/rust/*", "grammar.js", "queries/*", "src/*", "tree-sitter.json"]
+include = ["/LICENSE", "bindings/rust/*", "grammar.js", "queries/*", "src/*", "tree-sitter.json"]
 
 [lib]
 path = "bindings/rust/lib.rs"
