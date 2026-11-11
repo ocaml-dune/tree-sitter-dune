@@ -1,9 +1,7 @@
 # tree-sitter-dune
 
 [![CI](https://github.com/ocaml-dune/tree-sitter-dune/actions/workflows/ci.yml/badge.svg)](https://github.com/ocaml-dune/tree-sitter-dune/actions)
-[![npm](https://img.shields.io/npm/v/@ocaml-dune/tree-sitter-dune.svg)](https://www.npmjs.com/package/@ocaml-dune/tree-sitter-dune)
 [![crates.io](https://img.shields.io/crates/v/tree-sitter-dune.svg)](https://crates.io/crates/tree-sitter-dune)
-[![pypi](https://img.shields.io/pypi/v/tree-sitter-dune.svg)](https://pypi.org/project/tree-sitter-dune/)
 
 Tree-sitter grammar for [Dune](https://dune.readthedocs.io/) build system files.
 
@@ -23,12 +21,6 @@ Tree-sitter grammar for [Dune](https://dune.readthedocs.io/) build system files.
 - `dune-workspace` - Workspace-level settings and build contexts
 
 ## Installation
-
-### NPM
-
-```bash
-npm install @ocaml-dune/tree-sitter-dune
-```
 
 ### Cargo
 
@@ -52,25 +44,6 @@ ABI 15 yet. The CLI and ABI versions are set in the `Makefile`
 
 ## Usage
 
-### Node.js
-
-```javascript
-const Parser = require('tree-sitter');
-const Dune = require('@ocaml-dune/tree-sitter-dune');
-
-const parser = new Parser();
-parser.setLanguage(Dune);
-
-const sourceCode = `
-(library
- (name my_lib)
- (libraries base stdio))
-`;
-
-const tree = parser.parse(sourceCode);
-console.log(tree.rootNode.toString());
-```
-
 ### Rust
 
 ```rust
@@ -89,25 +62,6 @@ fn main() {
     let tree = parser.parse(source_code, None).unwrap();
     println!("{}", tree.root_node().to_sexp());
 }
-```
-
-### Python
-
-```python
-from tree_sitter import Language, Parser
-import tree_sitter_dune
-
-parser = Parser()
-parser.set_language(Language(tree_sitter_dune.language(), "dune"))
-
-source_code = b"""
-(library
- (name my_lib)
- (libraries base stdio))
-"""
-
-tree = parser.parse(source_code)
-print(tree.root_node.sexp())
 ```
 
 ### Go
